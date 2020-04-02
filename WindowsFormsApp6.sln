@@ -6,12 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp6", "WindowsFormsApp6.csproj", "{06C820FC-8DCD-4B42-98A5-1BE794165D1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1ADB64E3-D3DE-411F-A6EA-3C9D6619B23F}"
-	ProjectSection(SolutionItems) = preProject
-		DatabaseOperation\Add.cs = DatabaseOperation\Add.cs
-		DatabaseOperation\Print.cs = DatabaseOperation\Print.cs
-		DatabaseOperation\Revise.cs = DatabaseOperation\Revise.cs
-		datafile\save.csv = datafile\save.csv
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
