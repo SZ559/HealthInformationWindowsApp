@@ -8,31 +8,38 @@ namespace DatabaseOperation
 {
     public class Print
     {
-        public static void PrintAll(SLBHealthRecord myHealthRecord)
+        public static void PrintAll(HealthDatabase myHealthRecord)
         {
             Console.WriteLine("SLB Health Record");
             Console.WriteLine(@"Gin Number /Name /Visit Hubei Recently /Has Abnormal Symptom /Temperature");
             foreach (Person myPerson in myHealthRecord.HealthRecord.Values)
             {
-                Console.WriteLine("{0}, {1}, {2}, {3}, {4}", myPerson.GinNumber, myPerson.Name, myPerson.VisitHubei, myPerson.HasAbnormalSymptom, myPerson.Temperature);
+                Console.WriteLine(myPerson.ToString());
             }
         }
 
-        public static void PrintAbnormal(SLBHealthRecord myHealthRecord)
+        public static void PrintAbnormal(HealthDatabase myHealthRecord)
         {
             Console.WriteLine("SLB Suspected Case Record");
             Console.WriteLine(@"Gin Number /Name /Visit Hubei Recently /Has Abnormal Symptom /Temperature");
-            foreach (Person myPerson in myHealthRecord.SuspectedRecord.Values)
+            //foreach (Person myPerson in myHealthRecord.SuspectedRecord.Values)
+            //{
+            //    Console.WriteLine("{0}, {1}, {2}, {3}, {4}", myPerson.GinNumber, myPerson.Name, myPerson.VisitHubei, myPerson.HasAbnormalSymptom, myPerson.Temperature);
+            //}
+            foreach (Person myPerson in myHealthRecord.HealthRecord.Values)
             {
-                Console.WriteLine("{0}, {1}, {2}, {3}, {4}", myPerson.GinNumber, myPerson.Name, myPerson.VisitHubei, myPerson.HasAbnormalSymptom, myPerson.Temperature);
+                if (myPerson.IsPersonSuspected())
+                {
+                    Console.WriteLine(myPerson.ToString());
+                } 
             }
         }
 
-        public static void PrintPerson(SLBHealthRecord myHealthRecord, int myGinNumber)
+        public static void PrintPerson(HealthDatabase myHealthRecord, int myGinNumber)
         {
             Person myPerson = myHealthRecord.HealthRecord[myGinNumber];
             Console.WriteLine("Gin Number /Name /Visit Hubei Recently /Has Abnormal Symptom /Temperature");
-            Console.WriteLine(@"{0}, {1}, {2}, {3}, {4}", myPerson.GinNumber, myPerson.Name, myPerson.VisitHubei, myPerson.HasAbnormalSymptom, myPerson.Temperature);
+            Console.WriteLine(myPerson.ToString());
         }
 
     }

@@ -48,5 +48,16 @@ namespace EmployeeInformation
             }
             return false;
         }
+
+        public override string ToString()
+        {
+            return GinNumber.ToString() + "," + Name.ToString() + "," + VisitHubei.ToString() + "," +
+                HasAbnormalSymptom.ToString() + "," + Temperature.ToString();
+        }
+
+        public string[] ToStringArray()
+        {
+            return new string[] { GinNumber.ToString(), Name.ToString(), VisitHubei.ToString(), HasAbnormalSymptom.ToString(), Temperature.ToString() };
+        }
     }
 }

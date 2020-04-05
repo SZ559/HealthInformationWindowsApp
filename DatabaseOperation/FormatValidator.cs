@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using EmployeeInformation;
 
@@ -7,77 +8,100 @@ namespace DatabaseOperation
 {
     public class FormatValidator
     {
-        public static int CheckGinNumber(string myInput)
+        public bool HasFormatError_GinNumber(string myInput)
         {
-            try
+            int test;
+            if (Int32.TryParse(myInput, out test))
             {
-                int myGinNumber = Convert.ToInt32(myInput);
-                return myGinNumber;
+                if (Int32.Parse(myInput) >= 0)
+                {
+                    return false;
+                }
             }
-
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid Gin Number! The Gin Number must be a valid Integer.");
-                throw new ArgumentException("Invalid Gin Number! The Gin Number must be a valid Integer.");
-            }
+            return true;
         }
 
-        public static string CheckName(string myInput)
+        public bool HasFormatError_Name(string myInput)
         {
-
-            string myName = myInput;
-            if (myName == null)
-            {
-                Console.WriteLine("Invalid Name! The name cannot be empty.");
-                throw new ArgumentException("Invalid Name! The name cannot be empty.");
-            }
-            return myName;
-        }
-
-        public static bool CheckVisitHubei(string myInput)
-        {
-
-            if (myInput.ToLower() == "y")
-            {
-                return true;
-            }
-            else if (myInput.ToLower() == "n")
+            if (myInput != String.Empty)
             {
                 return false;
             }
-            else
-            {
-                Console.WriteLine("Invalid Input of Visit Hubei or Not. The Input Must Be Y or N.");
-                throw new ArgumentException("Invalid Input of Visit Hubei or Not. The Input Must Be Y or N.");
-            }
+            return true;
         }
 
-        public static bool CheckAbnormalSymptom(string myInput)
+        public bool HasFormatError_Temperature(string myInput)
         {
-            if (myInput.ToLower() == "y")
+            double test;
+            if (Double.TryParse(myInput, out test))
             {
-                return true;
+                double myTemperature = Double.Parse(myInput);
+                if (myTemperature <= 42 && myTemperature >= 35)
+                {
+                    return false;
+                }
             }
-            else if (myInput.ToLower() == "n")
+            return true;
+        } 
+
+        public bool HasFormatError_VisitHubei(string myInput)
+        {
+            //if (myInput.ToLower() == "y" || myInput.ToLower() == "n")
+            bool test;
+            if (bool.TryParse(myInput, out test))
             {
                 return false;
             }
-            else
-            {
-                Console.WriteLine("Invalid Input of Abnormal Symptom. The Input Must Be Y or N.");
-                throw new ArgumentException("Invalid Input of Abnormal Symptom. The Input Must Be Y or N.");
-            }
+            return true;
         }
 
-        public static double CheckTemperature(string myInput)
+        public bool HasFormatError_HasAbnormalSymptom(string myInput)
         {
-            double myTemperature = Double.Parse(myInput);
-            if (myTemperature > 42 || myTemperature < 35)
+            //if (myInput.ToLower() == "y" || myInput.ToLower() == "n")
+            bool test;
+            if (bool.TryParse(myInput, out test))
             {
-                Console.WriteLine("Invalid Input of Temperature. Please Check Again.");
-                throw new ArgumentException("Invalid Input of Temperature. Please Check Again.");
+                return false;
             }
-            return myTemperature;
+            return true;
+        }
+
+        public string CheckFormatError_InputString(string myInput)
+        {
+            string formatErrorMessage = "";
+            if (!myInput.Contains(","))
+            {
+                return "Format Error";
+            }
+            string[] myInputArray = myInput.Split(',');
+
+            if (myInputArray.Length != 5)
+            {
+                return "FormatError";
+            }
+            if (HasFormatError_GinNumber(myInputArray[0]) == true)
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Gin Number! The Gin Number must be a valid positive Integer! ";
+            }
+            if (HasFormatError_Name(myInputArray[1]) == true)
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Name! The Name cannot be empty! ";
+            }
+
+            if (HasFormatError_VisitHubei(myInputArray[2]) == true)
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Visited Hubei Recently!";
+            }
+            
+            if (HasFormatError_HasAbnormalSymptom(myInputArray[3]) == true)
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Has Abnormal Symptom!";
+            }
+            if (HasFormatError_Temperature(myInputArray[4]) == true)
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Temperature!";
+            }
+            return formatErrorMessage;
         }
     }
 
