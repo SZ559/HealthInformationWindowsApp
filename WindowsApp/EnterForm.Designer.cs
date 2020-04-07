@@ -118,11 +118,11 @@
             this.temepratureLabel.AutoSize = true;
             this.temepratureLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temepratureLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.temepratureLabel.Location = new System.Drawing.Point(318, 539);
+            this.temepratureLabel.Location = new System.Drawing.Point(218, 536);
             this.temepratureLabel.Name = "temepratureLabel";
-            this.temepratureLabel.Size = new System.Drawing.Size(253, 45);
+            this.temepratureLabel.Size = new System.Drawing.Size(353, 45);
             this.temepratureLabel.TabIndex = 12;
-            this.temepratureLabel.Text = "Temperature:";
+            this.temepratureLabel.Text = "Body Temperature:";
             // 
             // temperatureTextbox
             // 
@@ -200,9 +200,9 @@
             this.errorTemperature.ForeColor = System.Drawing.Color.Red;
             this.errorTemperature.Location = new System.Drawing.Point(1020, 536);
             this.errorTemperature.Name = "errorTemperature";
-            this.errorTemperature.Size = new System.Drawing.Size(306, 40);
+            this.errorTemperature.Size = new System.Drawing.Size(389, 40);
             this.errorTemperature.TabIndex = 17;
-            this.errorTemperature.Text = "Invalid temperature";
+            this.errorTemperature.Text = "Invalid body temperature";
             this.errorTemperature.Visible = false;
             // 
             // submitButton
