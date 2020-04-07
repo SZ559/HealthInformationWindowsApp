@@ -15,9 +15,9 @@ namespace WindowsApp
 {
     public partial class MainMenuForm : Form
     {
-        HealthDatabase myHealthRecord;
-        FormatValidator formatValidator = new FormatValidator();
-        FormForEnterAndModify formForEnterAndModify;
+        private HealthDatabase myHealthRecord;
+        private FormatValidator formatValidator = new FormatValidator();
+        private FormForEnterAndModify formForEnterAndModify;
         public MainMenuForm()
         {
             InitializeComponent();

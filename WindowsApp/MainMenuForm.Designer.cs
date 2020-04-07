@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.enterButton = new System.Windows.Forms.Button();
             this.importFromFileButton = new System.Windows.Forms.Button();
             this.saveToFileButton = new System.Windows.Forms.Button();
@@ -58,6 +58,8 @@
             this.ginNumberLabel = new System.Windows.Forms.Label();
             this.errorGinNumberLabel = new System.Windows.Forms.Label();
             this.errorCannotFindGinNumberLabel = new System.Windows.Forms.Label();
+            this.deleteByGinNumberTextbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.databasePanel.SuspendLayout();
             this.dataGirdViewTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseDataGridView)).BeginInit();
@@ -71,7 +73,7 @@
             // 
             this.enterButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.enterButton.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enterButton.Location = new System.Drawing.Point(1961, 410);
+            this.enterButton.Location = new System.Drawing.Point(1961, 566);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(412, 53);
             this.enterButton.TabIndex = 0;
@@ -83,7 +85,7 @@
             // 
             this.importFromFileButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.importFromFileButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importFromFileButton.Location = new System.Drawing.Point(1961, 509);
+            this.importFromFileButton.Location = new System.Drawing.Point(1961, 663);
             this.importFromFileButton.Name = "importFromFileButton";
             this.importFromFileButton.Size = new System.Drawing.Size(412, 63);
             this.importFromFileButton.TabIndex = 3;
@@ -95,7 +97,7 @@
             // 
             this.saveToFileButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.saveToFileButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveToFileButton.Location = new System.Drawing.Point(1961, 606);
+            this.saveToFileButton.Location = new System.Drawing.Point(1961, 768);
             this.saveToFileButton.Name = "saveToFileButton";
             this.saveToFileButton.Size = new System.Drawing.Size(412, 63);
             this.saveToFileButton.TabIndex = 4;
@@ -106,7 +108,7 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            this.openFileDialog.Filter = "Text files (*.txt)|*.txt|CSV files (*.csv)|*.csv";
+            this.openFileDialog.Filter = "CSV files (*.csv)|*.csv|Text files (*.txt)|*.txt";
             // 
             // saveFileDialog1
             // 
@@ -204,19 +206,19 @@
             // 
             this.healthRecordDataGridView.AllowUserToAddRows = false;
             this.healthRecordDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.healthRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.healthRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.healthRecordDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.healthRecordDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.healthRecordDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.healthRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.healthRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.healthRecordDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthRecordDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ginNumberColumn,
@@ -224,22 +226,22 @@
             this.visitHubeiColumn,
             this.hasAbnormalSymtpom,
             this.temperatureColumn});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.healthRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.healthRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.healthRecordDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.healthRecordDataGridView.Location = new System.Drawing.Point(2876, 1377);
             this.healthRecordDataGridView.Name = "healthRecordDataGridView";
             this.healthRecordDataGridView.ReadOnly = true;
             this.healthRecordDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.healthRecordDataGridView.RowHeadersWidth = 15;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.healthRecordDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthRecordDataGridView.RowTemplate.Height = 44;
             this.healthRecordDataGridView.Size = new System.Drawing.Size(20, 17);
@@ -295,7 +297,7 @@
             // 
             this.modifyButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.modifyButton.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifyButton.Location = new System.Drawing.Point(1961, 254);
+            this.modifyButton.Location = new System.Drawing.Point(1961, 243);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(209, 58);
             this.modifyButton.TabIndex = 1;
@@ -307,7 +309,7 @@
             // 
             this.deleteButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.deleteButton.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(2178, 255);
+            this.deleteButton.Location = new System.Drawing.Point(1961, 447);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(195, 57);
             this.deleteButton.TabIndex = 8;
@@ -328,9 +330,9 @@
             this.ginNumberLabel.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ginNumberLabel.Location = new System.Drawing.Point(1954, 125);
             this.ginNumberLabel.Name = "ginNumberLabel";
-            this.ginNumberLabel.Size = new System.Drawing.Size(369, 39);
+            this.ginNumberLabel.Size = new System.Drawing.Size(362, 39);
             this.ginNumberLabel.TabIndex = 11;
-            this.ginNumberLabel.Text = "Search By Gin Number:";
+            this.ginNumberLabel.Text = "Modify By Gin Number:";
             // 
             // errorGinNumberLabel
             // 
@@ -356,11 +358,30 @@
             this.errorCannotFindGinNumberLabel.Text = "Cannot find the Gin Number";
             this.errorCannotFindGinNumberLabel.Visible = false;
             // 
+            // deleteByGinNumberTextbox
+            // 
+            this.deleteByGinNumberTextbox.Location = new System.Drawing.Point(1961, 384);
+            this.deleteByGinNumberTextbox.Name = "deleteByGinNumberTextbox";
+            this.deleteByGinNumberTextbox.Size = new System.Drawing.Size(412, 42);
+            this.deleteByGinNumberTextbox.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1954, 328);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(358, 39);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Delete By Gin Number:";
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2908, 1476);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.deleteByGinNumberTextbox);
             this.Controls.Add(this.healthRecordDataGridView);
             this.Controls.Add(this.errorCannotFindGinNumberLabel);
             this.Controls.Add(this.errorGinNumberLabel);
@@ -415,5 +436,7 @@
         private System.Windows.Forms.Label ginNumberLabel;
         private System.Windows.Forms.Label errorGinNumberLabel;
         private System.Windows.Forms.Label errorCannotFindGinNumberLabel;
+        private System.Windows.Forms.TextBox deleteByGinNumberTextbox;
+        private System.Windows.Forms.Label label1;
     }
 }
