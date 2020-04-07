@@ -17,13 +17,13 @@ namespace WindowsApp
     {
         HealthDatabase myHealthRecord;
         FormatValidator formatValidator = new FormatValidator();
-        EnterForm enterForm;
+        FormForEnterAndModify formForEnterAndModify;
         public MainMenuForm()
         {
             InitializeComponent();
             myHealthRecord = new HealthDatabase();
-            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
-            healthDataGridView.DataSource = healthdatabaseBindingSource;
+            healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            healthDataGridView.DataSource = healthDatabaseBindingSource;
             InitializeColumnHeader(healthDataGridView);
 
             suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
@@ -33,34 +33,34 @@ namespace WindowsApp
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            if ((enterForm == null) || (enterForm.IsDisposed))
+            if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed))
             {
-                enterForm = new EnterForm(this, "Enter", null);
-                enterForm.Show();
+                formForEnterAndModify = new FormForEnterAndModify(this, "Enter", null);
+                formForEnterAndModify.Show();
             }
         }
 
         private void ModifyButton_Click(object sender, EventArgs e)
         {
-            if ((enterForm == null) || (enterForm.IsDisposed))
+            if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed))
             {
                 int ginNumber = CheckGinNumber();
                 if (ginNumber != -1)
                 {
                     Person originalPerson = myHealthRecord.HealthRecord[ginNumber];
-                    enterForm = new EnterForm(this, "Modify", originalPerson);
-                    enterForm.Show();
+                    formForEnterAndModify = new FormForEnterAndModify(this, "Modify", originalPerson);
+                    formForEnterAndModify.Show();
                 }
             }
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             int ginNumber = CheckGinNumber();
             if (ginNumber != -1)
             {
                 myHealthRecord.DeletePerson(ginNumber);
-                healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+                healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
                 suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             } 
         }
@@ -87,26 +87,65 @@ namespace WindowsApp
 
         private void InputFromFileButton_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed))
             {
-                string filePath = openFileDialog.FileName;
-                string inputResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
-                MessageBox.Show(inputResult);
-                healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
-                suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    string inputResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
+                    MessageBox.Show(inputResult);
+                    healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+                    suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+                }
             }
+
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed)) 
             {
-                string filePath = saveFileDialog1.FileName;
-                string saveResult = DataFileOperation.SaveAsCSV(ref myHealthRecord, filePath);
-                MessageBox.Show(saveResult);
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog1.FileName;
+                    string saveResult = DataFileOperation.SaveAsCSV(ref myHealthRecord, filePath);
+                    MessageBox.Show(saveResult);
+                }
             }
         }
 
+        private void InitializeColumnHeader(DataGridView datagridview)
+        {
+            datagridview.Columns[0].HeaderCell.Value = "Gin Number";
+            datagridview.Columns[1].HeaderCell.Value = "Name";
+            datagridview.Columns[2].HeaderCell.Value = "Visit Hubei Recently";
+            datagridview.Columns[3].HeaderCell.Value = "Has Abnormal Symptom";
+            datagridview.Columns[4].HeaderCell.Value = "Body Temperature";
+        }
+
+        internal bool AddPerson(Person newPerson)
+        {
+            if (myHealthRecord.AddNewPerson(newPerson) == false)
+            {
+                MessageBox.Show("Enter Failed! The Gin Number you entered already exists.");
+                return false;
+            }
+            healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+            return true;
+        }
+
+        internal bool ModifyChosenPerson(int myGinNumber, Person updatedPerson)
+        {
+            if (myHealthRecord.ModifyPerson(myGinNumber, updatedPerson) == false)
+            {
+                MessageBox.Show("Modify Failed! The Gin Number you entered already exists.");
+                return false;
+            }
+            healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+            return true;
+        }
 
         //private void displayButton_Click(object sender, EventArgs e)
         //{
@@ -129,38 +168,6 @@ namespace WindowsApp
         //    }
         //}
 
-        private void InitializeColumnHeader(DataGridView datagridview)
-        {
-            datagridview.Columns[0].HeaderCell.Value = "Gin Number";
-            datagridview.Columns[1].HeaderCell.Value = "Name";
-            datagridview.Columns[2].HeaderCell.Value = "Visit Hubei Recently";
-            datagridview.Columns[3].HeaderCell.Value = "Has Abnormal Symptom";
-            datagridview.Columns[4].HeaderCell.Value = "Body Temperature";
-        }
 
-        internal bool AddPerson(Person newPerson)
-        {
-            if (myHealthRecord.AddNewPerson(newPerson) == false)
-            {
-                MessageBox.Show("Enter Failed! The Gin Number you entered already exists.");
-                return false;
-            }
-            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
-            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
-            return true;
-        }
-
-        internal bool ModifyChosenPerson(int myGinNumber, Person updatedPerson)
-        {
-            if (myHealthRecord.ModifyPerson(myGinNumber, updatedPerson) == false)
-            {
-                MessageBox.Show("Modify Failed! The Gin Number you entered already exists.");
-                return false;
-            }
-            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
-            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
-            return true;
-        }
-       
     }
 }

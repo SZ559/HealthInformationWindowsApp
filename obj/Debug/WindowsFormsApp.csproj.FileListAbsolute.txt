@@ -19,7 +19,6 @@ C:\Users\zhang\source\repos\WindowsFormsApp\bin\Debug\WindowsFormsApp.exe
 C:\Users\zhang\source\repos\WindowsFormsApp\bin\Debug\WindowsFormsApp.pdb
 C:\Users\zhang\source\repos\WindowsFormsApp\bin\Debug\ConsoleControlAPI.dll
 C:\Users\zhang\source\repos\WindowsFormsApp\bin\Debug\ConsoleControlAPI.xml
-C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.EnterForm.resources
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.MainMenuForm.resources
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.Properties.Resources.resources
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.GenerateResource.cache
@@ -28,3 +27,4 @@ C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.Cop
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.exe
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.pdb
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojAssemblyReference.cache
+C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.FormForEnterAndModify.resources

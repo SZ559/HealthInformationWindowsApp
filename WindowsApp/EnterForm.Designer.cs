@@ -1,6 +1,6 @@
 ﻿namespace WindowsApp
 {
-    partial class EnterForm
+    partial class FormForEnterAndModify
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -48,7 +48,6 @@
             this.hasAbnormalSymptomYesRadioButton = new System.Windows.Forms.RadioButton();
             this.hasAbnormalSymptomNoRadioButton = new System.Windows.Forms.RadioButton();
             this.visitHubeiNoRadioButton = new System.Windows.Forms.RadioButton();
-            this.visitHubeiGroupBox = new System.Windows.Forms.GroupBox();
             this.hasAbnormalSymptomPanel = new System.Windows.Forms.Panel();
             this.visitHubeiPanel = new System.Windows.Forms.Panel();
             this.hasAbnormalSymptomPanel.SuspendLayout();
@@ -285,16 +284,6 @@
             this.visitHubeiNoRadioButton.Text = "No";
             this.visitHubeiNoRadioButton.UseVisualStyleBackColor = true;
             // 
-            // visitHubeiGroupBox
-            // 
-            this.visitHubeiGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.visitHubeiGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.visitHubeiGroupBox.Location = new System.Drawing.Point(1276, 844);
-            this.visitHubeiGroupBox.Name = "visitHubeiGroupBox";
-            this.visitHubeiGroupBox.Size = new System.Drawing.Size(586, 80);
-            this.visitHubeiGroupBox.TabIndex = 28;
-            this.visitHubeiGroupBox.TabStop = false;
-            // 
             // hasAbnormalSymptomPanel
             // 
             this.hasAbnormalSymptomPanel.Controls.Add(this.hasAbnormalSymptomNoRadioButton);
@@ -313,14 +302,13 @@
             this.visitHubeiPanel.Size = new System.Drawing.Size(402, 100);
             this.visitHubeiPanel.TabIndex = 31;
             // 
-            // EnterForm
+            // FormForEnterAndModify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1633, 1149);
             this.Controls.Add(this.visitHubeiPanel);
             this.Controls.Add(this.hasAbnormalSymptomPanel);
-            this.Controls.Add(this.visitHubeiGroupBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.errorAbnormalSymptom);
             this.Controls.Add(this.errorVisitHubei);
@@ -338,7 +326,7 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.submitButton);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "EnterForm";
+            this.Name = "FormForEnterAndModify";
             this.Text = "Enter";
             this.hasAbnormalSymptomPanel.ResumeLayout(false);
             this.hasAbnormalSymptomPanel.PerformLayout();
@@ -370,7 +358,6 @@
         private System.Windows.Forms.RadioButton hasAbnormalSymptomYesRadioButton;
         private System.Windows.Forms.RadioButton hasAbnormalSymptomNoRadioButton;
         private System.Windows.Forms.RadioButton visitHubeiNoRadioButton;
-        private System.Windows.Forms.GroupBox visitHubeiGroupBox;
         private System.Windows.Forms.Panel hasAbnormalSymptomPanel;
         private System.Windows.Forms.Panel visitHubeiPanel;
     }
