@@ -26,12 +26,9 @@ namespace DatabaseOperation
             //{
             //    Console.WriteLine("{0}, {1}, {2}, {3}, {4}", myPerson.GinNumber, myPerson.Name, myPerson.VisitHubei, myPerson.HasAbnormalSymptom, myPerson.Temperature);
             //}
-            foreach (Person myPerson in myHealthRecord.HealthRecord.Values)
+            foreach (Person myPerson in myHealthRecord.SuspectedCaseList)
             {
-                if (myPerson.IsPersonSuspected())
-                {
-                    Console.WriteLine(myPerson.ToString());
-                } 
+                Console.WriteLine(myPerson.ToString());
             }
         }
 

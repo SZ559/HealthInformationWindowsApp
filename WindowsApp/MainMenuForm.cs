@@ -22,6 +22,13 @@ namespace WindowsApp
         {
             InitializeComponent();
             myHealthRecord = new HealthDatabase();
+            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            healthDataGridView.DataSource = healthdatabaseBindingSource;
+            InitializeColumnHeader(healthDataGridView);
+
+            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+            suspectedCaseDataGridView.DataSource = suspectedCaseBindingSource;
+            InitializeColumnHeader(suspectedCaseDataGridView);
         }
 
         private void EnterButton_Click(object sender, EventArgs e)
@@ -53,6 +60,8 @@ namespace WindowsApp
             if (ginNumber != -1)
             {
                 myHealthRecord.DeletePerson(ginNumber);
+                healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+                suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             } 
         }
 
@@ -83,6 +92,8 @@ namespace WindowsApp
                 string filePath = openFileDialog.FileName;
                 string inputResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
                 MessageBox.Show(inputResult);
+                healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+                suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             }
         }
 
@@ -97,25 +108,34 @@ namespace WindowsApp
         }
 
 
-        private void displayButton_Click(object sender, EventArgs e)
-        {
-            dataGridView.Rows.Clear();
-            foreach (Person person in myHealthRecord.HealthRecord.Values)
-            {
-                dataGridView.Rows.Add(person.ToStringArray());
-            }
-        }
+        //private void displayButton_Click(object sender, EventArgs e)
+        //{
+        //    healthRecordDataGridView.Rows.Clear();
+        //    foreach (Person person in myHealthRecord.HealthRecord.Values)
+        //    {
+        //        healthRecordDataGridView.Rows.Add(person.ToStringArray());
+        //    }
+        //}
 
-        private void displaySuspectedButton_Click(object sender, EventArgs e)
+        //private void displaySuspectedButton_Click(object sender, EventArgs e)
+        //{
+        //    healthRecordDataGridView.Rows.Clear();
+        //    foreach (Person person in myHealthRecord.HealthRecord.Values)
+        //    {
+        //        if (person.IsPersonSuspected())
+        //        {
+        //            healthRecordDataGridView.Rows.Add(person.ToStringArray());
+        //        }
+        //    }
+        //}
+
+        private void InitializeColumnHeader(DataGridView datagridview)
         {
-            dataGridView.Rows.Clear();
-            foreach (Person person in myHealthRecord.HealthRecord.Values)
-            {
-                if (person.IsPersonSuspected())
-                {
-                    dataGridView.Rows.Add(person.ToStringArray());
-                }
-            }
+            datagridview.Columns[0].HeaderCell.Value = "Gin Number";
+            datagridview.Columns[1].HeaderCell.Value = "Name";
+            datagridview.Columns[2].HeaderCell.Value = "Visit Hubei Recently";
+            datagridview.Columns[0].HeaderCell.Value = "Has Abnormal Symptom";
+            datagridview.Columns[0].HeaderCell.Value = "Body Temperature";
         }
 
         internal bool AddPerson(Person newPerson)
@@ -125,6 +145,8 @@ namespace WindowsApp
                 MessageBox.Show("Enter Failed! The Gin Number you entered already exists.");
                 return false;
             }
+            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             return true;
         }
 
@@ -135,7 +157,10 @@ namespace WindowsApp
                 MessageBox.Show("Modify Failed! The Gin Number you entered already exists.");
                 return false;
             }
+            healthdatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+            suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             return true;
         }
+       
     }
 }

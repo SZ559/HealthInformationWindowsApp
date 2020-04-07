@@ -19,6 +19,22 @@ namespace EmployeeInformation
             }
         }
 
+        public List<Person> SuspectedCaseList
+        {
+            get
+            {
+                List<Person> suspectedCase = new List<Person>();
+                foreach (Person person in healthRecord.Values)
+                {
+                    if (person.IsPersonSuspected())
+                    {
+                        suspectedCase.Add(person);
+                    }
+                }
+                return suspectedCase;
+            }
+        }
+
         public bool AddNewPerson(Person newPerson)
         {
             if (!healthRecord.ContainsKey(newPerson.GinNumber) && newPerson != null)
