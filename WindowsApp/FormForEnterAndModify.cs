@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmployeeInformation;
 using DatabaseOperation;
-using System.Xml;
 
 namespace WindowsApp
 {
-    public partial class FormForEnterAndModify : Form
+    public partial class FormForAddAndModify : Form
     {      
         private MainMenuForm mainMenu;
         private string option;
@@ -24,37 +16,35 @@ namespace WindowsApp
 
         private FormatValidator formatValidator = new FormatValidator();
 
-        public FormForEnterAndModify(MainMenuForm mainMenu, string option, Person originalPersonInformation)
+        public FormForAddAndModify(MainMenuForm mainMenu, string option, Person originalPersonInformation)
         {
             InitializeComponent();
-            this.Text = "Enter";
+            
             this.mainMenu = mainMenu;
             this.option = option;
             this.originalPerson = originalPersonInformation;
-            if (option == "Modify")
+            switch (option)
             {
-                this.Text = "Modify";
-                ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
-                nameTextBox.Text = originalPerson.Name;
-                temperatureTextbox.Text = originalPerson.Temperature.ToString();
-                if (originalPerson.VisitHubei == true)
-                {
-                    visitHubeiYesRadioButton.Checked = true;
-                }
-                else
-                {
-                    visitHubeiNoRadioButton.Checked = true;
-                }
-
-                if (originalPerson.HasAbnormalSymptom == true)
-                {
-                    hasAbnormalSymptomYesRadioButton.Checked = true;
-                }
-                else
-                {
-                    hasAbnormalSymptomNoRadioButton.Checked = true;
-                }
+                case "Add":
+                    this.Text = "Add";
+                    break;
+                case "Modify":
+                    this.Text = "Modify";
+                    addButton.Text = "Confirm";
+                    displayHealthInformationOfPerson(originalPerson);
+                    break;
             }
+        }
+
+        private void displayHealthInformationOfPerson(Person originalPerson)
+        {
+            ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
+            nameTextBox.Text = originalPerson.Name;
+            temperatureTextbox.Text = originalPerson.Temperature.ToString();
+            visitHubeiYesRadioButton.Checked = originalPerson.VisitHubei;
+            visitHubeiNoRadioButton.Checked = !originalPerson.VisitHubei;
+            hasAbnormalSymptomYesRadioButton.Checked = originalPerson.HasAbnormalSymptom;
+            hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
         }
 
         private void Submit_Click(object sender, EventArgs e)
@@ -77,7 +67,7 @@ namespace WindowsApp
                 Person newPerson = new Person(ginNumber, name, visitHubei, hasAbnormalSymptom, temperature);
                 switch(option)
                 {
-                    case "Enter":
+                    case "Add":
                         if (mainMenu.AddPerson(newPerson) == true)
                         {
                             ResetButton_Click(sender, e);

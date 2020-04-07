@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FileOperation;
 using EmployeeInformation;
@@ -17,7 +14,7 @@ namespace WindowsApp
     {
         private HealthDatabase myHealthRecord;
         private FormatValidator formatValidator = new FormatValidator();
-        private FormForEnterAndModify formForEnterAndModify;
+        private FormForAddAndModify formForEnterAndModify;
         public MainMenuForm()
         {
             InitializeComponent();
@@ -35,7 +32,7 @@ namespace WindowsApp
         {
             if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed))
             {
-                formForEnterAndModify = new FormForEnterAndModify(this, "Enter", null);
+                formForEnterAndModify = new FormForAddAndModify(this, "Enter", null);
                 formForEnterAndModify.Show();
             }
         }
@@ -48,7 +45,7 @@ namespace WindowsApp
                 if (ginNumber != -1)
                 {
                     Person originalPerson = myHealthRecord.HealthRecord[ginNumber];
-                    formForEnterAndModify = new FormForEnterAndModify(this, "Modify", originalPerson);
+                    formForEnterAndModify = new FormForAddAndModify(this, "Modify", originalPerson);
                     formForEnterAndModify.Show();
                 }
             }
@@ -57,11 +54,17 @@ namespace WindowsApp
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             int ginNumber = CheckGinNumber();
+
             if (ginNumber != -1)
             {
-                myHealthRecord.DeletePerson(ginNumber);
-                healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
-                suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+                Person personToBeDeleted = myHealthRecord.HealthRecord[ginNumber];
+                var confirmResult = MessageBox.Show("Are you sure to delete this person: " + personToBeDeleted.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    myHealthRecord.DeletePerson(ginNumber);
+                    healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
+                    suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
+                }
             } 
         }
 

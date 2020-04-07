@@ -1,6 +1,6 @@
 ﻿namespace WindowsApp
 {
-    partial class FormForEnterAndModify
+    partial class FormForAddAndModify
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -42,7 +42,7 @@
             this.errorVisitHubei = new System.Windows.Forms.Label();
             this.errorAbnormalSymptom = new System.Windows.Forms.Label();
             this.errorTemperature = new System.Windows.Forms.Label();
-            this.submitButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.visitHubeiYesRadioButton = new System.Windows.Forms.RadioButton();
             this.hasAbnormalSymptomYesRadioButton = new System.Windows.Forms.RadioButton();
@@ -204,19 +204,19 @@
             this.errorTemperature.Text = "Invalid body temperature";
             this.errorTemperature.Visible = false;
             // 
-            // submitButton
+            // addButton
             // 
-            this.submitButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.submitButton.Location = new System.Drawing.Point(593, 671);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(186, 63);
-            this.submitButton.TabIndex = 0;
-            this.submitButton.Text = "Submit";
-            this.submitButton.UseVisualStyleBackColor = false;
-            this.submitButton.Click += new System.EventHandler(this.Submit_Click);
+            this.addButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.addButton.Location = new System.Drawing.Point(593, 671);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(186, 63);
+            this.addButton.TabIndex = 0;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.Submit_Click);
             // 
             // resetButton
             // 
@@ -302,7 +302,7 @@
             this.visitHubeiPanel.Size = new System.Drawing.Size(402, 100);
             this.visitHubeiPanel.TabIndex = 31;
             // 
-            // FormForEnterAndModify
+            // FormForAddAndModify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -324,9 +324,9 @@
             this.Controls.Add(this.ginNumberTextbox);
             this.Controls.Add(this.ginNumberLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.addButton);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "FormForEnterAndModify";
+            this.Name = "FormForAddAndModify";
             this.Text = "Enter";
             this.hasAbnormalSymptomPanel.ResumeLayout(false);
             this.hasAbnormalSymptomPanel.PerformLayout();
@@ -352,7 +352,7 @@
         private System.Windows.Forms.Label errorVisitHubei;
         private System.Windows.Forms.Label errorAbnormalSymptom;
         private System.Windows.Forms.Label errorTemperature;
-        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.RadioButton visitHubeiYesRadioButton;
         private System.Windows.Forms.RadioButton hasAbnormalSymptomYesRadioButton;
