@@ -33,11 +33,7 @@
             this.ginNumberTextbox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.visitHubeiLabel = new System.Windows.Forms.Label();
-            this.visitHubeiYesCheckBox = new System.Windows.Forms.CheckBox();
-            this.visitHubeiNoCheckBox = new System.Windows.Forms.CheckBox();
             this.hasAbnormalSymptomLabel = new System.Windows.Forms.Label();
-            this.abnormalSymptomYesCheckBox = new System.Windows.Forms.CheckBox();
-            this.abnormalSymptomNoCheckBox = new System.Windows.Forms.CheckBox();
             this.temepratureLabel = new System.Windows.Forms.Label();
             this.temperatureTextbox = new System.Windows.Forms.TextBox();
             this.errorGinNumber = new System.Windows.Forms.Label();
@@ -48,6 +44,15 @@
             this.errorTemperature = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.visitHubeiYesRadioButton = new System.Windows.Forms.RadioButton();
+            this.hasAbnormalSymptomYesRadioButton = new System.Windows.Forms.RadioButton();
+            this.hasAbnormalSymptomNoRadioButton = new System.Windows.Forms.RadioButton();
+            this.visitHubeiNoRadioButton = new System.Windows.Forms.RadioButton();
+            this.visitHubeiGroupBox = new System.Windows.Forms.GroupBox();
+            this.hasAbnormalSymptomPanel = new System.Windows.Forms.Panel();
+            this.visitHubeiPanel = new System.Windows.Forms.Panel();
+            this.hasAbnormalSymptomPanel.SuspendLayout();
+            this.visitHubeiPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -97,32 +102,6 @@
             this.visitHubeiLabel.TabIndex = 6;
             this.visitHubeiLabel.Text = "Visited Hubei Recently:";
             // 
-            // visitHubeiYes
-            // 
-            this.visitHubeiYesCheckBox.AutoSize = true;
-            this.visitHubeiYesCheckBox.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.visitHubeiYesCheckBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.visitHubeiYesCheckBox.Location = new System.Drawing.Point(593, 334);
-            this.visitHubeiYesCheckBox.Name = "visitHubeiYes";
-            this.visitHubeiYesCheckBox.Size = new System.Drawing.Size(115, 44);
-            this.visitHubeiYesCheckBox.TabIndex = 7;
-            this.visitHubeiYesCheckBox.Text = "Yes";
-            this.visitHubeiYesCheckBox.UseVisualStyleBackColor = true;
-            this.visitHubeiYesCheckBox.CheckedChanged += new System.EventHandler(this.VisitHubeiYes_CheckedChanged);
-            // 
-            // visitHubeiNo
-            // 
-            this.visitHubeiNoCheckBox.AutoSize = true;
-            this.visitHubeiNoCheckBox.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.visitHubeiNoCheckBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.visitHubeiNoCheckBox.Location = new System.Drawing.Point(731, 334);
-            this.visitHubeiNoCheckBox.Name = "visitHubeiNo";
-            this.visitHubeiNoCheckBox.Size = new System.Drawing.Size(95, 44);
-            this.visitHubeiNoCheckBox.TabIndex = 8;
-            this.visitHubeiNoCheckBox.Text = "No";
-            this.visitHubeiNoCheckBox.UseVisualStyleBackColor = true;
-            this.visitHubeiNoCheckBox.CheckedChanged += new System.EventHandler(this.VisitHubeiNo_CheckedChanged);
-            // 
             // hasAbnormalSymptomLabel
             // 
             this.hasAbnormalSymptomLabel.AutoSize = true;
@@ -133,32 +112,6 @@
             this.hasAbnormalSymptomLabel.Size = new System.Drawing.Size(459, 45);
             this.hasAbnormalSymptomLabel.TabIndex = 9;
             this.hasAbnormalSymptomLabel.Text = "Has Abnormal Symptom:";
-            // 
-            // abnormalSymptomYes
-            // 
-            this.abnormalSymptomYesCheckBox.AutoSize = true;
-            this.abnormalSymptomYesCheckBox.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.abnormalSymptomYesCheckBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.abnormalSymptomYesCheckBox.Location = new System.Drawing.Point(593, 438);
-            this.abnormalSymptomYesCheckBox.Name = "abnormalSymptomYes";
-            this.abnormalSymptomYesCheckBox.Size = new System.Drawing.Size(115, 44);
-            this.abnormalSymptomYesCheckBox.TabIndex = 10;
-            this.abnormalSymptomYesCheckBox.Text = "Yes";
-            this.abnormalSymptomYesCheckBox.UseVisualStyleBackColor = true;
-            this.abnormalSymptomYesCheckBox.CheckedChanged += new System.EventHandler(this.HasAbnormalSymptomYes_CheckedChanged);
-            // 
-            // abnormalSymptomNo
-            // 
-            this.abnormalSymptomNoCheckBox.AutoSize = true;
-            this.abnormalSymptomNoCheckBox.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.abnormalSymptomNoCheckBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.abnormalSymptomNoCheckBox.Location = new System.Drawing.Point(731, 439);
-            this.abnormalSymptomNoCheckBox.Name = "abnormalSymptomNo";
-            this.abnormalSymptomNoCheckBox.Size = new System.Drawing.Size(95, 44);
-            this.abnormalSymptomNoCheckBox.TabIndex = 11;
-            this.abnormalSymptomNoCheckBox.Text = "No";
-            this.abnormalSymptomNoCheckBox.UseVisualStyleBackColor = true;
-            this.abnormalSymptomNoCheckBox.CheckedChanged += new System.EventHandler(this.HasAbnormalSymptomNo_CheckedChanged);
             // 
             // temepratureLabel
             // 
@@ -280,11 +233,94 @@
             this.resetButton.UseVisualStyleBackColor = false;
             this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // EnterHealthInformation
+            // visitHubeiYesRadioButton
+            // 
+            this.visitHubeiYesRadioButton.AutoSize = true;
+            this.visitHubeiYesRadioButton.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visitHubeiYesRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.visitHubeiYesRadioButton.Location = new System.Drawing.Point(10, 25);
+            this.visitHubeiYesRadioButton.Name = "visitHubeiYesRadioButton";
+            this.visitHubeiYesRadioButton.Size = new System.Drawing.Size(117, 47);
+            this.visitHubeiYesRadioButton.TabIndex = 22;
+            this.visitHubeiYesRadioButton.TabStop = true;
+            this.visitHubeiYesRadioButton.Text = "Yes";
+            this.visitHubeiYesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // hasAbnormalSymptomYesRadioButton
+            // 
+            this.hasAbnormalSymptomYesRadioButton.AutoSize = true;
+            this.hasAbnormalSymptomYesRadioButton.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hasAbnormalSymptomYesRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.hasAbnormalSymptomYesRadioButton.Location = new System.Drawing.Point(10, 23);
+            this.hasAbnormalSymptomYesRadioButton.Name = "hasAbnormalSymptomYesRadioButton";
+            this.hasAbnormalSymptomYesRadioButton.Size = new System.Drawing.Size(117, 47);
+            this.hasAbnormalSymptomYesRadioButton.TabIndex = 23;
+            this.hasAbnormalSymptomYesRadioButton.TabStop = true;
+            this.hasAbnormalSymptomYesRadioButton.Text = "Yes";
+            this.hasAbnormalSymptomYesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // hasAbnormalSymptomNoRadioButton
+            // 
+            this.hasAbnormalSymptomNoRadioButton.AutoSize = true;
+            this.hasAbnormalSymptomNoRadioButton.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hasAbnormalSymptomNoRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.hasAbnormalSymptomNoRadioButton.Location = new System.Drawing.Point(180, 23);
+            this.hasAbnormalSymptomNoRadioButton.Name = "hasAbnormalSymptomNoRadioButton";
+            this.hasAbnormalSymptomNoRadioButton.Size = new System.Drawing.Size(104, 47);
+            this.hasAbnormalSymptomNoRadioButton.TabIndex = 24;
+            this.hasAbnormalSymptomNoRadioButton.TabStop = true;
+            this.hasAbnormalSymptomNoRadioButton.Text = "No";
+            this.hasAbnormalSymptomNoRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // visitHubeiNoRadioButton
+            // 
+            this.visitHubeiNoRadioButton.AutoSize = true;
+            this.visitHubeiNoRadioButton.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visitHubeiNoRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.visitHubeiNoRadioButton.Location = new System.Drawing.Point(180, 25);
+            this.visitHubeiNoRadioButton.Name = "visitHubeiNoRadioButton";
+            this.visitHubeiNoRadioButton.Size = new System.Drawing.Size(104, 47);
+            this.visitHubeiNoRadioButton.TabIndex = 25;
+            this.visitHubeiNoRadioButton.TabStop = true;
+            this.visitHubeiNoRadioButton.Text = "No";
+            this.visitHubeiNoRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // visitHubeiGroupBox
+            // 
+            this.visitHubeiGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.visitHubeiGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.visitHubeiGroupBox.Location = new System.Drawing.Point(1276, 844);
+            this.visitHubeiGroupBox.Name = "visitHubeiGroupBox";
+            this.visitHubeiGroupBox.Size = new System.Drawing.Size(586, 80);
+            this.visitHubeiGroupBox.TabIndex = 28;
+            this.visitHubeiGroupBox.TabStop = false;
+            // 
+            // hasAbnormalSymptomPanel
+            // 
+            this.hasAbnormalSymptomPanel.Controls.Add(this.hasAbnormalSymptomNoRadioButton);
+            this.hasAbnormalSymptomPanel.Controls.Add(this.hasAbnormalSymptomYesRadioButton);
+            this.hasAbnormalSymptomPanel.Location = new System.Drawing.Point(592, 416);
+            this.hasAbnormalSymptomPanel.Name = "hasAbnormalSymptomPanel";
+            this.hasAbnormalSymptomPanel.Size = new System.Drawing.Size(402, 100);
+            this.hasAbnormalSymptomPanel.TabIndex = 30;
+            // 
+            // visitHubeiPanel
+            // 
+            this.visitHubeiPanel.Controls.Add(this.visitHubeiNoRadioButton);
+            this.visitHubeiPanel.Controls.Add(this.visitHubeiYesRadioButton);
+            this.visitHubeiPanel.Location = new System.Drawing.Point(592, 310);
+            this.visitHubeiPanel.Name = "visitHubeiPanel";
+            this.visitHubeiPanel.Size = new System.Drawing.Size(402, 100);
+            this.visitHubeiPanel.TabIndex = 31;
+            // 
+            // EnterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1633, 1149);
+            this.Controls.Add(this.visitHubeiPanel);
+            this.Controls.Add(this.hasAbnormalSymptomPanel);
+            this.Controls.Add(this.visitHubeiGroupBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.errorAbnormalSymptom);
             this.Controls.Add(this.errorVisitHubei);
@@ -294,11 +330,7 @@
             this.Controls.Add(this.errorGinNumber);
             this.Controls.Add(this.temperatureTextbox);
             this.Controls.Add(this.temepratureLabel);
-            this.Controls.Add(this.abnormalSymptomNoCheckBox);
-            this.Controls.Add(this.abnormalSymptomYesCheckBox);
             this.Controls.Add(this.hasAbnormalSymptomLabel);
-            this.Controls.Add(this.visitHubeiNoCheckBox);
-            this.Controls.Add(this.visitHubeiYesCheckBox);
             this.Controls.Add(this.visitHubeiLabel);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.ginNumberTextbox);
@@ -306,8 +338,12 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.submitButton);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "EnterHealthInformation";
-            this.Text = "HealthMonitor";
+            this.Name = "EnterForm";
+            this.Text = "Enter";
+            this.hasAbnormalSymptomPanel.ResumeLayout(false);
+            this.hasAbnormalSymptomPanel.PerformLayout();
+            this.visitHubeiPanel.ResumeLayout(false);
+            this.visitHubeiPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,11 +355,7 @@
         private System.Windows.Forms.TextBox ginNumberTextbox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label visitHubeiLabel;
-        private System.Windows.Forms.CheckBox visitHubeiYesCheckBox;
-        private System.Windows.Forms.CheckBox visitHubeiNoCheckBox;
         private System.Windows.Forms.Label hasAbnormalSymptomLabel;
-        private System.Windows.Forms.CheckBox abnormalSymptomYesCheckBox;
-        private System.Windows.Forms.CheckBox abnormalSymptomNoCheckBox;
         private System.Windows.Forms.Label temepratureLabel;
         private System.Windows.Forms.TextBox temperatureTextbox;
         private System.Windows.Forms.Label errorGinNumber;
@@ -334,6 +366,13 @@
         private System.Windows.Forms.Label errorTemperature;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.RadioButton visitHubeiYesRadioButton;
+        private System.Windows.Forms.RadioButton hasAbnormalSymptomYesRadioButton;
+        private System.Windows.Forms.RadioButton hasAbnormalSymptomNoRadioButton;
+        private System.Windows.Forms.RadioButton visitHubeiNoRadioButton;
+        private System.Windows.Forms.GroupBox visitHubeiGroupBox;
+        private System.Windows.Forms.Panel hasAbnormalSymptomPanel;
+        private System.Windows.Forms.Panel visitHubeiPanel;
     }
 }
 

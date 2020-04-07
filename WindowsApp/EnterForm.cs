@@ -30,30 +30,32 @@ namespace WindowsApp
         public EnterForm(MainMenuForm mainMenu, string option, Person originalPersonInformation)
         {
             InitializeComponent();
+            this.Text = "Enter";
             this.mainMenu = mainMenu;
             this.option = option;
             this.originalPerson = originalPersonInformation;
             if (option == "Modify")
             {
+                this.Text = "Modify";
                 ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
                 nameTextBox.Text = originalPerson.Name;
                 temperatureTextbox.Text = originalPerson.Temperature.ToString();
                 if (originalPerson.VisitHubei == true)
                 {
-                    visitHubeiYesCheckBox.CheckState = CheckState.Checked;
+                    visitHubeiYesRadioButton.Checked = true;
                 }
                 else
                 {
-                    visitHubeiNoCheckBox.CheckState = CheckState.Checked;
+                    visitHubeiNoRadioButton.Checked = true;
                 }
 
                 if (originalPerson.HasAbnormalSymptom == true)
                 {
-                    abnormalSymptomYesCheckBox.CheckState = CheckState.Checked;
+                    hasAbnormalSymptomYesRadioButton.Checked = true;
                 }
                 else
                 {
-                    abnormalSymptomNoCheckBox.CheckState = CheckState.Checked;
+                    hasAbnormalSymptomNoRadioButton.Checked = true;
                 }
             }
         }
@@ -96,12 +98,14 @@ namespace WindowsApp
 
         private void CheckAbnormalSymptom()
         {
-            if (abnormalSymptomYesCheckBox.CheckState == CheckState.Checked)
+            //if (abnormalSymptomYesCheckBox.CheckState == CheckState.Checked)
+            if(hasAbnormalSymptomYesRadioButton.Checked == true)
             {
                 hasAbnormalSymptom = true;
                 errorAbnormalSymptom.Visible = false;
             }
-            else if (abnormalSymptomNoCheckBox.CheckState == CheckState.Checked)
+            //else if (abnormalSymptomNoCheckBox.CheckState == CheckState.Checked)
+            else if(hasAbnormalSymptomNoRadioButton.Checked == true)
             {
                 hasAbnormalSymptom = false;
                 errorAbnormalSymptom.Visible = false;
@@ -114,12 +118,14 @@ namespace WindowsApp
 
         private void CheckVisitHubei()
         {
-            if (visitHubeiYesCheckBox.CheckState == CheckState.Checked)
+            //if (visitHubeiYesCheckBox.CheckState == CheckState.Checked)
+            if(visitHubeiYesRadioButton.Checked == true)
             {
                 visitHubei = true;
                 errorVisitHubei.Visible = false;
             }
-            else if (visitHubeiNoCheckBox.CheckState == CheckState.Checked)
+            //else if (visitHubeiNoCheckBox.CheckState == CheckState.Checked)
+            else if(visitHubeiNoRadioButton.Checked == true)
             {
                 visitHubei = false;
                 errorVisitHubei.Visible = false;
@@ -129,48 +135,50 @@ namespace WindowsApp
                 errorVisitHubei.Visible = true;
             }
         }
-        private void VisitHubeiYes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (visitHubeiYesCheckBox.CheckState == CheckState.Checked && visitHubeiNoCheckBox.CheckState == CheckState.Checked)
-            {
-                visitHubeiNoCheckBox.CheckState = CheckState.Unchecked;
-            }
-        }
+        //private void VisitHubeiYes_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (visitHubeiYesCheckBox.CheckState == CheckState.Checked && visitHubeiNoCheckBox.CheckState == CheckState.Checked)
+        //    {
+        //        visitHubeiNoCheckBox.CheckState = CheckState.Unchecked;
+        //    }
+        //}
 
-        private void VisitHubeiNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (visitHubeiYesCheckBox.CheckState == CheckState.Checked && visitHubeiNoCheckBox.CheckState == CheckState.Checked)
-            {
-                visitHubeiYesCheckBox.CheckState = CheckState.Unchecked;
-            }
-        }
+        //private void VisitHubeiNo_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (visitHubeiYesCheckBox.CheckState == CheckState.Checked && visitHubeiNoCheckBox.CheckState == CheckState.Checked)
+//            {
+  //              visitHubeiYesCheckBox.CheckState = CheckState.Unchecked;
+   //         }
+    //    }
 
-        private void HasAbnormalSymptomYes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (abnormalSymptomNoCheckBox.CheckState == CheckState.Checked && abnormalSymptomYesCheckBox.CheckState == CheckState.Checked)
-            {
-                abnormalSymptomNoCheckBox.CheckState = CheckState.Unchecked;
-            }
-        }
+        //private void HasAbnormalSymptomYes_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (abnormalSymptomNoCheckBox.CheckState == CheckState.Checked && abnormalSymptomYesCheckBox.CheckState == CheckState.Checked)
+        //    {
+        //        abnormalSymptomNoCheckBox.CheckState = CheckState.Unchecked;
+        //    }
+        //}
 
-        private void HasAbnormalSymptomNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (abnormalSymptomYesCheckBox.CheckState == CheckState.Checked && abnormalSymptomNoCheckBox.CheckState == CheckState.Checked)
-            {
-                abnormalSymptomYesCheckBox.CheckState = CheckState.Unchecked;
-            }
-        }
+        //private void HasAbnormalSymptomNo_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (abnormalSymptomYesCheckBox.CheckState == CheckState.Checked && abnormalSymptomNoCheckBox.CheckState == CheckState.Checked)
+            //{
+              //  abnormalSymptomYesCheckBox.CheckState = CheckState.Unchecked;
+            //}
+        //}
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
             ginNumberTextbox.Text = String.Empty;
             nameTextBox.Text = String.Empty;
             temperatureTextbox.Text = String.Empty;
-            
-            visitHubeiYesCheckBox.CheckState = CheckState.Unchecked;
-            visitHubeiNoCheckBox.CheckState = CheckState.Unchecked;
-            abnormalSymptomNoCheckBox.CheckState = CheckState.Unchecked;
-            abnormalSymptomYesCheckBox.CheckState = CheckState.Unchecked;
+
+            hasAbnormalSymptomNoRadioButton.Checked = false;
+            hasAbnormalSymptomYesRadioButton.Checked = false;
+
+            visitHubeiNoRadioButton.Checked = false;
+            visitHubeiYesRadioButton.Checked = false;
+
 
             errorAbnormalSymptom.Visible = false;
             errorGinNumber.Visible = false;
@@ -181,6 +189,7 @@ namespace WindowsApp
 
         private void Close_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
     }

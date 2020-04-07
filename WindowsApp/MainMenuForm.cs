@@ -17,6 +17,7 @@ namespace WindowsApp
     {
         HealthDatabase myHealthRecord;
         FormatValidator formatValidator = new FormatValidator();
+        EnterForm enterForm;
         public MainMenuForm()
         {
             InitializeComponent();
@@ -25,18 +26,24 @@ namespace WindowsApp
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            EnterForm enterForm = new EnterForm(this, "Enter", null);
-            enterForm.Show();
+            if ((enterForm == null) || (enterForm.IsDisposed))
+            {
+                enterForm = new EnterForm(this, "Enter", null);
+                enterForm.Show();
+            }
         }
 
         private void ModifyButton_Click(object sender, EventArgs e)
         {
-            int ginNumber = CheckGinNumber();
-            if (ginNumber != -1)
+            if ((enterForm == null) || (enterForm.IsDisposed))
             {
-                Person originalPerson = myHealthRecord.HealthRecord[ginNumber];
-                EnterForm modifyForm = new EnterForm(this, "Modify", originalPerson);
-                modifyForm.Show();
+                int ginNumber = CheckGinNumber();
+                if (ginNumber != -1)
+                {
+                    Person originalPerson = myHealthRecord.HealthRecord[ginNumber];
+                    enterForm = new EnterForm(this, "Modify", originalPerson);
+                    enterForm.Show();
+                }
             }
         }
 
