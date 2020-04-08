@@ -42,7 +42,7 @@
             this.errorVisitHubei = new System.Windows.Forms.Label();
             this.errorAbnormalSymptom = new System.Windows.Forms.Label();
             this.errorTemperature = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
+            this.addConfirmButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.visitHubeiYesRadioButton = new System.Windows.Forms.RadioButton();
             this.hasAbnormalSymptomYesRadioButton = new System.Windows.Forms.RadioButton();
@@ -204,19 +204,19 @@
             this.errorTemperature.Text = "Invalid body temperature";
             this.errorTemperature.Visible = false;
             // 
-            // addButton
+            // addConfirmButton
             // 
-            this.addButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addButton.Location = new System.Drawing.Point(593, 671);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(186, 63);
-            this.addButton.TabIndex = 0;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.Submit_Click);
+            this.addConfirmButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.addConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addConfirmButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addConfirmButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.addConfirmButton.Location = new System.Drawing.Point(593, 671);
+            this.addConfirmButton.Name = "addConfirmButton";
+            this.addConfirmButton.Size = new System.Drawing.Size(186, 63);
+            this.addConfirmButton.TabIndex = 0;
+            this.addConfirmButton.Text = "Add";
+            this.addConfirmButton.UseVisualStyleBackColor = false;
+            this.addConfirmButton.Click += new System.EventHandler(this.AddConfirmButton_Click);
             // 
             // resetButton
             // 
@@ -324,10 +324,11 @@
             this.Controls.Add(this.ginNumberTextbox);
             this.Controls.Add(this.ginNumberLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.addConfirmButton);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "FormForAddAndModify";
-            this.Text = "Enter";
+            this.Text = "Add";
+            this.TopMost = true;
             this.hasAbnormalSymptomPanel.ResumeLayout(false);
             this.hasAbnormalSymptomPanel.PerformLayout();
             this.visitHubeiPanel.ResumeLayout(false);
@@ -352,7 +353,7 @@
         private System.Windows.Forms.Label errorVisitHubei;
         private System.Windows.Forms.Label errorAbnormalSymptom;
         private System.Windows.Forms.Label errorTemperature;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button addConfirmButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.RadioButton visitHubeiYesRadioButton;
         private System.Windows.Forms.RadioButton hasAbnormalSymptomYesRadioButton;

@@ -27,10 +27,11 @@ namespace WindowsApp
             {
                 case "Add":
                     this.Text = "Add";
+                    addConfirmButton.Text = "Add";
                     break;
                 case "Modify":
                     this.Text = "Modify";
-                    addButton.Text = "Confirm";
+                    addConfirmButton.Text = "Confirm";
                     displayHealthInformationOfPerson(originalPerson);
                     break;
             }
@@ -41,13 +42,15 @@ namespace WindowsApp
             ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
             nameTextBox.Text = originalPerson.Name;
             temperatureTextbox.Text = originalPerson.Temperature.ToString();
+
             visitHubeiYesRadioButton.Checked = originalPerson.VisitHubei;
             visitHubeiNoRadioButton.Checked = !originalPerson.VisitHubei;
+
             hasAbnormalSymptomYesRadioButton.Checked = originalPerson.HasAbnormalSymptom;
             hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
         }
 
-        private void Submit_Click(object sender, EventArgs e)
+        private void AddConfirmButton_Click(object sender, EventArgs e)
         {
             errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
             errorName.Visible = formatValidator.HasFormatError_Name(nameTextBox.Text); 
@@ -85,37 +88,19 @@ namespace WindowsApp
 
         private void CheckAbnormalSymptom()
         {
-            if(hasAbnormalSymptomYesRadioButton.Checked == true)
+            errorAbnormalSymptom.Visible = (!hasAbnormalSymptomYesRadioButton.Checked) && (!hasAbnormalSymptomNoRadioButton.Checked);
+            if (errorAbnormalSymptom.Visible == false)
             {
-                hasAbnormalSymptom = true;
-                errorAbnormalSymptom.Visible = false;
-            }
-            else if(hasAbnormalSymptomNoRadioButton.Checked == true)
-            {
-                hasAbnormalSymptom = false;
-                errorAbnormalSymptom.Visible = false;
-            }
-            else
-            {
-                errorAbnormalSymptom.Visible = true;
+                hasAbnormalSymptom = hasAbnormalSymptomYesRadioButton.Checked;
             }
         }
 
         private void CheckVisitHubei()
         {
-            if(visitHubeiYesRadioButton.Checked == true)
+            errorVisitHubei.Visible = (!visitHubeiYesRadioButton.Checked) && (!visitHubeiNoRadioButton.Checked);
+            if (errorVisitHubei.Visible == false)
             {
-                visitHubei = true;
-                errorVisitHubei.Visible = false;
-            }
-            else if(visitHubeiNoRadioButton.Checked == true)
-            {
-                visitHubei = false;
-                errorVisitHubei.Visible = false;
-            }
-            else
-            {
-                errorVisitHubei.Visible = true;
+                visitHubei = visitHubeiYesRadioButton.Checked;
             }
         }
 

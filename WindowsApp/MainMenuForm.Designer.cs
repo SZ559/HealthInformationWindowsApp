@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.addButton = new System.Windows.Forms.Button();
             this.importFromFileButton = new System.Windows.Forms.Button();
             this.saveToFileButton = new System.Windows.Forms.Button();
@@ -40,8 +40,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.databasePanel = new System.Windows.Forms.Panel();
             this.dataGirdViewTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.suspectedCaseDataLabel = new System.Windows.Forms.Label();
-            this.suspectedCaseDataGridView = new System.Windows.Forms.DataGridView();
+            this.displaySuspectedCaseCheckBox = new System.Windows.Forms.CheckBox();
             this.healthDataGridView = new System.Windows.Forms.DataGridView();
             this.employeeHealthDataLabel = new System.Windows.Forms.Label();
             this.suspectedCaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -60,7 +59,6 @@
             this.errorCannotFindGinNumberLabel = new System.Windows.Forms.Label();
             this.databasePanel.SuspendLayout();
             this.dataGirdViewTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
@@ -77,13 +75,13 @@
             this.addButton.TabIndex = 0;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.EnterButton_Click);
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // importFromFileButton
             // 
             this.importFromFileButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.importFromFileButton.Font = new System.Drawing.Font("Arial", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importFromFileButton.Location = new System.Drawing.Point(1961, 480);
+            this.importFromFileButton.Location = new System.Drawing.Point(1961, 489);
             this.importFromFileButton.Name = "importFromFileButton";
             this.importFromFileButton.Size = new System.Drawing.Size(412, 63);
             this.importFromFileButton.TabIndex = 3;
@@ -127,47 +125,32 @@
             this.dataGirdViewTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.dataGirdViewTableLayoutPanel.ColumnCount = 1;
             this.dataGirdViewTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.dataGirdViewTableLayoutPanel.Controls.Add(this.suspectedCaseDataLabel, 0, 2);
-            this.dataGirdViewTableLayoutPanel.Controls.Add(this.suspectedCaseDataGridView, 0, 3);
+            this.dataGirdViewTableLayoutPanel.Controls.Add(this.displaySuspectedCaseCheckBox, 0, 2);
             this.dataGirdViewTableLayoutPanel.Controls.Add(this.healthDataGridView, 0, 1);
             this.dataGirdViewTableLayoutPanel.Controls.Add(this.employeeHealthDataLabel, 0, 0);
             this.dataGirdViewTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGirdViewTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.dataGirdViewTableLayoutPanel.Name = "dataGirdViewTableLayoutPanel";
-            this.dataGirdViewTableLayoutPanel.RowCount = 4;
+            this.dataGirdViewTableLayoutPanel.RowCount = 3;
             this.dataGirdViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4F));
-            this.dataGirdViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.dataGirdViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92F));
             this.dataGirdViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4F));
-            this.dataGirdViewTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46F));
             this.dataGirdViewTableLayoutPanel.Size = new System.Drawing.Size(1872, 1258);
             this.dataGirdViewTableLayoutPanel.TabIndex = 0;
             // 
-            // suspectedCaseDataLabel
+            // displaySuspectedCaseCheckBox
             // 
-            this.suspectedCaseDataLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.suspectedCaseDataLabel.AutoSize = true;
-            this.suspectedCaseDataLabel.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suspectedCaseDataLabel.Location = new System.Drawing.Point(4, 634);
-            this.suspectedCaseDataLabel.Name = "suspectedCaseDataLabel";
-            this.suspectedCaseDataLabel.Size = new System.Drawing.Size(544, 40);
-            this.suspectedCaseDataLabel.TabIndex = 3;
-            this.suspectedCaseDataLabel.Text = "Health Data of Suspected Cases ";
-            // 
-            // suspectedCaseDataGridView
-            // 
-            this.suspectedCaseDataGridView.AllowUserToAddRows = false;
-            this.suspectedCaseDataGridView.AllowUserToDeleteRows = false;
-            this.suspectedCaseDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.suspectedCaseDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.suspectedCaseDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.suspectedCaseDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.suspectedCaseDataGridView.Location = new System.Drawing.Point(4, 683);
-            this.suspectedCaseDataGridView.Name = "suspectedCaseDataGridView";
-            this.suspectedCaseDataGridView.ReadOnly = true;
-            this.suspectedCaseDataGridView.RowHeadersWidth = 10;
-            this.suspectedCaseDataGridView.RowTemplate.Height = 44;
-            this.suspectedCaseDataGridView.Size = new System.Drawing.Size(1864, 571);
-            this.suspectedCaseDataGridView.TabIndex = 1;
+            this.displaySuspectedCaseCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.displaySuspectedCaseCheckBox.AutoSize = true;
+            this.displaySuspectedCaseCheckBox.Font = new System.Drawing.Font("Arial", 11.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displaySuspectedCaseCheckBox.ForeColor = System.Drawing.Color.Black;
+            this.displaySuspectedCaseCheckBox.Location = new System.Drawing.Point(1352, 1209);
+            this.displaySuspectedCaseCheckBox.Name = "displaySuspectedCaseCheckBox";
+            this.displaySuspectedCaseCheckBox.Size = new System.Drawing.Size(516, 45);
+            this.displaySuspectedCaseCheckBox.TabIndex = 18;
+            this.displaySuspectedCaseCheckBox.Text = "Display Suspected Cases";
+            this.displaySuspectedCaseCheckBox.UseVisualStyleBackColor = true;
+            this.displaySuspectedCaseCheckBox.CheckedChanged += new System.EventHandler(this.DisplaySuspectedCaseCheckBox_CheckedChanged);
             // 
             // healthDataGridView
             // 
@@ -182,7 +165,7 @@
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
-            this.healthDataGridView.Size = new System.Drawing.Size(1864, 570);
+            this.healthDataGridView.Size = new System.Drawing.Size(1864, 1147);
             this.healthDataGridView.TabIndex = 0;
             // 
             // employeeHealthDataLabel
@@ -204,19 +187,19 @@
             // 
             this.healthRecordDataGridView.AllowUserToAddRows = false;
             this.healthRecordDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.healthRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.healthRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.healthRecordDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.healthRecordDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.healthRecordDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.healthRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.healthRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.healthRecordDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthRecordDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ginNumberColumn,
@@ -224,22 +207,22 @@
             this.visitHubeiColumn,
             this.hasAbnormalSymtpom,
             this.temperatureColumn});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.healthRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.healthRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.healthRecordDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.healthRecordDataGridView.Location = new System.Drawing.Point(2876, 1377);
             this.healthRecordDataGridView.Name = "healthRecordDataGridView";
             this.healthRecordDataGridView.ReadOnly = true;
             this.healthRecordDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.healthRecordDataGridView.RowHeadersWidth = 15;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.healthRecordDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthRecordDataGridView.RowTemplate.Height = 44;
             this.healthRecordDataGridView.Size = new System.Drawing.Size(20, 17);
@@ -321,6 +304,7 @@
             this.ginNumberTextBox.Name = "ginNumberTextBox";
             this.ginNumberTextBox.Size = new System.Drawing.Size(412, 42);
             this.ginNumberTextBox.TabIndex = 10;
+            this.ginNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntergerCheck);
             // 
             // ginNumberLabel
             // 
@@ -328,9 +312,9 @@
             this.ginNumberLabel.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ginNumberLabel.Location = new System.Drawing.Point(1954, 125);
             this.ginNumberLabel.Name = "ginNumberLabel";
-            this.ginNumberLabel.Size = new System.Drawing.Size(362, 39);
+            this.ginNumberLabel.Size = new System.Drawing.Size(369, 39);
             this.ginNumberLabel.TabIndex = 11;
-            this.ginNumberLabel.Text = "Modify By Gin Number:";
+            this.ginNumberLabel.Text = "Search By Gin Number:";
             // 
             // errorGinNumberLabel
             // 
@@ -360,7 +344,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2908, 1476);
+            this.ClientSize = new System.Drawing.Size(2937, 1370);
             this.Controls.Add(this.healthRecordDataGridView);
             this.Controls.Add(this.errorCannotFindGinNumberLabel);
             this.Controls.Add(this.errorGinNumberLabel);
@@ -378,7 +362,6 @@
             this.databasePanel.ResumeLayout(false);
             this.dataGirdViewTableLayoutPanel.ResumeLayout(false);
             this.dataGirdViewTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
@@ -406,8 +389,6 @@
         private System.Windows.Forms.BindingSource healthDatabaseBindingSource;
         private System.Windows.Forms.TableLayoutPanel dataGirdViewTableLayoutPanel;
         private System.Windows.Forms.DataGridView healthDataGridView;
-        private System.Windows.Forms.DataGridView suspectedCaseDataGridView;
-        private System.Windows.Forms.Label suspectedCaseDataLabel;
         private System.Windows.Forms.Label employeeHealthDataLabel;
         private System.Windows.Forms.Button modifyButton;
         private System.Windows.Forms.Button deleteButton;
@@ -415,5 +396,6 @@
         private System.Windows.Forms.Label ginNumberLabel;
         private System.Windows.Forms.Label errorGinNumberLabel;
         private System.Windows.Forms.Label errorCannotFindGinNumberLabel;
+        private System.Windows.Forms.CheckBox displaySuspectedCaseCheckBox;
     }
 }

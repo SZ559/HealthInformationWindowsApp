@@ -24,15 +24,13 @@ namespace WindowsApp
             InitializeColumnHeader(healthDataGridView);
 
             suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
-            suspectedCaseDataGridView.DataSource = suspectedCaseBindingSource;
-            InitializeColumnHeader(suspectedCaseDataGridView);
         }
 
-        private void EnterButton_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             if ((formForEnterAndModify == null) || (formForEnterAndModify.IsDisposed))
             {
-                formForEnterAndModify = new FormForAddAndModify(this, "Enter", null);
+                formForEnterAndModify = new FormForAddAndModify(this, "Add", null);
                 formForEnterAndModify.Show();
             }
         }
@@ -67,22 +65,22 @@ namespace WindowsApp
                 }
             } 
         }
+        private void IntergerCheck(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            errorGinNumberLabel.Visible = e.Handled;
+        }
 
         private int CheckGinNumber()
         {
-            errorCannotFindGinNumberLabel.Visible = false;
-            errorGinNumberLabel.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextBox.Text);
-
-            if (errorGinNumberLabel.Visible == false)
+            if (ginNumberTextBox.Text != String.Empty)
             {
                 int ginNumber = Int32.Parse(ginNumberTextBox.Text);
-                if (myHealthRecord.HealthRecord.ContainsKey(ginNumber))
+                errorCannotFindGinNumberLabel.Visible = !myHealthRecord.HealthRecord.ContainsKey(ginNumber);
+
+                if (errorCannotFindGinNumberLabel.Visible == false)
                 {
                     return ginNumber;
-                }
-                else
-                {
-                    errorCannotFindGinNumberLabel.Visible = true;
                 }
             }
             return -1;
@@ -130,7 +128,7 @@ namespace WindowsApp
         {
             if (myHealthRecord.AddNewPerson(newPerson) == false)
             {
-                MessageBox.Show("Enter Failed! The Gin Number you entered already exists.");
+                MessageBox.Show("Add Failed! The Gin Number you entered already exists.");
                 return false;
             }
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecord.Values.ToList();
@@ -149,6 +147,20 @@ namespace WindowsApp
             suspectedCaseBindingSource.DataSource = myHealthRecord.SuspectedCaseList;
             return true;
         }
+
+        private void DisplaySuspectedCaseCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (displaySuspectedCaseCheckBox.Checked == true)
+            {
+                healthDataGridView.DataSource = suspectedCaseBindingSource;
+            }
+            else
+            {
+                healthDataGridView.DataSource = healthDatabaseBindingSource;
+            }
+        }
+
+
 
         //private void displayButton_Click(object sender, EventArgs e)
         //{
