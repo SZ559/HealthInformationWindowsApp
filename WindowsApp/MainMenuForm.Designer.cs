@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.addButton = new System.Windows.Forms.Button();
             this.importFromFileButton = new System.Windows.Forms.Button();
             this.saveToFileButton = new System.Windows.Forms.Button();
@@ -45,12 +41,6 @@
             this.employeeHealthDataLabel = new System.Windows.Forms.Label();
             this.suspectedCaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.healthDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.healthRecordDataGridView = new System.Windows.Forms.DataGridView();
-            this.ginNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitHubeiColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hasAbnormalSymtpom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.temperatureColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.ginNumberTextBox = new System.Windows.Forms.TextBox();
@@ -62,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.healthRecordDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // addButton
@@ -183,97 +172,6 @@
             // 
             this.suspectedCaseBindingSource.AllowNew = true;
             // 
-            // healthRecordDataGridView
-            // 
-            this.healthRecordDataGridView.AllowUserToAddRows = false;
-            this.healthRecordDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.healthRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.healthRecordDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.healthRecordDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.healthRecordDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.healthRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.healthRecordDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.healthRecordDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ginNumberColumn,
-            this.nameColumn,
-            this.visitHubeiColumn,
-            this.hasAbnormalSymtpom,
-            this.temperatureColumn});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.healthRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.healthRecordDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.healthRecordDataGridView.Location = new System.Drawing.Point(2876, 1377);
-            this.healthRecordDataGridView.Name = "healthRecordDataGridView";
-            this.healthRecordDataGridView.ReadOnly = true;
-            this.healthRecordDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.healthRecordDataGridView.RowHeadersWidth = 15;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.healthRecordDataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthRecordDataGridView.RowTemplate.Height = 44;
-            this.healthRecordDataGridView.Size = new System.Drawing.Size(20, 17);
-            this.healthRecordDataGridView.TabIndex = 0;
-            this.healthRecordDataGridView.Visible = false;
-            // 
-            // ginNumberColumn
-            // 
-            this.ginNumberColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ginNumberColumn.HeaderText = "Gin Number";
-            this.ginNumberColumn.MinimumWidth = 12;
-            this.ginNumberColumn.Name = "ginNumberColumn";
-            this.ginNumberColumn.ReadOnly = true;
-            this.ginNumberColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.MinimumWidth = 12;
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            this.nameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // visitHubeiColumn
-            // 
-            this.visitHubeiColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.visitHubeiColumn.HeaderText = "Visit Hubei Recently";
-            this.visitHubeiColumn.MinimumWidth = 12;
-            this.visitHubeiColumn.Name = "visitHubeiColumn";
-            this.visitHubeiColumn.ReadOnly = true;
-            this.visitHubeiColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // hasAbnormalSymtpom
-            // 
-            this.hasAbnormalSymtpom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.hasAbnormalSymtpom.HeaderText = "Has Abnormal Symptom";
-            this.hasAbnormalSymtpom.MinimumWidth = 12;
-            this.hasAbnormalSymtpom.Name = "hasAbnormalSymtpom";
-            this.hasAbnormalSymtpom.ReadOnly = true;
-            this.hasAbnormalSymtpom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // temperatureColumn
-            // 
-            this.temperatureColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.temperatureColumn.HeaderText = "Temperature";
-            this.temperatureColumn.MinimumWidth = 12;
-            this.temperatureColumn.Name = "temperatureColumn";
-            this.temperatureColumn.ReadOnly = true;
-            this.temperatureColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // modifyButton
             // 
             this.modifyButton.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -304,7 +202,7 @@
             this.ginNumberTextBox.Name = "ginNumberTextBox";
             this.ginNumberTextBox.Size = new System.Drawing.Size(412, 42);
             this.ginNumberTextBox.TabIndex = 10;
-            this.ginNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntergerCheck);
+            this.ginNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck);
             // 
             // ginNumberLabel
             // 
@@ -344,8 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2937, 1370);
-            this.Controls.Add(this.healthRecordDataGridView);
+            this.ClientSize = new System.Drawing.Size(3339, 1577);
             this.Controls.Add(this.errorCannotFindGinNumberLabel);
             this.Controls.Add(this.errorGinNumberLabel);
             this.Controls.Add(this.ginNumberLabel);
@@ -365,7 +262,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suspectedCaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.healthRecordDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,12 +275,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Panel databasePanel;
-        private System.Windows.Forms.DataGridView healthRecordDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ginNumberColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitHubeiColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hasAbnormalSymtpom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn temperatureColumn;
         private System.Windows.Forms.BindingSource suspectedCaseBindingSource;
         private System.Windows.Forms.BindingSource healthDatabaseBindingSource;
         private System.Windows.Forms.TableLayoutPanel dataGirdViewTableLayoutPanel;

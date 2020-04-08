@@ -65,7 +65,7 @@ namespace WindowsApp
                 }
             } 
         }
-        private void IntergerCheck(object sender, KeyPressEventArgs e)
+        private void IntegerCheck(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             errorGinNumberLabel.Visible = e.Handled;
