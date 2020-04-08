@@ -12,6 +12,7 @@ namespace WindowsApp
         private HealthDatabase myHealthRecord;
         private FormatValidator formatValidator = new FormatValidator();
         private FormForAddAndModify formForEnterAndModify;
+        private Person personToBeDeletedOrModified;
         public MainMenuForm()
         {
             InitializeComponent();
@@ -39,8 +40,8 @@ namespace WindowsApp
                 int ginNumber = CheckGinNumber();
                 if (ginNumber != -1)
                 {
-                    Person originalPerson = myHealthRecord.HealthRecord[ginNumber];
-                    formForEnterAndModify = new FormForAddAndModify(this, "Modify", originalPerson);
+                    personToBeDeletedOrModified = myHealthRecord.HealthRecord[ginNumber];
+                    formForEnterAndModify = new FormForAddAndModify(this, "Modify", personToBeDeletedOrModified);
                     formForEnterAndModify.Show();
                 }
             }
@@ -52,8 +53,8 @@ namespace WindowsApp
 
             if (ginNumber != -1)
             {
-                Person personToBeDeleted = myHealthRecord.HealthRecord[ginNumber];
-                var confirmResult = MessageBox.Show("Are you sure to delete this person: " + personToBeDeleted.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
+                personToBeDeletedOrModified = myHealthRecord.HealthRecord[ginNumber];
+                var confirmResult = MessageBox.Show("Are you sure to delete this person: " + personToBeDeletedOrModified.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
                     myHealthRecord.DeletePerson(ginNumber);
@@ -154,6 +155,15 @@ namespace WindowsApp
             else
             {
                 healthDataGridView.DataSource = healthDatabaseBindingSource;
+            }
+        }
+        private void SelectRowChange(object sender, EventArgs e)
+        {    
+            int index = healthDataGridView.CurrentRow.Index;
+            if (index >= 0)
+            {
+                string ginNumberString = healthDataGridView.Rows[index].Cells["GinNumber"].Value.ToString();
+                ginNumberTextBox.Text = ginNumberString;
             }
         }
 

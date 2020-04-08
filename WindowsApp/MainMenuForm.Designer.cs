@@ -150,12 +150,15 @@
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.healthDataGridView.Location = new System.Drawing.Point(4, 55);
+            this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
+            this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.healthDataGridView.Size = new System.Drawing.Size(1864, 1147);
             this.healthDataGridView.TabIndex = 0;
+            this.healthDataGridView.SelectionChanged += new System.EventHandler(this.SelectRowChange);
             // 
             // employeeHealthDataLabel
             // 
