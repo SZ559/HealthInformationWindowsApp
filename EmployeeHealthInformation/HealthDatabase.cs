@@ -1,4 +1,12 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using System;
+using System.Linq;
+using System.Windows.Forms;
+using FileOperation;
+using EmployeeInformation;
+using DatabaseOperation;
+using System.Data;
 
 namespace EmployeeInformation
 {
@@ -17,11 +25,11 @@ namespace EmployeeInformation
             }
         }
 
-        public List<Person> SuspectedCaseList
+        public BindingList<Person> SuspectedCaseList
         {
             get
             {
-                List<Person> suspectedCase = new List<Person>();
+                BindingList<Person> suspectedCase = new BindingList<Person>();
                 foreach (Person person in healthRecord.Values)
                 {
                     if (person.IsPersonSuspected())
@@ -30,6 +38,25 @@ namespace EmployeeInformation
                     }
                 }
                 return suspectedCase;
+            }
+        }
+
+        public DataTable HealthRecordDataTable
+        {
+            get
+            {
+                DataTable healthRecordDataTable = new DataTable();
+                healthRecordDataTable.Columns.Add("GinNumber", typeof(int));
+                healthRecordDataTable.Columns.Add("Name", typeof(string));
+                healthRecordDataTable.Columns.Add("VisitHubei", typeof(bool));
+                healthRecordDataTable.Columns.Add("HasAbnormalSymptom", typeof(bool));
+                healthRecordDataTable.Columns.Add("Temperature", typeof(double));
+
+                foreach (Person person in healthRecord.Values)
+                {
+                    healthRecordDataTable.Rows.Add(new object[] { person.GinNumber, person.Name, person.VisitHubei, person.HasAbnormalSymptom, person.Temperature });
+                }
+                return healthRecordDataTable;
             }
         }
 

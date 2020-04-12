@@ -26,5 +26,5 @@ C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.Cor
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.CopyComplete
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.exe
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.pdb
+C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.FormForAddAndEdit.resources
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojAssemblyReference.cache
-C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.FormForAddAndModify.resources

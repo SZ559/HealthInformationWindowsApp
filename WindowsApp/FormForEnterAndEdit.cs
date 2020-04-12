@@ -5,21 +5,17 @@ using DatabaseOperation;
 
 namespace WindowsApp
 {
-    public partial class FormForAddAndModify : Form
+    public partial class FormForAddAndEdit : Form
     {      
         private MainMenuForm mainMenu;
         private string option;
         private Person originalPerson;
-
         private bool hasAbnormalSymptom;
         private bool visitHubei;
-
         private FormatValidator formatValidator = new FormatValidator();
-
-        public FormForAddAndModify(MainMenuForm mainMenu, string option, Person originalPersonInformation)
+        public FormForAddAndEdit(MainMenuForm mainMenu, string option, Person originalPersonInformation)
         {
             InitializeComponent();
-            
             this.mainMenu = mainMenu;
             this.option = option;
             this.originalPerson = originalPersonInformation;
@@ -27,25 +23,26 @@ namespace WindowsApp
             {
                 case "Add":
                     this.Text = "Add";
+                    clearButton.Visible = true;
+                    deleteButton.Visible = false;
                     addConfirmButton.Text = "Add";
                     break;
-                case "Modify":
-                    this.Text = "Modify";
-                    addConfirmButton.Text = "Confirm";
+                case "Edit":
+                    this.Text = "Edit";
+                    addConfirmButton.Text = "Edit";
+                    clearButton.Visible = false;
+                    deleteButton.Visible = true;
                     displayHealthInformationOfPerson(originalPerson);
                     break;
             }
         }
-
         private void displayHealthInformationOfPerson(Person originalPerson)
         {
             ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
             nameTextBox.Text = originalPerson.Name;
             temperatureTextbox.Text = originalPerson.Temperature.ToString();
-
             visitHubeiYesRadioButton.Checked = originalPerson.VisitHubei;
             visitHubeiNoRadioButton.Checked = !originalPerson.VisitHubei;
-
             hasAbnormalSymptomYesRadioButton.Checked = originalPerson.HasAbnormalSymptom;
             hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
         }
@@ -66,18 +63,17 @@ namespace WindowsApp
                 int ginNumber = Int32.Parse(ginNumberTextbox.Text);
                 string name = nameTextBox.Text;
                 double temperature = Double.Parse(temperatureTextbox.Text);
-
                 Person newPerson = new Person(ginNumber, name, visitHubei, hasAbnormalSymptom, temperature);
                 switch(option)
                 {
                     case "Add":
                         if (mainMenu.AddPerson(newPerson) == true)
                         {
-                            ResetButton_Click(sender, e);
+                            ClearButton_Click(sender, e);
                         }
                         break;
-                    case "Modify":
-                        if (mainMenu.ModifyChosenPerson(originalPerson.GinNumber, newPerson) == true)
+                    case "Edit":
+                        if (mainMenu.EditChosenPerson(originalPerson.GinNumber, newPerson) == true)
                         {
                             Close_Click(sender, e);
                         }
@@ -85,7 +81,13 @@ namespace WindowsApp
                 }
             }
         }
-
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (mainMenu.DeletePerson(originalPerson.GinNumber))
+            {
+                Close_Click(sender, e); 
+            }
+        }
         private void CheckAbnormalSymptom()
         {
             errorAbnormalSymptom.Visible = (!hasAbnormalSymptomYesRadioButton.Checked) && (!hasAbnormalSymptomNoRadioButton.Checked);
@@ -103,16 +105,13 @@ namespace WindowsApp
                 visitHubei = visitHubeiYesRadioButton.Checked;
             }
         }
-
-        private void ResetButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             ginNumberTextbox.Text = String.Empty;
             nameTextBox.Text = String.Empty;
             temperatureTextbox.Text = String.Empty;
-
             hasAbnormalSymptomNoRadioButton.Checked = false;
             hasAbnormalSymptomYesRadioButton.Checked = false;
-
             visitHubeiNoRadioButton.Checked = false;
             visitHubeiYesRadioButton.Checked = false;
 
@@ -122,7 +121,6 @@ namespace WindowsApp
             errorAbnormalSymptom.Visible = false;
             errorTemperature.Visible = false;
         }
-
         private void Close_Click(object sender, EventArgs e)
         {
             this.Close();
