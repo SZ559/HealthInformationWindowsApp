@@ -75,6 +75,14 @@ namespace WindowsApp
                 OpenEditForm(ginNumber);
             }
         }
+        private void searchToolStripTextBox_MouseEnter(object sender, EventArgs e)
+        {
+            searchToolStripTextBox.Text = String.Empty;
+        }
+        private void searchToolStripTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            searchToolStripTextBox.Text = "Search By Gin Number";
+        }
         private void OpenEditForm(int ginNumber) 
         {
             if (ginNumber != -1)

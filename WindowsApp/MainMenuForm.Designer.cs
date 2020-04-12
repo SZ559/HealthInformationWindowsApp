@@ -482,11 +482,14 @@
             // searchToolStripTextBox
             // 
             this.searchToolStripTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.searchToolStripTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.searchToolStripTextBox.Name = "searchToolStripTextBox";
-            this.searchToolStripTextBox.Size = new System.Drawing.Size(360, 55);
+            this.searchToolStripTextBox.Size = new System.Drawing.Size(380, 55);
             this.searchToolStripTextBox.Text = "Search By Gin Number";
             this.searchToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
             this.searchToolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_WithMessageBoxWarning);
+            this.searchToolStripTextBox.MouseEnter += new System.EventHandler(this.searchToolStripTextBox_MouseEnter);
+            this.searchToolStripTextBox.MouseLeave += new System.EventHandler(this.searchToolStripTextBox_MouseLeave);
             // 
             // baseSplitContainer
             // 
