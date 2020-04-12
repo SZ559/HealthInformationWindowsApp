@@ -75,11 +75,11 @@ namespace WindowsApp
                 OpenEditForm(ginNumber);
             }
         }
-        private void searchToolStripTextBox_MouseEnter(object sender, EventArgs e)
+        private void SearchToolStripTextBox_MouseEnter(object sender, EventArgs e)
         {
             searchToolStripTextBox.Text = String.Empty;
         }
-        private void searchToolStripTextBox_MouseLeave(object sender, EventArgs e)
+        private void SearchToolStripTextBox_MouseLeave(object sender, EventArgs e)
         {
             searchToolStripTextBox.Text = "Search By Gin Number";
         }
@@ -128,7 +128,7 @@ namespace WindowsApp
                 RemoveFilter("HasAbnormalSymptom = 'True'");
             }
         }
-        private void viewEmployeeHealthDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ViewEmployeeHealthDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             filter = "";
             healthDatabaseBindingSource.Filter = filter;

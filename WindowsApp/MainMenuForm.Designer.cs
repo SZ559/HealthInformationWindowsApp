@@ -238,7 +238,7 @@
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1664, 1096);
+            this.healthDataGridView.Size = new System.Drawing.Size(1664, 1092);
             this.healthDataGridView.TabIndex = 0;
             this.healthDataGridView.SelectionChanged += new System.EventHandler(this.SelectRowChange);
             // 
@@ -258,7 +258,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1674, 1233);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1674, 1229);
             this.tableLayoutPanel.TabIndex = 19;
             // 
             // healthDataFilterFlowLayoutPanel
@@ -268,7 +268,7 @@
             this.healthDataFilterFlowLayoutPanel.Controls.Add(this.visitHubeiFilterCheckBox);
             this.healthDataFilterFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.healthDataFilterFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 1172);
+            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 1168);
             this.healthDataFilterFlowLayoutPanel.Name = "healthDataFilterFlowLayoutPanel";
             this.healthDataFilterFlowLayoutPanel.Size = new System.Drawing.Size(1664, 56);
             this.healthDataFilterFlowLayoutPanel.TabIndex = 3;
@@ -313,7 +313,7 @@
             this.viewToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(2266, 47);
+            this.mainMenuStrip.Size = new System.Drawing.Size(2266, 52);
             this.mainMenuStrip.TabIndex = 20;
             this.mainMenuStrip.Text = "Add";
             // 
@@ -384,7 +384,7 @@
             this.viewEmployeeHealthDataToolStripMenuItem.Name = "viewEmployeeHealthDataToolStripMenuItem";
             this.viewEmployeeHealthDataToolStripMenuItem.Size = new System.Drawing.Size(581, 54);
             this.viewEmployeeHealthDataToolStripMenuItem.Text = "View Employee Health Data";
-            this.viewEmployeeHealthDataToolStripMenuItem.Click += new System.EventHandler(this.viewEmployeeHealthDataToolStripMenuItem_Click);
+            this.viewEmployeeHealthDataToolStripMenuItem.Click += new System.EventHandler(this.ViewEmployeeHealthDataToolStripMenuItem_Click);
             // 
             // splitContainer
             // 
@@ -401,7 +401,7 @@
             this.splitContainer.Panel2.Controls.Add(this.fileOperationGroupBox);
             this.splitContainer.Panel2.Controls.Add(this.editHealthDataGroupBox);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Size = new System.Drawing.Size(2266, 1233);
+            this.splitContainer.Size = new System.Drawing.Size(2266, 1229);
             this.splitContainer.SplitterDistance = 1674;
             this.splitContainer.TabIndex = 21;
             // 
@@ -445,7 +445,7 @@
             this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuToolStrip.Name = "mainMenuToolStrip";
             this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(2266, 55);
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(2266, 54);
             this.mainMenuToolStrip.TabIndex = 22;
             this.mainMenuToolStrip.Text = "toolStrip1";
             this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
@@ -458,7 +458,7 @@
             this.toolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton.Image")));
             this.toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton.Name = "toolStripButton";
-            this.toolStripButton.Size = new System.Drawing.Size(58, 48);
+            this.toolStripButton.Size = new System.Drawing.Size(58, 47);
             this.toolStripButton.Text = "toolStripButton1";
             // 
             // importToolStripButton
@@ -488,13 +488,13 @@
             this.searchToolStripTextBox.Text = "Search By Gin Number";
             this.searchToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
             this.searchToolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_WithMessageBoxWarning);
-            this.searchToolStripTextBox.MouseEnter += new System.EventHandler(this.searchToolStripTextBox_MouseEnter);
-            this.searchToolStripTextBox.MouseLeave += new System.EventHandler(this.searchToolStripTextBox_MouseLeave);
+            this.searchToolStripTextBox.MouseEnter += new System.EventHandler(this.SearchToolStripTextBox_MouseEnter);
+            this.searchToolStripTextBox.MouseLeave += new System.EventHandler(this.SearchToolStripTextBox_MouseLeave);
             // 
             // baseSplitContainer
             // 
             this.baseSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseSplitContainer.Location = new System.Drawing.Point(0, 47);
+            this.baseSplitContainer.Location = new System.Drawing.Point(0, 52);
             this.baseSplitContainer.Name = "baseSplitContainer";
             this.baseSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -505,8 +505,8 @@
             // baseSplitContainer.Panel2
             // 
             this.baseSplitContainer.Panel2.Controls.Add(this.splitContainer);
-            this.baseSplitContainer.Size = new System.Drawing.Size(2266, 1292);
-            this.baseSplitContainer.SplitterDistance = 55;
+            this.baseSplitContainer.Size = new System.Drawing.Size(2266, 1287);
+            this.baseSplitContainer.SplitterDistance = 54;
             this.baseSplitContainer.TabIndex = 23;
             // 
             // MainMenuForm

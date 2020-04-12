@@ -32,11 +32,11 @@ namespace WindowsApp
                     addConfirmButton.Text = "Edit";
                     clearButton.Visible = false;
                     deleteButton.Visible = true;
-                    displayHealthInformationOfPerson(originalPerson);
+                    DisplayHealthInformationOfPerson(originalPerson);
                     break;
             }
         }
-        private void displayHealthInformationOfPerson(Person originalPerson)
+        private void DisplayHealthInformationOfPerson(Person originalPerson)
         {
             ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
             nameTextBox.Text = originalPerson.Name;
