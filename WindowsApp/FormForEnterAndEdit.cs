@@ -29,7 +29,7 @@ namespace WindowsApp
                     break;
                 case "Edit":
                     this.Text = "Edit";
-                    addConfirmButton.Text = "Edit";
+                    addConfirmButton.Text = "Save";
                     clearButton.Visible = false;
                     deleteButton.Visible = true;
                     DisplayHealthInformationOfPerson(originalPerson);
@@ -125,5 +125,6 @@ namespace WindowsApp
         {
             this.Close();
         }
+
     }
 }

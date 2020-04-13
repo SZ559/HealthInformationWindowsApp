@@ -62,7 +62,7 @@
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.nameLabel.Location = new System.Drawing.Point(318, 203);
+            this.nameLabel.Location = new System.Drawing.Point(282, 213);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(110, 39);
             this.nameLabel.TabIndex = 1;
@@ -73,7 +73,7 @@
             this.ginNumberLabel.AutoSize = true;
             this.ginNumberLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ginNumberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ginNumberLabel.Location = new System.Drawing.Point(230, 97);
+            this.ginNumberLabel.Location = new System.Drawing.Point(194, 103);
             this.ginNumberLabel.Name = "ginNumberLabel";
             this.ginNumberLabel.Size = new System.Drawing.Size(198, 39);
             this.ginNumberLabel.TabIndex = 3;
@@ -81,24 +81,26 @@
             // 
             // ginNumberTextbox
             // 
+            this.ginNumberTextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ginNumberTextbox.Location = new System.Drawing.Point(3, 3);
             this.ginNumberTextbox.Name = "ginNumberTextbox";
-            this.ginNumberTextbox.Size = new System.Drawing.Size(462, 42);
-            this.ginNumberTextbox.TabIndex = 4;
+            this.ginNumberTextbox.Size = new System.Drawing.Size(462, 46);
+            this.ginNumberTextbox.TabIndex = 0;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(3, 109);
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.nameTextBox.Location = new System.Drawing.Point(3, 113);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(462, 42);
-            this.nameTextBox.TabIndex = 5;
+            this.nameTextBox.Size = new System.Drawing.Size(462, 46);
+            this.nameTextBox.TabIndex = 1;
             // 
             // visitHubeiLabel
             // 
             this.visitHubeiLabel.AutoSize = true;
             this.visitHubeiLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitHubeiLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.visitHubeiLabel.Location = new System.Drawing.Point(82, 311);
+            this.visitHubeiLabel.Location = new System.Drawing.Point(46, 325);
             this.visitHubeiLabel.Name = "visitHubeiLabel";
             this.visitHubeiLabel.Size = new System.Drawing.Size(346, 39);
             this.visitHubeiLabel.TabIndex = 6;
@@ -109,7 +111,7 @@
             this.hasAbnormalSymptomLabel.AutoSize = true;
             this.hasAbnormalSymptomLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hasAbnormalSymptomLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.hasAbnormalSymptomLabel.Location = new System.Drawing.Point(53, 417);
+            this.hasAbnormalSymptomLabel.Location = new System.Drawing.Point(17, 435);
             this.hasAbnormalSymptomLabel.Name = "hasAbnormalSymptomLabel";
             this.hasAbnormalSymptomLabel.Size = new System.Drawing.Size(375, 39);
             this.hasAbnormalSymptomLabel.TabIndex = 9;
@@ -120,7 +122,7 @@
             this.temepratureLabel.AutoSize = true;
             this.temepratureLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temepratureLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.temepratureLabel.Location = new System.Drawing.Point(139, 521);
+            this.temepratureLabel.Location = new System.Drawing.Point(103, 543);
             this.temepratureLabel.Name = "temepratureLabel";
             this.temepratureLabel.Size = new System.Drawing.Size(289, 39);
             this.temepratureLabel.TabIndex = 12;
@@ -128,18 +130,19 @@
             // 
             // temperatureTextbox
             // 
-            this.temperatureTextbox.Location = new System.Drawing.Point(3, 427);
+            this.temperatureTextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.temperatureTextbox.Location = new System.Drawing.Point(3, 443);
             this.temperatureTextbox.Name = "temperatureTextbox";
-            this.temperatureTextbox.Size = new System.Drawing.Size(462, 42);
-            this.temperatureTextbox.TabIndex = 13;
+            this.temperatureTextbox.Size = new System.Drawing.Size(462, 46);
+            this.temperatureTextbox.TabIndex = 6;
             // 
             // errorGinNumber
             // 
             this.errorGinNumber.AutoSize = true;
             this.errorGinNumber.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorGinNumber.ForeColor = System.Drawing.Color.Red;
-            this.errorGinNumber.Location = new System.Drawing.Point(0, 53);
-            this.errorGinNumber.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.errorGinNumber.Location = new System.Drawing.Point(0, 58);
+            this.errorGinNumber.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorGinNumber.Name = "errorGinNumber";
             this.errorGinNumber.Size = new System.Drawing.Size(470, 39);
             this.errorGinNumber.TabIndex = 15;
@@ -151,8 +154,8 @@
             this.errorName.AutoSize = true;
             this.errorName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorName.ForeColor = System.Drawing.Color.Red;
-            this.errorName.Location = new System.Drawing.Point(0, 159);
-            this.errorName.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.errorName.Location = new System.Drawing.Point(0, 168);
+            this.errorName.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorName.Name = "errorName";
             this.errorName.Size = new System.Drawing.Size(355, 39);
             this.errorName.TabIndex = 16;
@@ -165,10 +168,10 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.closeButton.Location = new System.Drawing.Point(765, 652);
+            this.closeButton.Location = new System.Drawing.Point(732, 655);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(150, 60);
-            this.closeButton.TabIndex = 18;
+            this.closeButton.TabIndex = 9;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.Close_Click);
@@ -178,8 +181,8 @@
             this.errorVisitHubei.AutoSize = true;
             this.errorVisitHubei.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorVisitHubei.ForeColor = System.Drawing.Color.Red;
-            this.errorVisitHubei.Location = new System.Drawing.Point(0, 265);
-            this.errorVisitHubei.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.errorVisitHubei.Location = new System.Drawing.Point(0, 278);
+            this.errorVisitHubei.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorVisitHubei.Name = "errorVisitHubei";
             this.errorVisitHubei.Size = new System.Drawing.Size(397, 39);
             this.errorVisitHubei.TabIndex = 19;
@@ -191,8 +194,8 @@
             this.errorAbnormalSymptom.AutoSize = true;
             this.errorAbnormalSymptom.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorAbnormalSymptom.ForeColor = System.Drawing.Color.Red;
-            this.errorAbnormalSymptom.Location = new System.Drawing.Point(0, 371);
-            this.errorAbnormalSymptom.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.errorAbnormalSymptom.Location = new System.Drawing.Point(0, 388);
+            this.errorAbnormalSymptom.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorAbnormalSymptom.Name = "errorAbnormalSymptom";
             this.errorAbnormalSymptom.Size = new System.Drawing.Size(397, 39);
             this.errorAbnormalSymptom.TabIndex = 20;
@@ -204,8 +207,8 @@
             this.errorTemperature.AutoSize = true;
             this.errorTemperature.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorTemperature.ForeColor = System.Drawing.Color.Red;
-            this.errorTemperature.Location = new System.Drawing.Point(0, 477);
-            this.errorTemperature.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.errorTemperature.Location = new System.Drawing.Point(0, 498);
+            this.errorTemperature.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorTemperature.Name = "errorTemperature";
             this.errorTemperature.Size = new System.Drawing.Size(380, 39);
             this.errorTemperature.TabIndex = 17;
@@ -218,10 +221,10 @@
             this.addConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addConfirmButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addConfirmButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addConfirmButton.Location = new System.Drawing.Point(448, 652);
+            this.addConfirmButton.Location = new System.Drawing.Point(412, 655);
             this.addConfirmButton.Name = "addConfirmButton";
             this.addConfirmButton.Size = new System.Drawing.Size(150, 60);
-            this.addConfirmButton.TabIndex = 0;
+            this.addConfirmButton.TabIndex = 7;
             this.addConfirmButton.Text = "Add";
             this.addConfirmButton.UseVisualStyleBackColor = false;
             this.addConfirmButton.Click += new System.EventHandler(this.AddConfirmButton_Click);
@@ -232,10 +235,10 @@
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.clearButton.Location = new System.Drawing.Point(604, 652);
+            this.clearButton.Location = new System.Drawing.Point(572, 655);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(150, 60);
-            this.clearButton.TabIndex = 21;
+            this.clearButton.TabIndex = 8;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -246,9 +249,10 @@
             this.visitHubeiYesRadioButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitHubeiYesRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
             this.visitHubeiYesRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.visitHubeiYesRadioButton.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.visitHubeiYesRadioButton.Name = "visitHubeiYesRadioButton";
             this.visitHubeiYesRadioButton.Size = new System.Drawing.Size(103, 43);
-            this.visitHubeiYesRadioButton.TabIndex = 22;
+            this.visitHubeiYesRadioButton.TabIndex = 2;
             this.visitHubeiYesRadioButton.TabStop = true;
             this.visitHubeiYesRadioButton.Text = "Yes";
             this.visitHubeiYesRadioButton.UseVisualStyleBackColor = true;
@@ -259,9 +263,10 @@
             this.hasAbnormalSymptomYesRadioButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hasAbnormalSymptomYesRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
             this.hasAbnormalSymptomYesRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.hasAbnormalSymptomYesRadioButton.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.hasAbnormalSymptomYesRadioButton.Name = "hasAbnormalSymptomYesRadioButton";
             this.hasAbnormalSymptomYesRadioButton.Size = new System.Drawing.Size(103, 43);
-            this.hasAbnormalSymptomYesRadioButton.TabIndex = 23;
+            this.hasAbnormalSymptomYesRadioButton.TabIndex = 4;
             this.hasAbnormalSymptomYesRadioButton.TabStop = true;
             this.hasAbnormalSymptomYesRadioButton.Text = "Yes";
             this.hasAbnormalSymptomYesRadioButton.UseVisualStyleBackColor = true;
@@ -272,9 +277,10 @@
             this.hasAbnormalSymptomNoRadioButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hasAbnormalSymptomNoRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
             this.hasAbnormalSymptomNoRadioButton.Location = new System.Drawing.Point(112, 3);
+            this.hasAbnormalSymptomNoRadioButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.hasAbnormalSymptomNoRadioButton.Name = "hasAbnormalSymptomNoRadioButton";
             this.hasAbnormalSymptomNoRadioButton.Size = new System.Drawing.Size(97, 43);
-            this.hasAbnormalSymptomNoRadioButton.TabIndex = 24;
+            this.hasAbnormalSymptomNoRadioButton.TabIndex = 5;
             this.hasAbnormalSymptomNoRadioButton.TabStop = true;
             this.hasAbnormalSymptomNoRadioButton.Text = "No";
             this.hasAbnormalSymptomNoRadioButton.UseVisualStyleBackColor = true;
@@ -285,9 +291,10 @@
             this.visitHubeiNoRadioButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitHubeiNoRadioButton.ForeColor = System.Drawing.SystemColors.Highlight;
             this.visitHubeiNoRadioButton.Location = new System.Drawing.Point(112, 3);
+            this.visitHubeiNoRadioButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.visitHubeiNoRadioButton.Name = "visitHubeiNoRadioButton";
             this.visitHubeiNoRadioButton.Size = new System.Drawing.Size(97, 43);
-            this.visitHubeiNoRadioButton.TabIndex = 25;
+            this.visitHubeiNoRadioButton.TabIndex = 3;
             this.visitHubeiNoRadioButton.TabStop = true;
             this.visitHubeiNoRadioButton.Text = "No";
             this.visitHubeiNoRadioButton.UseVisualStyleBackColor = true;
@@ -298,10 +305,10 @@
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.deleteButton.Location = new System.Drawing.Point(604, 652);
+            this.deleteButton.Location = new System.Drawing.Point(572, 655);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(150, 60);
-            this.deleteButton.TabIndex = 32;
+            this.deleteButton.TabIndex = 8;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -311,36 +318,38 @@
             this.flowLayoutPanel1.Controls.Add(this.visitHubeiYesRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.visitHubeiNoRadioButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 215);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 223);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(537, 47);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(3);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(565, 49);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.hasAbnormalSymptomYesRadioButton);
             this.flowLayoutPanel2.Controls.Add(this.hasAbnormalSymptomNoRadioButton);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 321);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 333);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(537, 47);
-            this.flowLayoutPanel2.TabIndex = 7;
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(3);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(565, 49);
+            this.flowLayoutPanel2.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.ginNumberTextbox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameTextBox, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.temperatureTextbox, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.errorTemperature, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.errorGinNumber, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.errorName, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.errorVisitHubei, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.errorAbnormalSymptom, 0, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(445, 96);
+            this.tableLayoutPanel1.Controls.Add(this.errorGinNumber, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ginNumberTextbox, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(412, 97);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -353,14 +362,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(543, 536);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(571, 552);
             this.tableLayoutPanel1.TabIndex = 33;
             // 
             // FormForAddAndEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 804);
+            this.ClientSize = new System.Drawing.Size(1008, 773);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.addConfirmButton);
             this.Controls.Add(this.clearButton);

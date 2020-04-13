@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FileOperation;
 using EmployeeInformation;
 using DatabaseOperation;
+using System.Security.AccessControl;
 
 namespace WindowsApp
 {
@@ -12,6 +13,7 @@ namespace WindowsApp
         private HealthDatabase myHealthRecord;
         private FormForAddAndEdit formForEnterAndEdit;
         private string filter = "";
+        private int selectGinNumber;
         public MainMenuForm()
         {
             InitializeComponent();
@@ -31,12 +33,12 @@ namespace WindowsApp
         }
         private void EditButton_Click(object sender, EventArgs e)
         {
-            int ginNumber = CheckExistenceOfGinNumber(ginNumberTextBox.Text);
+            int ginNumber = CheckExistenceOfGinNumber(selectGinNumber);
             OpenEditForm(ginNumber);
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int ginNumber = CheckExistenceOfGinNumber(ginNumberTextBox.Text);
+            int ginNumber = CheckExistenceOfGinNumber(selectGinNumber);
             if (ginNumber != -1)
             {
                 DeletePerson(ginNumber);
@@ -72,16 +74,23 @@ namespace WindowsApp
             if (e.KeyCode == Keys.Enter)
             {
                 int ginNumber = CheckExistenceOfGinNumber(searchToolStripTextBox.Text);
+                if (ginNumber == -1)
+                {
+                    SearchToolStripTextBox_MouseEnter(sender, e);
+                    return;
+                }
                 OpenEditForm(ginNumber);
             }
         }
         private void SearchToolStripTextBox_MouseEnter(object sender, EventArgs e)
         {
             searchToolStripTextBox.Text = String.Empty;
+            searchToolStripTextBox.ForeColor = System.Drawing.Color.Black;
         }
         private void SearchToolStripTextBox_MouseLeave(object sender, EventArgs e)
         {
-            searchToolStripTextBox.Text = "Search By Gin Number";
+            searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
+            searchToolStripTextBox.ForeColor = System.Drawing.Color.DarkGray;
         }
         private void OpenEditForm(int ginNumber) 
         {
@@ -180,7 +189,7 @@ namespace WindowsApp
             }
             else if (filter == filterToBeRemoved)
             {   
-                filter = ""; 
+                filter = "";
             }
             else
             {
@@ -200,8 +209,10 @@ namespace WindowsApp
             if (healthDataGridView.RowCount > 0)
             {
                 int index = healthDataGridView.CurrentRow.Index;
-                string ginNumberString = healthDataGridView.Rows[index].Cells["GinNumber"].Value.ToString();
+                selectGinNumber = (int) healthDataGridView.Rows[index].Cells["GinNumber"].Value;
+                string ginNumberString = selectGinNumber.ToString();
                 ginNumberTextBox.Text = ginNumberString;
+                
             }
         }
         internal bool AddPerson(Person newPerson)
@@ -243,6 +254,15 @@ namespace WindowsApp
             datagridview.Columns[2].HeaderCell.Value = "Visit Hubei Recently";
             datagridview.Columns[3].HeaderCell.Value = "Has Abnormal Symptom";
             datagridview.Columns[4].HeaderCell.Value = "Body Temperature";
+        }
+
+
+        private void MainMenuForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Control && e.KeyCode == Keys.Q))
+            {
+                searchToolStripTextBox.Focus();
+            }
         }
     }
 }

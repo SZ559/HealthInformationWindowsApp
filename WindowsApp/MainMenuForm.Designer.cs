@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuForm));
             this.addButton = new System.Windows.Forms.Button();
-            this.importFromFileButton = new System.Windows.Forms.Button();
+            this.openFileButton = new System.Windows.Forms.Button();
             this.saveToFileButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -45,31 +45,40 @@
             this.errorGinNumberLabel = new System.Windows.Forms.Label();
             this.errorCannotFindGinNumberLabel = new System.Windows.Forms.Label();
             this.healthDataGridView = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.healthDataFilterFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.hasAbnormalSymptomFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.visitHubeiFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editByGinNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewEmployeeHealthDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.fileOperationGroupBox = new System.Windows.Forms.GroupBox();
             this.editHealthDataGroupBox = new System.Windows.Forms.GroupBox();
-            this.mainMenuToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.importToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.baseSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.openFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.searchToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.baseSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.addToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.mainMenuToolStrip = new System.Windows.Forms.ToolStrip();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.healthDataFilterFlowLayoutPanel.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
@@ -79,11 +88,11 @@
             this.splitContainer.SuspendLayout();
             this.fileOperationGroupBox.SuspendLayout();
             this.editHealthDataGroupBox.SuspendLayout();
-            this.mainMenuToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseSplitContainer)).BeginInit();
             this.baseSplitContainer.Panel1.SuspendLayout();
             this.baseSplitContainer.Panel2.SuspendLayout();
             this.baseSplitContainer.SuspendLayout();
+            this.mainMenuToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // addButton
@@ -93,22 +102,24 @@
             this.addButton.Location = new System.Drawing.Point(25, 299);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(426, 60);
-            this.addButton.TabIndex = 0;
+            this.addButton.TabIndex = 7;
+            this.addButton.TabStop = false;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // importFromFileButton
+            // openFileButton
             // 
-            this.importFromFileButton.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.importFromFileButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.importFromFileButton.Location = new System.Drawing.Point(25, 80);
-            this.importFromFileButton.Name = "importFromFileButton";
-            this.importFromFileButton.Size = new System.Drawing.Size(426, 60);
-            this.importFromFileButton.TabIndex = 3;
-            this.importFromFileButton.Text = "Import From File";
-            this.importFromFileButton.UseVisualStyleBackColor = false;
-            this.importFromFileButton.Click += new System.EventHandler(this.ImportFromFileButton_Click);
+            this.openFileButton.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.openFileButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.openFileButton.Location = new System.Drawing.Point(25, 80);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(426, 60);
+            this.openFileButton.TabIndex = 8;
+            this.openFileButton.TabStop = false;
+            this.openFileButton.Text = "Open File";
+            this.openFileButton.UseVisualStyleBackColor = false;
+            this.openFileButton.Click += new System.EventHandler(this.ImportFromFileButton_Click);
             // 
             // saveToFileButton
             // 
@@ -117,7 +128,8 @@
             this.saveToFileButton.Location = new System.Drawing.Point(25, 170);
             this.saveToFileButton.Name = "saveToFileButton";
             this.saveToFileButton.Size = new System.Drawing.Size(426, 60);
-            this.saveToFileButton.TabIndex = 4;
+            this.saveToFileButton.TabIndex = 9;
+            this.saveToFileButton.TabStop = false;
             this.saveToFileButton.Text = "Save To File";
             this.saveToFileButton.UseVisualStyleBackColor = false;
             this.saveToFileButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
@@ -141,7 +153,7 @@
             this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(1290, 3);
             this.viewSuspectedCaseCheckBox.Name = "viewSuspectedCaseCheckBox";
             this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 43);
-            this.viewSuspectedCaseCheckBox.TabIndex = 18;
+            this.viewSuspectedCaseCheckBox.TabIndex = 1;
             this.viewSuspectedCaseCheckBox.Text = "View Suspected Cases";
             this.viewSuspectedCaseCheckBox.UseVisualStyleBackColor = true;
             this.viewSuspectedCaseCheckBox.CheckedChanged += new System.EventHandler(this.ViewSuspectedCaseCheckBox_CheckedChanged);
@@ -151,7 +163,7 @@
             this.employeeHealthDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeHealthDataLabel.AutoSize = true;
             this.employeeHealthDataLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.employeeHealthDataLabel.Location = new System.Drawing.Point(5, 24);
+            this.employeeHealthDataLabel.Location = new System.Drawing.Point(5, 23);
             this.employeeHealthDataLabel.Name = "employeeHealthDataLabel";
             this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 39);
             this.employeeHealthDataLabel.TabIndex = 2;
@@ -164,7 +176,8 @@
             this.editButton.Location = new System.Drawing.Point(25, 209);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(209, 60);
-            this.editButton.TabIndex = 1;
+            this.editButton.TabIndex = 5;
+            this.editButton.TabStop = false;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.EditButton_Click);
@@ -176,7 +189,8 @@
             this.deleteButton.Location = new System.Drawing.Point(242, 209);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(209, 60);
-            this.deleteButton.TabIndex = 8;
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.TabStop = false;
             this.deleteButton.Text = "Delete ";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -186,7 +200,9 @@
             this.ginNumberTextBox.Location = new System.Drawing.Point(25, 119);
             this.ginNumberTextBox.Name = "ginNumberTextBox";
             this.ginNumberTextBox.Size = new System.Drawing.Size(426, 45);
-            this.ginNumberTextBox.TabIndex = 10;
+            this.ginNumberTextBox.TabIndex = 4;
+            this.ginNumberTextBox.TabStop = false;
+            this.ginNumberTextBox.Enter += new System.EventHandler(this.EditButton_Click);
             this.ginNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck);
             // 
             // ginNumberLabel
@@ -230,17 +246,56 @@
             this.healthDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.healthDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.healthDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataGridView.Location = new System.Drawing.Point(5, 68);
+            this.healthDataGridView.Location = new System.Drawing.Point(5, 67);
             this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1664, 1092);
+            this.healthDataGridView.Size = new System.Drawing.Size(1664, 1091);
+            this.healthDataGridView.StandardTab = true;
             this.healthDataGridView.TabIndex = 0;
             this.healthDataGridView.SelectionChanged += new System.EventHandler(this.SelectRowChange);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.editToolStripMenuItemEdit,
+            this.deleteToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(374, 148);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+Shift+A";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(373, 48);
+            this.toolStripMenuItem1.Text = "Add";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // editToolStripMenuItemEdit
+            // 
+            this.editToolStripMenuItemEdit.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItemEdit.Image")));
+            this.editToolStripMenuItemEdit.Name = "editToolStripMenuItemEdit";
+            this.editToolStripMenuItemEdit.ShortcutKeyDisplayString = "Ctrl+E";
+            this.editToolStripMenuItemEdit.Size = new System.Drawing.Size(373, 48);
+            this.editToolStripMenuItemEdit.Text = "Edit";
+            this.editToolStripMenuItemEdit.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem1.Image")));
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.ShortcutKeyDisplayString = "Del";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(373, 48);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // tableLayoutPanel
             // 
@@ -258,7 +313,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1674, 1229);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1674, 1227);
             this.tableLayoutPanel.TabIndex = 19;
             // 
             // healthDataFilterFlowLayoutPanel
@@ -268,10 +323,10 @@
             this.healthDataFilterFlowLayoutPanel.Controls.Add(this.visitHubeiFilterCheckBox);
             this.healthDataFilterFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.healthDataFilterFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 1168);
+            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 1166);
             this.healthDataFilterFlowLayoutPanel.Name = "healthDataFilterFlowLayoutPanel";
             this.healthDataFilterFlowLayoutPanel.Size = new System.Drawing.Size(1664, 56);
-            this.healthDataFilterFlowLayoutPanel.TabIndex = 3;
+            this.healthDataFilterFlowLayoutPanel.TabIndex = 1;
             // 
             // hasAbnormalSymptomFilterCheckBox
             // 
@@ -283,7 +338,8 @@
             this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(650, 3);
             this.hasAbnormalSymptomFilterCheckBox.Name = "hasAbnormalSymptomFilterCheckBox";
             this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(634, 43);
-            this.hasAbnormalSymptomFilterCheckBox.TabIndex = 20;
+            this.hasAbnormalSymptomFilterCheckBox.TabIndex = 2;
+            this.hasAbnormalSymptomFilterCheckBox.TabStop = false;
             this.hasAbnormalSymptomFilterCheckBox.Text = "View Employee Has Abnormal Symptom";
             this.hasAbnormalSymptomFilterCheckBox.UseVisualStyleBackColor = true;
             this.hasAbnormalSymptomFilterCheckBox.CheckedChanged += new System.EventHandler(this.HasAbnormalSymptomCheckBox_CheckedChanged);
@@ -298,7 +354,8 @@
             this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(39, 3);
             this.visitHubeiFilterCheckBox.Name = "visitHubeiFilterCheckBox";
             this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(605, 43);
-            this.visitHubeiFilterCheckBox.TabIndex = 19;
+            this.visitHubeiFilterCheckBox.TabIndex = 3;
+            this.visitHubeiFilterCheckBox.TabStop = false;
             this.visitHubeiFilterCheckBox.Text = "View Employee Visited Hubei Recently";
             this.visitHubeiFilterCheckBox.UseVisualStyleBackColor = true;
             this.visitHubeiFilterCheckBox.CheckedChanged += new System.EventHandler(this.VisitHubeiFilterCheckBox_CheckedChanged);
@@ -313,30 +370,35 @@
             this.viewToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(2266, 52);
-            this.mainMenuStrip.TabIndex = 20;
+            this.mainMenuStrip.Size = new System.Drawing.Size(2266, 47);
+            this.mainMenuStrip.TabIndex = 2;
+            this.mainMenuStrip.TabStop = true;
             this.mainMenuStrip.Text = "Add";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importFromFileToolStripMenuItem,
+            this.openFileToolStripMenuItem,
             this.saveToFileToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(90, 43);
             this.addToolStripMenuItem.Text = "File";
             // 
-            // importFromFileToolStripMenuItem
+            // openFileToolStripMenuItem
             // 
-            this.importFromFileToolStripMenuItem.Name = "importFromFileToolStripMenuItem";
-            this.importFromFileToolStripMenuItem.Size = new System.Drawing.Size(420, 54);
-            this.importFromFileToolStripMenuItem.Text = "Import From File";
-            this.importFromFileToolStripMenuItem.Click += new System.EventHandler(this.ImportFromFileButton_Click);
+            this.openFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripMenuItem.Image")));
+            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(458, 54);
+            this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.ImportFromFileButton_Click);
             // 
             // saveToFileToolStripMenuItem
             // 
+            this.saveToFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToFileToolStripMenuItem.Image")));
             this.saveToFileToolStripMenuItem.Name = "saveToFileToolStripMenuItem";
-            this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(420, 54);
+            this.saveToFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(458, 54);
             this.saveToFileToolStripMenuItem.Text = "Save To File";
             this.saveToFileToolStripMenuItem.Click += new System.EventHandler(this.SaveToFileButton_Click);
             // 
@@ -344,7 +406,7 @@
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem1,
-            this.editByGinNumberToolStripMenuItem,
+            this.editToolStripMenuItem2,
             this.deleteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(96, 43);
@@ -352,22 +414,29 @@
             // 
             // addToolStripMenuItem1
             // 
+            this.addToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripMenuItem1.Image")));
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(275, 54);
+            this.addToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(437, 54);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // editByGinNumberToolStripMenuItem
+            // editToolStripMenuItem2
             // 
-            this.editByGinNumberToolStripMenuItem.Name = "editByGinNumberToolStripMenuItem";
-            this.editByGinNumberToolStripMenuItem.Size = new System.Drawing.Size(275, 54);
-            this.editByGinNumberToolStripMenuItem.Text = "Edit";
-            this.editByGinNumberToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
+            this.editToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem2.Image")));
+            this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
+            this.editToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.editToolStripMenuItem2.Size = new System.Drawing.Size(437, 54);
+            this.editToolStripMenuItem2.Text = "Edit";
+            this.editToolStripMenuItem2.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(275, 54);
+            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(437, 54);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -382,7 +451,8 @@
             // viewEmployeeHealthDataToolStripMenuItem
             // 
             this.viewEmployeeHealthDataToolStripMenuItem.Name = "viewEmployeeHealthDataToolStripMenuItem";
-            this.viewEmployeeHealthDataToolStripMenuItem.Size = new System.Drawing.Size(581, 54);
+            this.viewEmployeeHealthDataToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.viewEmployeeHealthDataToolStripMenuItem.Size = new System.Drawing.Size(701, 54);
             this.viewEmployeeHealthDataToolStripMenuItem.Text = "View Employee Health Data";
             this.viewEmployeeHealthDataToolStripMenuItem.Click += new System.EventHandler(this.ViewEmployeeHealthDataToolStripMenuItem_Click);
             // 
@@ -401,14 +471,15 @@
             this.splitContainer.Panel2.Controls.Add(this.fileOperationGroupBox);
             this.splitContainer.Panel2.Controls.Add(this.editHealthDataGroupBox);
             this.splitContainer.Panel2.Font = new System.Drawing.Font("Arial", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitContainer.Size = new System.Drawing.Size(2266, 1229);
+            this.splitContainer.Size = new System.Drawing.Size(2266, 1227);
             this.splitContainer.SplitterDistance = 1674;
             this.splitContainer.TabIndex = 21;
+            this.splitContainer.TabStop = false;
             // 
             // fileOperationGroupBox
             // 
             this.fileOperationGroupBox.Controls.Add(this.saveToFileButton);
-            this.fileOperationGroupBox.Controls.Add(this.importFromFileButton);
+            this.fileOperationGroupBox.Controls.Add(this.openFileButton);
             this.fileOperationGroupBox.Location = new System.Drawing.Point(15, 536);
             this.fileOperationGroupBox.Name = "fileOperationGroupBox";
             this.fileOperationGroupBox.Size = new System.Drawing.Size(553, 302);
@@ -433,68 +504,10 @@
             this.editHealthDataGroupBox.TabStop = false;
             this.editHealthDataGroupBox.Text = "Edit Employee Health Data";
             // 
-            // mainMenuToolStrip
-            // 
-            this.mainMenuToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainMenuToolStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
-            this.mainMenuToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton,
-            this.importToolStripButton,
-            this.saveToolStripButton,
-            this.searchToolStripTextBox});
-            this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuToolStrip.Name = "mainMenuToolStrip";
-            this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(2266, 54);
-            this.mainMenuToolStrip.TabIndex = 22;
-            this.mainMenuToolStrip.Text = "toolStrip1";
-            this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
-            // 
-            // toolStripButton
-            // 
-            this.toolStripButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
-            this.toolStripButton.Enabled = false;
-            this.toolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton.Image")));
-            this.toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton.Name = "toolStripButton";
-            this.toolStripButton.Size = new System.Drawing.Size(58, 47);
-            this.toolStripButton.Text = "toolStripButton1";
-            // 
-            // importToolStripButton
-            // 
-            this.importToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("importToolStripButton.Image")));
-            this.importToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.importToolStripButton.Name = "importToolStripButton";
-            this.importToolStripButton.Size = new System.Drawing.Size(299, 48);
-            this.importToolStripButton.Text = "Import From File";
-            this.importToolStripButton.Click += new System.EventHandler(this.ImportFromFileButton_Click);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(231, 48);
-            this.saveToolStripButton.Text = "Save To File";
-            this.saveToolStripButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
-            // 
-            // searchToolStripTextBox
-            // 
-            this.searchToolStripTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.searchToolStripTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.searchToolStripTextBox.Name = "searchToolStripTextBox";
-            this.searchToolStripTextBox.Size = new System.Drawing.Size(380, 55);
-            this.searchToolStripTextBox.Text = "Search By Gin Number";
-            this.searchToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
-            this.searchToolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_WithMessageBoxWarning);
-            this.searchToolStripTextBox.MouseEnter += new System.EventHandler(this.SearchToolStripTextBox_MouseEnter);
-            this.searchToolStripTextBox.MouseLeave += new System.EventHandler(this.SearchToolStripTextBox_MouseLeave);
-            // 
             // baseSplitContainer
             // 
             this.baseSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseSplitContainer.Location = new System.Drawing.Point(0, 52);
+            this.baseSplitContainer.Location = new System.Drawing.Point(0, 47);
             this.baseSplitContainer.Name = "baseSplitContainer";
             this.baseSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -505,22 +518,128 @@
             // baseSplitContainer.Panel2
             // 
             this.baseSplitContainer.Panel2.Controls.Add(this.splitContainer);
-            this.baseSplitContainer.Size = new System.Drawing.Size(2266, 1287);
-            this.baseSplitContainer.SplitterDistance = 54;
+            this.baseSplitContainer.Size = new System.Drawing.Size(2266, 1292);
+            this.baseSplitContainer.SplitterDistance = 61;
             this.baseSplitContainer.TabIndex = 23;
+            this.baseSplitContainer.TabStop = false;
+            // 
+            // openFileToolStripButton
+            // 
+            this.openFileToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripButton.Image")));
+            this.openFileToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openFileToolStripButton.Name = "openFileToolStripButton";
+            this.openFileToolStripButton.Size = new System.Drawing.Size(197, 56);
+            this.openFileToolStripButton.Text = "Open File";
+            this.openFileToolStripButton.ToolTipText = "Open File (Ctrl+O)";
+            this.openFileToolStripButton.Click += new System.EventHandler(this.ImportFromFileButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(231, 56);
+            this.saveToolStripButton.Text = "Save To File";
+            this.saveToolStripButton.ToolTipText = "Save To File (Ctrl+S)";
+            this.saveToolStripButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
+            // 
+            // searchToolStripTextBox
+            // 
+            this.searchToolStripTextBox.AutoSize = false;
+            this.searchToolStripTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.searchToolStripTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.searchToolStripTextBox.Name = "searchToolStripTextBox";
+            this.searchToolStripTextBox.Size = new System.Drawing.Size(470, 63);
+            this.searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
+            this.searchToolStripTextBox.Enter += new System.EventHandler(this.SearchToolStripTextBox_MouseEnter);
+            this.searchToolStripTextBox.LostFocus += new System.EventHandler(this.SearchToolStripTextBox_MouseLeave);
+            this.searchToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
+            this.searchToolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerCheck_WithMessageBoxWarning);
+            this.searchToolStripTextBox.MouseEnter += new System.EventHandler(this.SearchToolStripTextBox_MouseEnter);
+            this.searchToolStripTextBox.MouseLeave += new System.EventHandler(this.SearchToolStripTextBox_MouseLeave);
+            // 
+            // addToolStripButton
+            // 
+            this.addToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripButton.Image")));
+            this.addToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addToolStripButton.Name = "addToolStripButton";
+            this.addToolStripButton.Size = new System.Drawing.Size(120, 56);
+            this.addToolStripButton.Text = "Add";
+            this.addToolStripButton.ToolTipText = "Add (Ctrl+Shift+A)";
+            this.addToolStripButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // editToolStripButton
+            // 
+            this.editToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripButton.Image")));
+            this.editToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editToolStripButton.Name = "editToolStripButton";
+            this.editToolStripButton.Size = new System.Drawing.Size(116, 56);
+            this.editToolStripButton.Text = "Edit";
+            this.editToolStripButton.ToolTipText = "Edit (Ctrl+E)";
+            this.editToolStripButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // deleteToolStripButton
+            // 
+            this.deleteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripButton.Image")));
+            this.deleteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteToolStripButton.Name = "deleteToolStripButton";
+            this.deleteToolStripButton.Size = new System.Drawing.Size(154, 56);
+            this.deleteToolStripButton.Text = "Delete";
+            this.deleteToolStripButton.ToolTipText = "Delete (Del)";
+            this.deleteToolStripButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // mainMenuToolStrip
+            // 
+            this.mainMenuToolStrip.AutoSize = false;
+            this.mainMenuToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainMenuToolStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.mainMenuToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openFileToolStripButton,
+            this.saveToolStripButton,
+            this.searchToolStripTextBox,
+            this.addToolStripButton,
+            this.editToolStripButton,
+            this.deleteToolStripButton,
+            this.toolStripButton1});
+            this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuToolStrip.Name = "mainMenuToolStrip";
+            this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(2250, 63);
+            this.mainMenuToolStrip.TabIndex = 3;
+            this.mainMenuToolStrip.TabStop = true;
+            this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(1316, 107);
+            this.monthCalendar1.MaxDate = new System.DateTime(2020, 4, 13, 19, 59, 45, 0);
+            this.monthCalendar1.MinDate = new System.DateTime(2012, 1, 1, 0, 0, 0, 0);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 4;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(58, 63);
+            this.toolStripButton1.Text = "Filter Date";
             // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2266, 1339);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.baseSplitContainer);
             this.Controls.Add(this.mainMenuStrip);
+            this.KeyPreview = true;
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainMenuForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.healthDataFilterFlowLayoutPanel.ResumeLayout(false);
@@ -534,13 +653,12 @@
             this.fileOperationGroupBox.ResumeLayout(false);
             this.editHealthDataGroupBox.ResumeLayout(false);
             this.editHealthDataGroupBox.PerformLayout();
-            this.mainMenuToolStrip.ResumeLayout(false);
-            this.mainMenuToolStrip.PerformLayout();
             this.baseSplitContainer.Panel1.ResumeLayout(false);
-            this.baseSplitContainer.Panel1.PerformLayout();
             this.baseSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.baseSplitContainer)).EndInit();
             this.baseSplitContainer.ResumeLayout(false);
+            this.mainMenuToolStrip.ResumeLayout(false);
+            this.mainMenuToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,7 +667,7 @@
         #endregion
 
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button importFromFileButton;
+        private System.Windows.Forms.Button openFileButton;
         private System.Windows.Forms.Button saveToFileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
@@ -566,7 +684,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importFromFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
@@ -577,14 +695,22 @@
         private System.Windows.Forms.GroupBox editHealthDataGroupBox;
         private System.Windows.Forms.FlowLayoutPanel healthDataFilterFlowLayoutPanel;
         private System.Windows.Forms.CheckBox visitHubeiFilterCheckBox;
-        private System.Windows.Forms.ToolStripMenuItem editByGinNumberToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewEmployeeHealthDataToolStripMenuItem;
         private System.Windows.Forms.CheckBox hasAbnormalSymptomFilterCheckBox;
-        private System.Windows.Forms.ToolStrip mainMenuToolStrip;
-        private System.Windows.Forms.ToolStripButton toolStripButton;
-        private System.Windows.Forms.ToolStripTextBox searchToolStripTextBox;
         private System.Windows.Forms.SplitContainer baseSplitContainer;
-        private System.Windows.Forms.ToolStripButton importToolStripButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItemEdit;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem2;
+        private System.Windows.Forms.ToolStrip mainMenuToolStrip;
+        private System.Windows.Forms.ToolStripButton openFileToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
+        private System.Windows.Forms.ToolStripTextBox searchToolStripTextBox;
+        private System.Windows.Forms.ToolStripButton addToolStripButton;
+        private System.Windows.Forms.ToolStripButton editToolStripButton;
+        private System.Windows.Forms.ToolStripButton deleteToolStripButton;
+        private System.Windows.Forms.ToolStripTextBox toolStripButton1;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
