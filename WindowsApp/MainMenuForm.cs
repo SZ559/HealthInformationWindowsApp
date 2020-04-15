@@ -12,7 +12,6 @@ namespace WindowsApp
     {
         private HealthDatabase myHealthRecord;
         private FilterOperation filter = new FilterOperation();
-        private DataGridViewFormatSetting dataGridViewFormatSetting = new DataGridViewFormatSetting();
         private int selectedGinNumber = -1;
         public MainMenuForm()
         {
@@ -20,7 +19,12 @@ namespace WindowsApp
             myHealthRecord = new HealthDatabase();
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
             healthDataGridView.DataSource = healthDatabaseBindingSource;
-            healthDataGridView = dataGridViewFormatSetting.InitializeColumnHeader(healthDataGridView);
+            DataGridViewSetting.InitializeColumnHeader(healthDataGridView);
+        }
+        private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
+        {
+            currentStatusToolStripStatusLabel.Text = sender.ToString();
+            warningToolStripStatusLabel1.Visible = false;
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -33,24 +37,19 @@ namespace WindowsApp
                 currentStatusToolStripStatusLabel.Text = "Adding";
             }
         }
-        private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
-        {
-            currentStatusToolStripStatusLabel.Text = sender.ToString();
-            warningToolStripStatusLabel1.Visible = false;
-        }
         private void EditButton_Click(object sender, EventArgs e)
         {
             OpenEditForm(selectedGinNumber);
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (selectedGinNumber != -1)
+            if (!IsAnotherFormOpened() && selectedGinNumber != -1)
             {
                 Person personToBeDeleted = myHealthRecord.HealthRecord[selectedGinNumber];
                 DeletePerson(personToBeDeleted);
             }
         }
-        private void ImportFromFileButton_Click(object sender, EventArgs e)
+        private void OpenFileButton_Click(object sender, EventArgs e)
         {
             if (!IsAnotherFormOpened())
             {
@@ -58,8 +57,8 @@ namespace WindowsApp
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    string inputResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
-                    currentStatusToolStripStatusLabel.Text = inputResult;
+                    string importResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
+                    currentStatusToolStripStatusLabel.Text = importResult;
                     healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
                 }
             }
@@ -83,29 +82,15 @@ namespace WindowsApp
         {
             if (e.KeyCode == Keys.Enter)
             {
-                FormatValidator formatvalidator = new FormatValidator();
-                if (formatvalidator.HasFormatError_GinNumber(searchToolStripTextBox.Text))
-                {
-                    MessageBox.Show("The Gin Number must be a valid positive integer.");
-                    return;
-                }
-                e.SuppressKeyPress = true;
                 int ginNumber = ValidateGinNumber(searchToolStripTextBox.Text);
                 if (ginNumber == -1)
                 {
                     ResetSearchToolStripTextBox();
                     return;
                 }
+                e.SuppressKeyPress = true;
                 OpenEditForm(ginNumber);
             }
-        }
-        private void ViewEmployeeHealthDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            filter.Filter = "";
-            healthDatabaseBindingSource.Filter = filter.Filter;
-            hasAbnormalSymptomFilterCheckBox.Checked = false;
-            visitHubeiFilterCheckBox.Checked = false;
-            viewSuspectedCaseCheckBox.Checked = false;
         }
         private void ViewCurrentStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -119,7 +104,15 @@ namespace WindowsApp
             statusStrip2.Visible = false;
             viewCurrentStatusToolStripMenuItem.Checked = false;
         }
-        private void viewToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ViewEmployeeHealthDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter.Filter = "";
+            healthDatabaseBindingSource.Filter = filter.Filter;
+            hasAbnormalSymptomFilterCheckBox.Checked = false;
+            visitHubeiFilterCheckBox.Checked = false;
+            viewSuspectedCaseCheckBox.Checked = false;
+        }
+        private void ViewToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             viewToolBarToolStripMenuItem.Checked = !mainMenuToolStrip.Visible;
             mainMenuToolStrip.Visible = viewToolBarToolStripMenuItem.Checked;
@@ -167,6 +160,12 @@ namespace WindowsApp
         {
             if (ginNumberString != String.Empty)
             {
+                FormatValidator formatvalidator = new FormatValidator();
+                if (formatvalidator.HasFormatError_GinNumber(ginNumberString))
+                {
+                    MessageBox.Show("The Gin Number must be a valid positive integer.");
+                    return -1;
+                }
                 int ginNumber = Int32.Parse(ginNumberString);
                 if (myHealthRecord.HealthRecord.ContainsKey(ginNumber))
                 {
@@ -228,7 +227,6 @@ namespace WindowsApp
             string size = "Size: " + this.Width.ToString() + ", " + this.Height.ToString();
             sizeToolStripStatusLabel2.Text = size;
         }
-
         private bool IsAnotherFormOpened()
         {
             if (Application.OpenForms.Count < 2) 

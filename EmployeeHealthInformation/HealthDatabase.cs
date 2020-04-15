@@ -1,11 +1,5 @@
 using System.Collections.Generic;
 using System.ComponentModel;
-using System;
-using System.Linq;
-using System.Windows.Forms;
-using FileOperation;
-using EmployeeInformation;
-using DatabaseOperation;
 using System.Data;
 
 namespace EmployeeInformation

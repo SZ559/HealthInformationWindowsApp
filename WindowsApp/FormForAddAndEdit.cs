@@ -5,7 +5,6 @@ using DatabaseOperation;
 
 namespace WindowsApp
 {
-
     public partial class FormForAddAndEdit : Form
     {      
         private string option;
@@ -13,7 +12,6 @@ namespace WindowsApp
         private bool hasAbnormalSymptom;
         private bool visitHubei;
         private FormatValidator formatValidator = new FormatValidator();
-
         internal event EditHealthInformation editHealthInformation;
         internal event UpdateHealthRecord updateHealthRecrod;
         internal event EventHandler statusBarUpdate_SubFormClosed;
@@ -49,7 +47,6 @@ namespace WindowsApp
             hasAbnormalSymptomYesRadioButton.Checked = originalPerson.HasAbnormalSymptom;
             hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
         }
-
         private void AddSaveButton_Click(object sender, EventArgs e)
         {
             errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
@@ -99,7 +96,6 @@ namespace WindowsApp
                 hasAbnormalSymptom = hasAbnormalSymptomYesRadioButton.Checked;
             }
         }
-
         private void CheckVisitHubei()
         {
             errorVisitHubei.Visible = (!visitHubeiYesRadioButton.Checked) && (!visitHubeiNoRadioButton.Checked);
@@ -132,13 +128,9 @@ namespace WindowsApp
         {
             this.Close();
         }
-
         private void FormForAddAndEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (statusBarUpdate_SubFormClosed != null)
-            {
-                statusBarUpdate_SubFormClosed("Ready", EventArgs.Empty);
-            }
+            statusBarUpdate_SubFormClosed?.Invoke("Ready", EventArgs.Empty);
         }
     }
 }

@@ -54,6 +54,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewEmployeeHealthDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCurrentStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.searchToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -62,21 +63,20 @@
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.mainMenuToolStrip = new System.Windows.Forms.ToolStrip();
             this.tableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
-            this.mainMenuToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.healthDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.sizeToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatus2LabelAppName = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelHide = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hideStatusBar = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentStatusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.warningToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.viewToolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideStatusBar = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.sizeToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus2LabelAppName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mainMenuToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.healthDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanelEmployeeHealthData.SuspendLayout();
@@ -84,11 +84,11 @@
             this.mainMenuStrip.SuspendLayout();
             this.mainMenuToolStrip.SuspendLayout();
             this.tableLayoutPanelBase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.statusStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -107,7 +107,7 @@
             this.viewSuspectedCaseCheckBox.AutoSize = true;
             this.viewSuspectedCaseCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.viewSuspectedCaseCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(1254, 3);
+            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(1277, 3);
             this.viewSuspectedCaseCheckBox.Name = "viewSuspectedCaseCheckBox";
             this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 43);
             this.viewSuspectedCaseCheckBox.TabIndex = 1;
@@ -120,7 +120,7 @@
             this.employeeHealthDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeHealthDataLabel.AutoSize = true;
             this.employeeHealthDataLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.employeeHealthDataLabel.Location = new System.Drawing.Point(5, 12);
+            this.employeeHealthDataLabel.Location = new System.Drawing.Point(5, 13);
             this.employeeHealthDataLabel.Name = "employeeHealthDataLabel";
             this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 39);
             this.employeeHealthDataLabel.TabIndex = 2;
@@ -135,14 +135,14 @@
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataGridView.Location = new System.Drawing.Point(5, 56);
+            this.healthDataGridView.Location = new System.Drawing.Point(5, 57);
             this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1628, 877);
+            this.healthDataGridView.Size = new System.Drawing.Size(1651, 900);
             this.healthDataGridView.StandardTab = true;
             this.healthDataGridView.TabIndex = 0;
             this.healthDataGridView.SelectionChanged += new System.EventHandler(this.UpdateRowSelected);
@@ -199,7 +199,7 @@
             this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(1638, 990);
+            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(1661, 1015);
             this.tableLayoutPanelEmployeeHealthData.TabIndex = 19;
             // 
             // healthDataFilterFlowLayoutPanel
@@ -209,9 +209,9 @@
             this.healthDataFilterFlowLayoutPanel.Controls.Add(this.visitHubeiFilterCheckBox);
             this.healthDataFilterFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.healthDataFilterFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 941);
+            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 965);
             this.healthDataFilterFlowLayoutPanel.Name = "healthDataFilterFlowLayoutPanel";
-            this.healthDataFilterFlowLayoutPanel.Size = new System.Drawing.Size(1628, 44);
+            this.healthDataFilterFlowLayoutPanel.Size = new System.Drawing.Size(1651, 45);
             this.healthDataFilterFlowLayoutPanel.TabIndex = 1;
             // 
             // hasAbnormalSymptomFilterCheckBox
@@ -221,7 +221,7 @@
             this.hasAbnormalSymptomFilterCheckBox.AutoSize = true;
             this.hasAbnormalSymptomFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.hasAbnormalSymptomFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(614, 3);
+            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(637, 3);
             this.hasAbnormalSymptomFilterCheckBox.Name = "hasAbnormalSymptomFilterCheckBox";
             this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(634, 43);
             this.hasAbnormalSymptomFilterCheckBox.TabIndex = 2;
@@ -237,7 +237,7 @@
             this.visitHubeiFilterCheckBox.AutoSize = true;
             this.visitHubeiFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.visitHubeiFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(3, 3);
+            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(26, 3);
             this.visitHubeiFilterCheckBox.Name = "visitHubeiFilterCheckBox";
             this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(605, 43);
             this.visitHubeiFilterCheckBox.TabIndex = 3;
@@ -256,7 +256,7 @@
             this.viewToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1644, 49);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1667, 49);
             this.mainMenuStrip.TabIndex = 2;
             this.mainMenuStrip.TabStop = true;
             this.mainMenuStrip.Text = "Add";
@@ -278,7 +278,7 @@
             this.openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openFileToolStripMenuItem.Size = new System.Drawing.Size(438, 54);
             this.openFileToolStripMenuItem.Text = "Open File";
-            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.ImportFromFileButton_Click);
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // saveToFileToolStripMenuItem
             // 
@@ -305,7 +305,7 @@
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
             this.addToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(448, 54);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(423, 54);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -314,7 +314,7 @@
             this.editToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem2.Image")));
             this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
             this.editToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.editToolStripMenuItem2.Size = new System.Drawing.Size(448, 54);
+            this.editToolStripMenuItem2.Size = new System.Drawing.Size(423, 54);
             this.editToolStripMenuItem2.Text = "Edit";
             this.editToolStripMenuItem2.Click += new System.EventHandler(this.EditButton_Click);
             // 
@@ -323,7 +323,7 @@
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(423, 54);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -358,6 +358,17 @@
             this.viewCurrentStatusToolStripMenuItem.Text = "View Status Bar";
             this.viewCurrentStatusToolStripMenuItem.Click += new System.EventHandler(this.ViewCurrentStatusToolStripMenuItem_Click);
             // 
+            // viewToolBarToolStripMenuItem
+            // 
+            this.viewToolBarToolStripMenuItem.Checked = true;
+            this.viewToolBarToolStripMenuItem.CheckOnClick = true;
+            this.viewToolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.viewToolBarToolStripMenuItem.Name = "viewToolBarToolStripMenuItem";
+            this.viewToolBarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.viewToolBarToolStripMenuItem.Size = new System.Drawing.Size(663, 54);
+            this.viewToolBarToolStripMenuItem.Text = "View Tool Bar";
+            this.viewToolBarToolStripMenuItem.Click += new System.EventHandler(this.ViewToolBarToolStripMenuItem_Click);
+            // 
             // openFileToolStripButton
             // 
             this.openFileToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripButton.Image")));
@@ -367,7 +378,7 @@
             this.openFileToolStripButton.Size = new System.Drawing.Size(189, 56);
             this.openFileToolStripButton.Text = "Open File";
             this.openFileToolStripButton.ToolTipText = "Open File (Ctrl+O)";
-            this.openFileToolStripButton.Click += new System.EventHandler(this.ImportFromFileButton_Click);
+            this.openFileToolStripButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // saveToolStripButton
             // 
@@ -441,7 +452,7 @@
             this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuToolStrip.Name = "mainMenuToolStrip";
             this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(1644, 63);
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(1667, 63);
             this.mainMenuToolStrip.TabIndex = 3;
             this.mainMenuToolStrip.TabStop = true;
             this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
@@ -460,22 +471,16 @@
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.32355F));
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.676443F));
-            this.tableLayoutPanelBase.Size = new System.Drawing.Size(1644, 1120);
+            this.tableLayoutPanelBase.Size = new System.Drawing.Size(1667, 1146);
             this.tableLayoutPanelBase.TabIndex = 24;
-            // 
-            // mainMenuToolStripStatusLabel2
-            // 
-            this.mainMenuToolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
-            this.mainMenuToolStripStatusLabel2.Name = "mainMenuToolStripStatusLabel2";
-            this.mainMenuToolStripStatusLabel2.Size = new System.Drawing.Size(0, 39);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 1062);
+            this.panel1.Location = new System.Drawing.Point(3, 1087);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1638, 55);
+            this.panel1.Size = new System.Drawing.Size(1661, 56);
             this.panel1.TabIndex = 20;
             // 
             // tableLayoutPanel1
@@ -490,33 +495,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1638, 55);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1661, 56);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // statusStrip2
-            // 
-            this.statusStrip2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.statusStrip2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusStrip2.ImageScalingSize = new System.Drawing.Size(40, 40);
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sizeToolStripStatusLabel2,
-            this.toolStripStatus2LabelAppName});
-            this.statusStrip2.Location = new System.Drawing.Point(1145, 0);
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(493, 52);
-            this.statusStrip2.TabIndex = 28;
-            // 
-            // sizeToolStripStatusLabel2
-            // 
-            this.sizeToolStripStatusLabel2.Name = "sizeToolStripStatusLabel2";
-            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(196, 39);
-            this.sizeToolStripStatusLabel2.Text = "Size: 297, 41";
-            // 
-            // toolStripStatus2LabelAppName
-            // 
-            this.toolStripStatus2LabelAppName.Name = "toolStripStatus2LabelAppName";
-            this.toolStripStatus2LabelAppName.Size = new System.Drawing.Size(235, 39);
-            this.toolStripStatus2LabelAppName.Text = "Health Monitor";
             // 
             // statusStrip1
             // 
@@ -532,7 +512,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1145, 53);
+            this.statusStrip1.Size = new System.Drawing.Size(1161, 53);
             this.statusStrip1.TabIndex = 29;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -540,6 +520,15 @@
             // 
             this.toolStripStatusLabelHide.Name = "toolStripStatusLabelHide";
             this.toolStripStatusLabelHide.Size = new System.Drawing.Size(0, 40);
+            // 
+            // hideStatusBar
+            // 
+            this.hideStatusBar.Image = ((System.Drawing.Image)(resources.GetObject("hideStatusBar.Image")));
+            this.hideStatusBar.Name = "hideStatusBar";
+            this.hideStatusBar.Size = new System.Drawing.Size(66, 40);
+            this.hideStatusBar.Text = " ";
+            this.hideStatusBar.ToolTipText = "Hide Status Bar";
+            this.hideStatusBar.Click += new System.EventHandler(this.HideStatusBar_Click);
             // 
             // currentStatusToolStripStatusLabel
             // 
@@ -566,30 +555,42 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 40);
             // 
-            // viewToolBarToolStripMenuItem
+            // statusStrip2
             // 
-            this.viewToolBarToolStripMenuItem.Checked = true;
-            this.viewToolBarToolStripMenuItem.CheckOnClick = true;
-            this.viewToolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.viewToolBarToolStripMenuItem.Name = "viewToolBarToolStripMenuItem";
-            this.viewToolBarToolStripMenuItem.Size = new System.Drawing.Size(663, 54);
-            this.viewToolBarToolStripMenuItem.Text = "View Tool Bar";
-            this.viewToolBarToolStripMenuItem.Click += new System.EventHandler(this.viewToolBarToolStripMenuItem_Click);
+            this.statusStrip2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statusStrip2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStrip2.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sizeToolStripStatusLabel2,
+            this.toolStripStatus2LabelAppName});
+            this.statusStrip2.Location = new System.Drawing.Point(1161, 0);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(500, 52);
+            this.statusStrip2.TabIndex = 28;
             // 
-            // hideStatusBar
+            // sizeToolStripStatusLabel2
             // 
-            this.hideStatusBar.Image = ((System.Drawing.Image)(resources.GetObject("hideStatusBar.Image")));
-            this.hideStatusBar.Name = "hideStatusBar";
-            this.hideStatusBar.Size = new System.Drawing.Size(66, 40);
-            this.hideStatusBar.Text = " ";
-            this.hideStatusBar.ToolTipText = "Hide Status Bar";
-            this.hideStatusBar.Click += new System.EventHandler(this.HideStatusBar_Click);
+            this.sizeToolStripStatusLabel2.Name = "sizeToolStripStatusLabel2";
+            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(196, 39);
+            this.sizeToolStripStatusLabel2.Text = "Size: 297, 41";
+            // 
+            // toolStripStatus2LabelAppName
+            // 
+            this.toolStripStatus2LabelAppName.Name = "toolStripStatus2LabelAppName";
+            this.toolStripStatus2LabelAppName.Size = new System.Drawing.Size(235, 39);
+            this.toolStripStatus2LabelAppName.Text = "Health Monitor";
+            // 
+            // mainMenuToolStripStatusLabel2
+            // 
+            this.mainMenuToolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
+            this.mainMenuToolStripStatusLabel2.Name = "mainMenuToolStripStatusLabel2";
+            this.mainMenuToolStripStatusLabel2.Size = new System.Drawing.Size(0, 39);
             // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1644, 1169);
+            this.ClientSize = new System.Drawing.Size(1667, 1195);
             this.Controls.Add(this.tableLayoutPanelBase);
             this.Controls.Add(this.mainMenuStrip);
             this.KeyPreview = true;
@@ -609,14 +610,14 @@
             this.mainMenuToolStrip.ResumeLayout(false);
             this.mainMenuToolStrip.PerformLayout();
             this.tableLayoutPanelBase.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

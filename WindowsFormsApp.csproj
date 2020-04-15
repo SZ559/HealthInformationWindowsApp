@@ -61,7 +61,8 @@
     <Compile Include="EmployeeHealthInformation\Person.cs" />
     <Compile Include="FileOperation\DataFileOperation.cs" />
     <Compile Include="DatabaseOperation\FormatValidator.cs" />
-    <Compile Include="WindowsApp\DataGridViewFormatSetting.cs" />
+    <Compile Include="WindowsApp\Class1.cs" />
+    <Compile Include="WindowsApp\DataGridViewSetting.cs" />
     <Compile Include="WindowsApp\Filter.cs" />
     <Compile Include="WindowsApp\Form1.cs">
       <SubType>Form</SubType>
@@ -69,11 +70,11 @@
     <Compile Include="WindowsApp\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsApp\FormForEnterAndEdit.cs">
+    <Compile Include="WindowsApp\FormForAddAndEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsApp\FormForEnterAndEdit.Designer.cs">
-      <DependentUpon>FormForEnterAndEdit.cs</DependentUpon>
+    <Compile Include="WindowsApp\FormForAddAndEdit.Designer.cs">
+      <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsApp\MainMenuForm.cs">
       <SubType>Form</SubType>
@@ -87,8 +88,8 @@
     <EmbeddedResource Include="WindowsApp\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsApp\FormForEnterAndEdit.resx">
-      <DependentUpon>FormForEnterAndEdit.cs</DependentUpon>
+    <EmbeddedResource Include="WindowsApp\FormForAddAndEdit.resx">
+      <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsApp\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
