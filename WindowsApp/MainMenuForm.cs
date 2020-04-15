@@ -1,164 +1,169 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using FileOperation;
 using EmployeeInformation;
 using DatabaseOperation;
-using System.Security.AccessControl;
 
 namespace WindowsApp
 {
+    public delegate bool UpdateHealthRecord(Person person);
+    public delegate bool EditHealthInformation(int myGinNumber, Person updatedPerson);
     public partial class MainMenuForm : Form
     {
         private HealthDatabase myHealthRecord;
-        private FormForAddAndEdit formForEnterAndEdit;
-        private string filter = "";
-        private int selectGinNumber;
+        private FilterOperation filter = new FilterOperation();
+        private DataGridViewFormatSetting dataGridViewFormatSetting = new DataGridViewFormatSetting();
+        private int selectedGinNumber = -1;
         public MainMenuForm()
         {
             InitializeComponent();
             myHealthRecord = new HealthDatabase();
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
             healthDataGridView.DataSource = healthDatabaseBindingSource;
-            InitializeColumnHeader(healthDataGridView);
+            healthDataGridView = dataGridViewFormatSetting.InitializeColumnHeader(healthDataGridView);
         }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if ((formForEnterAndEdit == null) || (formForEnterAndEdit.IsDisposed))
+            if (!IsAnotherFormOpened())
             {
-                formForEnterAndEdit = new FormForAddAndEdit(this, "Add", null);
-                formForEnterAndEdit.Show();
+                FormForAddAndEdit formForAddAndEdit = new FormForAddAndEdit("Add", null);
+                formForAddAndEdit.updateHealthRecrod += new UpdateHealthRecord(AddPerson);
+                formForAddAndEdit.statusBarUpdate_SubFormClosed += new EventHandler(StatusBarUpdate_SubFormClosed);
+                formForAddAndEdit.Show();
+                currentStatusToolStripStatusLabel.Text = "Adding";
             }
+        }
+        private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
+        {
+            currentStatusToolStripStatusLabel.Text = sender.ToString();
+            warningToolStripStatusLabel1.Visible = false;
         }
         private void EditButton_Click(object sender, EventArgs e)
         {
-            int ginNumber = CheckExistenceOfGinNumber(selectGinNumber);
-            OpenEditForm(ginNumber);
+            OpenEditForm(selectedGinNumber);
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            int ginNumber = CheckExistenceOfGinNumber(selectGinNumber);
-            if (ginNumber != -1)
+            if (selectedGinNumber != -1)
             {
-                DeletePerson(ginNumber);
+                Person personToBeDeleted = myHealthRecord.HealthRecord[selectedGinNumber];
+                DeletePerson(personToBeDeleted);
             }
         }
         private void ImportFromFileButton_Click(object sender, EventArgs e)
         {
-            if ((formForEnterAndEdit == null) || (formForEnterAndEdit.IsDisposed))
+            if (!IsAnotherFormOpened())
             {
+                currentStatusToolStripStatusLabel.Text = "Loading File";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
                     string inputResult = DataFileOperation.InputFromCSVFile(ref myHealthRecord, filePath);
-                    MessageBox.Show(inputResult);
+                    currentStatusToolStripStatusLabel.Text = inputResult;
                     healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
                 }
             }
+            currentStatusToolStripStatusLabel.Text = "Ready";
         }
         private void SaveToFileButton_Click(object sender, EventArgs e)
         {
-            if ((formForEnterAndEdit == null) || (formForEnterAndEdit.IsDisposed))
+            if (!IsAnotherFormOpened())
             {
+                currentStatusToolStripStatusLabel.Text = "Saving File";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = saveFileDialog.FileName;
                     string saveResult = DataFileOperation.SaveAsCSV(ref myHealthRecord, filePath);
-                    MessageBox.Show(saveResult);
+                    currentStatusToolStripStatusLabel.Text = saveResult;
                 }
             }
+            currentStatusToolStripStatusLabel.Text = "Ready";
         }
         private void SearchToolStripTextBox_KeyDownEnter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                int ginNumber = CheckExistenceOfGinNumber(searchToolStripTextBox.Text);
+                FormatValidator formatvalidator = new FormatValidator();
+                if (formatvalidator.HasFormatError_GinNumber(searchToolStripTextBox.Text))
+                {
+                    MessageBox.Show("The Gin Number must be a valid positive integer.");
+                    return;
+                }
+                e.SuppressKeyPress = true;
+                int ginNumber = ValidateGinNumber(searchToolStripTextBox.Text);
                 if (ginNumber == -1)
                 {
-                    SearchToolStripTextBox_MouseEnter(sender, e);
+                    ResetSearchToolStripTextBox();
                     return;
                 }
                 OpenEditForm(ginNumber);
             }
         }
-        private void SearchToolStripTextBox_MouseEnter(object sender, EventArgs e)
-        {
-            searchToolStripTextBox.Text = String.Empty;
-            searchToolStripTextBox.ForeColor = System.Drawing.Color.Black;
-        }
-        private void SearchToolStripTextBox_MouseLeave(object sender, EventArgs e)
-        {
-            searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
-            searchToolStripTextBox.ForeColor = System.Drawing.Color.DarkGray;
-        }
-        private void OpenEditForm(int ginNumber) 
-        {
-            if (ginNumber != -1)
-            {
-                if ((formForEnterAndEdit == null) || (formForEnterAndEdit.IsDisposed))
-                {
-                    Person personToBeDeletedOrModified = myHealthRecord.HealthRecord[ginNumber];
-                    formForEnterAndEdit = new FormForAddAndEdit(this, "Edit", personToBeDeletedOrModified);
-                    formForEnterAndEdit.Show();
-                }
-            }
-        }
-        private void ViewSuspectedCaseCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (viewSuspectedCaseCheckBox.Checked)
-            {
-                AddFilter("(VisitHubei = 'True' OR HasAbnormalSymptom = 'True' OR Temperature > 37.3)");
-            }
-            else
-            {
-                RemoveFilter("(VisitHubei = 'True' OR HasAbnormalSymptom = 'True' OR Temperature > 37.3)");
-            }
-        }
-        private void VisitHubeiFilterCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (visitHubeiFilterCheckBox.Checked)
-            {
-                AddFilter("VisitHubei = 'True'");
-            }
-            else
-            {
-                RemoveFilter("VisitHubei = 'True'");
-            }
-        }
-        private void HasAbnormalSymptomCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (hasAbnormalSymptomFilterCheckBox.Checked)
-            {
-                AddFilter("HasAbnormalSymptom = 'True'");
-            }
-            else
-            {
-                RemoveFilter("HasAbnormalSymptom = 'True'");
-            }
-        }
         private void ViewEmployeeHealthDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filter = "";
-            healthDatabaseBindingSource.Filter = filter;
+            filter.Filter = "";
+            healthDatabaseBindingSource.Filter = filter.Filter;
             hasAbnormalSymptomFilterCheckBox.Checked = false;
             visitHubeiFilterCheckBox.Checked = false;
             viewSuspectedCaseCheckBox.Checked = false;
         }
-        private void IntegerCheck(object sender, KeyPressEventArgs e)
+        private void ViewCurrentStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            errorGinNumberLabel.Visible = e.Handled;
+            viewCurrentStatusToolStripMenuItem.Checked = !statusStrip1.Visible;
+            statusStrip1.Visible = viewCurrentStatusToolStripMenuItem.Checked;
+            statusStrip2.Visible = viewCurrentStatusToolStripMenuItem.Checked;
         }
-        private void IntegerCheck_WithMessageBoxWarning(object sender, KeyPressEventArgs e)
+        private void HideStatusBar_Click(object sender, EventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            if (e.Handled)
-            {
-                MessageBox.Show("The Gin Number must be an integer");
+            statusStrip1.Visible = false;
+            statusStrip2.Visible = false;
+            viewCurrentStatusToolStripMenuItem.Checked = false;
+        }
+        private void viewToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewToolBarToolStripMenuItem.Checked = !mainMenuToolStrip.Visible;
+            mainMenuToolStrip.Visible = viewToolBarToolStripMenuItem.Checked;
+        }
+        private void ViewSuspectedCaseCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            healthDatabaseBindingSource.Filter = filter.UpdateFilter(viewSuspectedCaseCheckBox, "(VisitHubei = 'True' OR HasAbnormalSymptom = 'True' OR Temperature > 37.3)");
+        }
+        private void VisitHubeiFilterCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            healthDatabaseBindingSource.Filter = filter.UpdateFilter(visitHubeiFilterCheckBox, "VisitHubei = 'True'");
+        }
+        private void HasAbnormalSymptomCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            healthDatabaseBindingSource.Filter = filter.UpdateFilter(hasAbnormalSymptomFilterCheckBox, "HasAbnormalSymptom = 'True'");
+        }
+        private void SearchToolStripTextBox_Enter(object sender, EventArgs e)
+        {
+            ResetSearchToolStripTextBox();
+        }
+        private void SearchToolStripTextBox_Leave(object sender, EventArgs e)
+        {
+            searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
+            searchToolStripTextBox.ForeColor = System.Drawing.Color.DarkGray;
+        }
+        private void ResetSearchToolStripTextBox()
+        {
+            searchToolStripTextBox.Text = String.Empty;
+            searchToolStripTextBox.ForeColor = System.Drawing.Color.Black;
+        }
+        private void OpenEditForm(int ginNumber) 
+        {
+            if (!IsAnotherFormOpened() && ginNumber != -1)
+            { 
+                Person personToBeEdited = myHealthRecord.HealthRecord[ginNumber];
+                FormForAddAndEdit formForAddAndEdit = new FormForAddAndEdit("Edit", personToBeEdited);
+                formForAddAndEdit.editHealthInformation += new EditHealthInformation(EditChosenPerson);
+                formForAddAndEdit.updateHealthRecrod += new UpdateHealthRecord(DeletePerson);
+                formForAddAndEdit.statusBarUpdate_SubFormClosed += new EventHandler(StatusBarUpdate_SubFormClosed);
+                formForAddAndEdit.Show();
+                currentStatusToolStripStatusLabel.Text = "Editing";
             }
         }
-        private int CheckExistenceOfGinNumber(string ginNumberString)
+        private int ValidateGinNumber(string ginNumberString)
         {
             if (ginNumberString != String.Empty)
             {
@@ -171,61 +176,26 @@ namespace WindowsApp
             MessageBox.Show("Cannot find the Gin Number!");
             return -1;
         }
-        private void AddFilter(string filterToBeAdded)
-        {
-            if (filter != "")
-            {
-                filter = filter + " AND ";
-            }
-            filter = filter + filterToBeAdded;
-            healthDatabaseBindingSource.Filter = filter;
-        }
-        private void RemoveFilter(string filterToBeRemoved)
-        {
-            string logicOperator = " AND ";
-            if (filter.IndexOf(filterToBeRemoved) < 0)
-            {
-                return;
-            }
-            else if (filter == filterToBeRemoved)
-            {   
-                filter = "";
-            }
-            else
-            {
-                string subStringToBeRemoved = logicOperator + filterToBeRemoved;
-                int index = filter.IndexOf(subStringToBeRemoved);
-                if (index < 0)
-                {
-                    subStringToBeRemoved = filterToBeRemoved + logicOperator;
-                    index = filter.IndexOf(subStringToBeRemoved);
-                }
-                filter = filter.Remove(index, subStringToBeRemoved.Length);
-            }
-            healthDatabaseBindingSource.Filter = filter;
-        }
-        private void SelectRowChange(object sender, EventArgs e)
+        private void UpdateRowSelected(object sender, EventArgs e)
         {    
             if (healthDataGridView.RowCount > 0)
             {
                 int index = healthDataGridView.CurrentRow.Index;
-                selectGinNumber = (int) healthDataGridView.Rows[index].Cells["GinNumber"].Value;
-                string ginNumberString = selectGinNumber.ToString();
-                ginNumberTextBox.Text = ginNumberString;
-                
+                selectedGinNumber = (int) healthDataGridView.Rows[index].Cells["GinNumber"].Value;
             }
         }
-        internal bool AddPerson(Person newPerson)
+        private bool AddPerson(Person newPerson)
         {
             if (myHealthRecord.AddNewPerson(newPerson) == false)
             {
                 MessageBox.Show("Add Failed! The Gin Number you entered already exists.");
                 return false;
             }
+            currentStatusToolStripStatusLabel.Text = "Health Information Added";
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
             return true;
         }
-        internal bool EditChosenPerson(int myGinNumber, Person updatedPerson)
+        private bool EditChosenPerson(int myGinNumber, Person updatedPerson)
         {
             if (myHealthRecord.ModifyPerson(myGinNumber, updatedPerson) == false)
             {
@@ -235,34 +205,39 @@ namespace WindowsApp
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
             return true;
         }
-        internal bool DeletePerson(int ginNumber)
+        private bool DeletePerson(Person person)
         {
-            Person personToBeDeletedOrModified = myHealthRecord.HealthRecord[ginNumber];
-            var confirmResult = MessageBox.Show("Are you sure to delete this person: " + personToBeDeletedOrModified.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure to delete this person: " + person.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                myHealthRecord.DeletePerson(ginNumber);
+                myHealthRecord.DeletePerson(person.GinNumber);
                 healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordDataTable;
                 return true;
             }
             return false;
         }
-        private void InitializeColumnHeader(DataGridView datagridview)
-        {
-            datagridview.Columns[0].HeaderCell.Value = "Gin Number";
-            datagridview.Columns[1].HeaderCell.Value = "Name";
-            datagridview.Columns[2].HeaderCell.Value = "Visit Hubei Recently";
-            datagridview.Columns[3].HeaderCell.Value = "Has Abnormal Symptom";
-            datagridview.Columns[4].HeaderCell.Value = "Body Temperature";
-        }
-
-
         private void MainMenuForm_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Control && e.KeyCode == Keys.Q))
             {
                 searchToolStripTextBox.Focus();
             }
+        }
+        private void MainMenuForm_SizeChanged(object sender, EventArgs e)
+        {
+            string size = "Size: " + this.Width.ToString() + ", " + this.Height.ToString();
+            sizeToolStripStatusLabel2.Text = size;
+        }
+
+        private bool IsAnotherFormOpened()
+        {
+            if (Application.OpenForms.Count < 2) 
+            {
+                return false;
+            }
+            warningToolStripStatusLabel1.Text = "Please close the current form!";
+            warningToolStripStatusLabel1.Visible = true;
+            return true;
         }
     }
 }

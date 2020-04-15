@@ -5,18 +5,21 @@ using DatabaseOperation;
 
 namespace WindowsApp
 {
+
     public partial class FormForAddAndEdit : Form
     {      
-        private MainMenuForm mainMenu;
         private string option;
         private Person originalPerson;
         private bool hasAbnormalSymptom;
         private bool visitHubei;
         private FormatValidator formatValidator = new FormatValidator();
-        public FormForAddAndEdit(MainMenuForm mainMenu, string option, Person originalPersonInformation)
+
+        internal event EditHealthInformation editHealthInformation;
+        internal event UpdateHealthRecord updateHealthRecrod;
+        internal event EventHandler statusBarUpdate_SubFormClosed;
+        public FormForAddAndEdit(string option, Person originalPersonInformation)
         {
             InitializeComponent();
-            this.mainMenu = mainMenu;
             this.option = option;
             this.originalPerson = originalPersonInformation;
             switch (option)
@@ -47,7 +50,7 @@ namespace WindowsApp
             hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
         }
 
-        private void AddConfirmButton_Click(object sender, EventArgs e)
+        private void AddSaveButton_Click(object sender, EventArgs e)
         {
             errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
             errorName.Visible = formatValidator.HasFormatError_Name(nameTextBox.Text); 
@@ -67,15 +70,15 @@ namespace WindowsApp
                 switch(option)
                 {
                     case "Add":
-                        if (mainMenu.AddPerson(newPerson) == true)
+                        if (updateHealthRecrod(newPerson) == true)
                         {
-                            ClearButton_Click(sender, e);
+                            ResetAll();
                         }
                         break;
                     case "Edit":
-                        if (mainMenu.EditChosenPerson(originalPerson.GinNumber, newPerson) == true)
+                        if (editHealthInformation(originalPerson.GinNumber, newPerson) == true)
                         {
-                            Close_Click(sender, e);
+                            Close();
                         }
                         break;
                 }
@@ -83,9 +86,9 @@ namespace WindowsApp
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (mainMenu.DeletePerson(originalPerson.GinNumber))
+            if (updateHealthRecrod(originalPerson))
             {
-                Close_Click(sender, e); 
+                Close(); 
             }
         }
         private void CheckAbnormalSymptom()
@@ -107,6 +110,10 @@ namespace WindowsApp
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            ResetAll();
+        }
+        private void ResetAll()
+        {
             ginNumberTextbox.Text = String.Empty;
             nameTextBox.Text = String.Empty;
             temperatureTextbox.Text = String.Empty;
@@ -126,5 +133,12 @@ namespace WindowsApp
             this.Close();
         }
 
+        private void FormForAddAndEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (statusBarUpdate_SubFormClosed != null)
+            {
+                statusBarUpdate_SubFormClosed("Ready", EventArgs.Empty);
+            }
+        }
     }
 }

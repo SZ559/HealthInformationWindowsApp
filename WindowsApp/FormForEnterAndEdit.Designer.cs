@@ -227,7 +227,7 @@
             this.addConfirmButton.TabIndex = 7;
             this.addConfirmButton.Text = "Add";
             this.addConfirmButton.UseVisualStyleBackColor = false;
-            this.addConfirmButton.Click += new System.EventHandler(this.AddConfirmButton_Click);
+            this.addConfirmButton.Click += new System.EventHandler(this.AddSaveButton_Click);
             // 
             // clearButton
             // 
@@ -384,6 +384,7 @@
             this.Name = "FormForAddAndEdit";
             this.Text = "Add";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormForAddAndEdit_FormClosed);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
