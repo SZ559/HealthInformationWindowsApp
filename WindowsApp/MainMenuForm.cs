@@ -131,11 +131,13 @@ namespace WindowsApp
         }
         private void SearchToolStripTextBox_Enter(object sender, EventArgs e)
         {
+            currentStatusToolStripStatusLabel.Text = "Press Enter to Search";
             ResetSearchToolStripTextBox();
         }
         private void SearchToolStripTextBox_Leave(object sender, EventArgs e)
         {
             searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
+            currentStatusToolStripStatusLabel.Text = "Ready";
             searchToolStripTextBox.ForeColor = System.Drawing.Color.DarkGray;
         }
         private void ResetSearchToolStripTextBox()

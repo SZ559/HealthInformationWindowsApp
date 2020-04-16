@@ -571,8 +571,8 @@
             // sizeToolStripStatusLabel2
             // 
             this.sizeToolStripStatusLabel2.Name = "sizeToolStripStatusLabel2";
-            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(196, 39);
-            this.sizeToolStripStatusLabel2.Text = "Size: 297, 41";
+            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(250, 39);
+            this.sizeToolStripStatusLabel2.Text = "Size: 1699, 1283";
             // 
             // toolStripStatus2LabelAppName
             // 
