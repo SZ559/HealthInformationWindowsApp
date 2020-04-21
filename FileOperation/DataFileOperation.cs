@@ -7,52 +7,60 @@ namespace FileOperation
 {
     public class DataFileOperation
     {
-        public static string InputFromCSVFile(ref HealthDatabase myHealthRecord, string filePath)
+        public static string InputFromCSVFile(ref EmployeeHealthDatabase myHealthRecord, string filePath)
         {
             FormatValidator formatValidator = new FormatValidator();
             try
             {
-                HealthDatabase newHealthRecord = new HealthDatabase();
+                EmployeeHealthDatabase newHealthRecord = new EmployeeHealthDatabase();
                 using (StreamReader myStreamReader = new StreamReader(filePath))
                 {
-                    string newPerson;
+                    string newRecord;
                     while (!myStreamReader.EndOfStream)
                     {
-                        newPerson = myStreamReader.ReadLine();
-                        if (formatValidator.CheckFormatError_InputString(newPerson) == "")
+                        newRecord = myStreamReader.ReadLine();
+                        if (formatValidator.CheckFormatError_InputString(newRecord) == "")
                         {
-                            Console.WriteLine("I am here");
-                            Person person = AddPersonHelperMethods.AddNewPerson_ThroughValidString(newPerson);
-                            newHealthRecord.AddNewPerson(person);
+                            string[] newPersonArray = newRecord.Split(',');
+                            int ginNumber = int.Parse(newPersonArray[0]);
+                            string lastName = newPersonArray[1];
+                            string firstName = newPersonArray[2];
+                            DateTime date = DateTime.Parse(newPersonArray[3]);
+                            bool visitedHubei = bool.Parse(newPersonArray[4]);
+                            bool hasAbnormalSymptom = bool.Parse(newPersonArray[5]);
+                            double temperature = double.Parse(newPersonArray[6]);
+                            Person person = new Person(ginNumber, firstName, lastName);
+                            HealthInformation healthInformation = new HealthInformation(date, visitedHubei, hasAbnormalSymptom, temperature);
+                            newHealthRecord.AddHealthRecord(person, healthInformation);
                         }
                         else
                         {
-                            //return ;
-                            //formatValidator.CheckFormatError_InputString(newPerson)
                             return "Import Failed! Format error occrus!";
                         }
                     }
                 }
                 myHealthRecord = newHealthRecord;
                 return "Import Success!";
-
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return "Import Failed!";
+                return $"Import Failed! {e.Message}";
             }
         }
 
-        public static string SaveAsCSV(ref HealthDatabase myHealthRecord, string filePath)
+        public static string SaveAsCSV(ref EmployeeHealthDatabase myHealthRecords, string filePath)
         {
             try
             {
                 using (StreamWriter myStreamSaver = new StreamWriter(filePath))
                 {
-                    foreach (Person myPerson in myHealthRecord.HealthRecord.Values)
+                    foreach (var employeeHealthRecord in myHealthRecords.HealthRecords.Values)
                     {
-
-                        myStreamSaver.WriteLine(myPerson.ToString());
+                        Person person = employeeHealthRecord.Person;
+                        foreach (var healthInformation in employeeHealthRecord.EmployeeHealthRecords.Values)
+                        {
+                            myStreamSaver.WriteLine(person.ToString() + healthInformation.ToString());
+                        }
                     }
                 }
                 return "Save Success!";

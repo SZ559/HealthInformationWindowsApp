@@ -9,23 +9,27 @@ namespace WindowsApp
     {      
         private string option;
         private Person originalPerson;
-        private bool hasAbnormalSymptom;
-        private bool visitHubei;
+        private HealthInformation originalHealthInformation;
         private FormatValidator formatValidator = new FormatValidator();
         internal event EditHealthInformation editHealthInformation;
         internal event UpdateHealthRecord updateHealthRecrod;
         internal event EventHandler statusBarUpdate_SubFormClosed;
-        public FormForAddAndEdit(string option, Person originalPersonInformation)
+        public FormForAddAndEdit(string option, Person person, HealthInformation healthRecord)
         {
             InitializeComponent();
             this.option = option;
-            this.originalPerson = originalPersonInformation;
+            this.originalPerson = person;
+            this.originalHealthInformation = healthRecord;
+            dateTimePicker.MaxDate = DateTime.Today;
+            dateTimePicker.Value = DateTime.Today;
             switch (option)
             {
                 case "Add":
                     this.Text = "Add";
                     clearButton.Visible = true;
                     deleteButton.Visible = false;
+                    dateTimePicker.Checked = false;
+                    dateTimePicker.ShowCheckBox = true;
                     addConfirmButton.Text = "Add";
                     break;
                 case "Edit":
@@ -33,77 +37,79 @@ namespace WindowsApp
                     addConfirmButton.Text = "Save";
                     clearButton.Visible = false;
                     deleteButton.Visible = true;
-                    DisplayHealthInformationOfPerson(originalPerson);
+                    dateTimePicker.Checked = true;
+                    dateTimePicker.ShowCheckBox = false;
+                    DisplayHealthInformationOfPerson(originalPerson, originalHealthInformation);
                     break;
             }
         }
-        private void DisplayHealthInformationOfPerson(Person originalPerson)
+        private void DisplayHealthInformationOfPerson(Person originalPerson, HealthInformation healthInformation)
         {
             ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
-            nameTextBox.Text = originalPerson.Name;
-            temperatureTextbox.Text = originalPerson.Temperature.ToString();
-            visitHubeiYesRadioButton.Checked = originalPerson.VisitHubei;
-            visitHubeiNoRadioButton.Checked = !originalPerson.VisitHubei;
-            hasAbnormalSymptomYesRadioButton.Checked = originalPerson.HasAbnormalSymptom;
-            hasAbnormalSymptomNoRadioButton.Checked = !originalPerson.HasAbnormalSymptom;
+            firstNameTextBox.Text = originalPerson.FirstName;
+            lastNameTextBox.Text = originalPerson.LastName;
+            dateTimePicker.Value = healthInformation.Date;
+            temperatureTextbox.Text = healthInformation.Temperature.ToString();
+            visitHubeiYesRadioButton.Checked = healthInformation.VisitHubei;
+            visitHubeiNoRadioButton.Checked = !healthInformation.VisitHubei;
+            hasAbnormalSymptomYesRadioButton.Checked = healthInformation.HasAbnormalSymptom;
+            hasAbnormalSymptomNoRadioButton.Checked = !healthInformation.HasAbnormalSymptom;
         }
         private void AddSaveButton_Click(object sender, EventArgs e)
         {
-            errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
-            errorName.Visible = formatValidator.HasFormatError_Name(nameTextBox.Text); 
-            errorTemperature.Visible = formatValidator.HasFormatError_Temperature(temperatureTextbox.Text);
-            CheckVisitHubei();
-            CheckAbnormalSymptom();
-            if (errorVisitHubei.Visible == true || errorTemperature.Visible == true || errorName.Visible == true || errorGinNumber.Visible == true || errorAbnormalSymptom.Visible == true)
+            if (!IsValidInput())
             {
                 MessageBox.Show("Please check the information you entered! Some fields are empty or invalid!");
             }
             else
             {
-                int ginNumber = Int32.Parse(ginNumberTextbox.Text);
-                string name = nameTextBox.Text;
+                int ginNumber = int.Parse(ginNumberTextbox.Text);
+                string firstName = firstNameTextBox.Text;
+                string lastName = lastNameTextBox.Text;
+                DateTime date = dateTimePicker.Value;
                 double temperature = Double.Parse(temperatureTextbox.Text);
-                Person newPerson = new Person(ginNumber, name, visitHubei, hasAbnormalSymptom, temperature);
-                switch(option)
+                bool visitHubei = visitHubeiYesRadioButton.Checked;
+                bool hasAbnormalSymptom = hasAbnormalSymptomYesRadioButton.Checked;
+                Person updatedPerson = new Person(ginNumber, firstName, lastName);
+                HealthInformation updatedHealthInformation = new HealthInformation(date, visitHubei, hasAbnormalSymptom, temperature);
+                switch (option)
                 {
                     case "Add":
-                        if (updateHealthRecrod(newPerson) == true)
+                        if (updateHealthRecrod(updatedPerson, updatedHealthInformation) == true)
                         {
                             ResetAll();
                         }
                         break;
                     case "Edit":
-                        if (editHealthInformation(originalPerson.GinNumber, newPerson) == true)
+                        if (editHealthInformation(originalPerson, originalHealthInformation, updatedPerson, updatedHealthInformation) == true)
                         {
                             Close();
                         }
                         break;
                 }
-            }
+            }   
         }
+
+        private bool IsValidInput()
+        {
+            errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
+            errorFirstName.Visible = formatValidator.HasFormatError_Name(firstNameTextBox.Text);
+            errorLastName.Visible = formatValidator.HasFormatError_Name(lastNameTextBox.Text);
+            errorDateLabel.Visible = !dateTimePicker.Checked;
+            errorVisitHubei.Visible = (!visitHubeiYesRadioButton.Checked) && (!visitHubeiNoRadioButton.Checked);
+            errorAbnormalSymptom.Visible = (!hasAbnormalSymptomYesRadioButton.Checked) && (!hasAbnormalSymptomNoRadioButton.Checked);
+            errorTemperature.Visible = formatValidator.HasFormatError_Temperature(temperatureTextbox.Text);
+            return !errorGinNumber.Visible && !errorFirstName.Visible && !errorLastName.Visible && !errorDateLabel.Visible && !errorVisitHubei.Visible && !errorAbnormalSymptom.Visible && !errorTemperature.Visible;
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (updateHealthRecrod(originalPerson))
+            if (updateHealthRecrod(originalPerson, originalHealthInformation))
             {
                 Close(); 
             }
         }
-        private void CheckAbnormalSymptom()
-        {
-            errorAbnormalSymptom.Visible = (!hasAbnormalSymptomYesRadioButton.Checked) && (!hasAbnormalSymptomNoRadioButton.Checked);
-            if (errorAbnormalSymptom.Visible == false)
-            {
-                hasAbnormalSymptom = hasAbnormalSymptomYesRadioButton.Checked;
-            }
-        }
-        private void CheckVisitHubei()
-        {
-            errorVisitHubei.Visible = (!visitHubeiYesRadioButton.Checked) && (!visitHubeiNoRadioButton.Checked);
-            if (errorVisitHubei.Visible == false)
-            {
-                visitHubei = visitHubeiYesRadioButton.Checked;
-            }
-        }
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ResetAll();
@@ -111,7 +117,10 @@ namespace WindowsApp
         private void ResetAll()
         {
             ginNumberTextbox.Text = String.Empty;
-            nameTextBox.Text = String.Empty;
+            firstNameTextBox.Text = String.Empty;
+            lastNameTextBox.Text = string.Empty;
+            dateTimePicker.Value = DateTime.Today;
+            dateTimePicker.Checked = false;
             temperatureTextbox.Text = String.Empty;
             hasAbnormalSymptomNoRadioButton.Checked = false;
             hasAbnormalSymptomYesRadioButton.Checked = false;
@@ -119,7 +128,7 @@ namespace WindowsApp
             visitHubeiYesRadioButton.Checked = false;
 
             errorGinNumber.Visible = false;
-            errorName.Visible = false;
+            errorFirstName.Visible = false;
             errorVisitHubei.Visible = false;
             errorAbnormalSymptom.Visible = false;
             errorTemperature.Visible = false;

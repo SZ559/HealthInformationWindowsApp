@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using WindowsApp;
-using ConsoleApp;
 
 
 namespace WindowsFormsApp
@@ -20,20 +19,20 @@ namespace WindowsFormsApp
         static void Main(string[] argument)
         {
             //AttachConsole(ATTACH_PARENT_PROCESS);
-            if (argument.Length == 0)
-            {
+            //if (argument.Length == 0)
+            //{
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 MainMenuForm mainMenu = new MainMenuForm();
                 Application.Run(mainMenu);
-            }
-            else
-            {
-                Console.WriteLine("You are using the console app.");
-                UserInterface program = new UserInterface();
-                program.Run();
-            }
+            //}
+            //else
+            //{
+                //Console.WriteLine("You are using the console app.");
+                //UserInterface program = new UserInterface();
+                //program.Run();
+            //}
         }
     }
 }

@@ -11,19 +11,21 @@ namespace DatabaseOperation
         public bool HasFormatError_GinNumber(string myInput)
         {
             int test;
-            if (Int32.TryParse(myInput, out test))
+            return !int.TryParse(myInput, out test) && test > 0;
+        }
+        public bool HasFormatError_Name(string myInput)
+        {
+            if (myInput != String.Empty)
             {
-                if (Int32.Parse(myInput) >= 0)
-                {
-                    return false;
-                }
+                return false;
             }
             return true;
         }
 
-        public bool HasFormatError_Name(string myInput)
+        public bool HasFormatError_Date(string myInput)
         {
-            if (myInput != String.Empty)
+            DateTime test;
+            if (DateTime.TryParse(myInput, out test))
             {
                 return false;
             }
@@ -43,29 +45,18 @@ namespace DatabaseOperation
             }
             return true;
         } 
-
         public bool HasFormatError_VisitHubei(string myInput)
         {
             //if (myInput.ToLower() == "y" || myInput.ToLower() == "n")
             bool test;
-            if (bool.TryParse(myInput, out test))
-            {
-                return false;
-            }
-            return true;
+            return !bool.TryParse(myInput, out test);
         }
-
         public bool HasFormatError_HasAbnormalSymptom(string myInput)
         {
             //if (myInput.ToLower() == "y" || myInput.ToLower() == "n")
             bool test;
-            if (bool.TryParse(myInput, out test))
-            {
-                return false;
-            }
-            return true;
+            return !bool.TryParse(myInput, out test);
         }
-
         public string CheckFormatError_InputString(string myInput)
         {
             string formatErrorMessage = "";
@@ -75,34 +66,35 @@ namespace DatabaseOperation
             }
             string[] myInputArray = myInput.Split(',');
 
-            if (myInputArray.Length != 5)
+            if (myInputArray.Length != 7)
             {
                 return "FormatError";
             }
-            if (HasFormatError_GinNumber(myInputArray[0]) == true)
+            if (HasFormatError_GinNumber(myInputArray[0]))
             {
                 formatErrorMessage = formatErrorMessage + "Invalid Gin Number! The Gin Number must be a valid positive Integer! ";
             }
-            if (HasFormatError_Name(myInputArray[1]) == true)
+            if (HasFormatError_Name(myInputArray[1]) && (HasFormatError_Name(myInputArray[2])))
             {
                 formatErrorMessage = formatErrorMessage + "Invalid Name! The Name cannot be empty! ";
             }
-
-            if (HasFormatError_VisitHubei(myInputArray[2]) == true)
+            if (HasFormatError_Date(myInputArray[3]))
+            {
+                formatErrorMessage = formatErrorMessage + "Invalid Date! ";
+            }
+            if (HasFormatError_VisitHubei(myInputArray[4]))
             {
                 formatErrorMessage = formatErrorMessage + "Invalid Visited Hubei Recently!";
-            }
-            
-            if (HasFormatError_HasAbnormalSymptom(myInputArray[3]) == true)
+            }   
+            if (HasFormatError_HasAbnormalSymptom(myInputArray[5]))
             {
                 formatErrorMessage = formatErrorMessage + "Invalid Has Abnormal Symptom!";
             }
-            if (HasFormatError_Temperature(myInputArray[4]) == true)
+            if (HasFormatError_Temperature(myInputArray[6]))
             {
                 formatErrorMessage = formatErrorMessage + "Invalid Temperature!";
             }
             return formatErrorMessage;
         }
     }
-
 }

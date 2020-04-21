@@ -40,9 +40,13 @@
             this.editToolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelEmployeeHealthData = new System.Windows.Forms.TableLayoutPanel();
-            this.healthDataFilterFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.treeViewLabel = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.hasAbnormalSymptomFilterCheckBox = new System.Windows.Forms.CheckBox();
             this.visitHubeiFilterCheckBox = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.treeViewComboBox = new System.Windows.Forms.ComboBox();
+            this.treeView = new System.Windows.Forms.TreeView();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +66,7 @@
             this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.mainMenuToolStrip = new System.Windows.Forms.ToolStrip();
+            this.clearFilterToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -77,10 +82,12 @@
             this.toolStripStatus2LabelAppName = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainMenuToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.healthDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.fileSystemWatcher2 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanelEmployeeHealthData.SuspendLayout();
-            this.healthDataFilterFlowLayoutPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
             this.mainMenuToolStrip.SuspendLayout();
             this.tableLayoutPanelBase.SuspendLayout();
@@ -89,6 +96,8 @@
             this.statusStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -107,9 +116,9 @@
             this.viewSuspectedCaseCheckBox.AutoSize = true;
             this.viewSuspectedCaseCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.viewSuspectedCaseCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(1277, 3);
+            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(832, 3);
             this.viewSuspectedCaseCheckBox.Name = "viewSuspectedCaseCheckBox";
-            this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 43);
+            this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 46);
             this.viewSuspectedCaseCheckBox.TabIndex = 1;
             this.viewSuspectedCaseCheckBox.Text = "View Suspected Cases";
             this.viewSuspectedCaseCheckBox.UseVisualStyleBackColor = true;
@@ -120,7 +129,7 @@
             this.employeeHealthDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeHealthDataLabel.AutoSize = true;
             this.employeeHealthDataLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.employeeHealthDataLabel.Location = new System.Drawing.Point(5, 13);
+            this.employeeHealthDataLabel.Location = new System.Drawing.Point(366, 13);
             this.employeeHealthDataLabel.Name = "employeeHealthDataLabel";
             this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 39);
             this.employeeHealthDataLabel.TabIndex = 2;
@@ -135,16 +144,17 @@
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataGridView.Location = new System.Drawing.Point(5, 57);
+            this.healthDataGridView.Location = new System.Drawing.Point(366, 120);
             this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1651, 900);
+            this.healthDataGridView.Size = new System.Drawing.Size(1626, 890);
             this.healthDataGridView.StandardTab = true;
             this.healthDataGridView.TabIndex = 0;
+            this.healthDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UpdateRowSelected);
             this.healthDataGridView.SelectionChanged += new System.EventHandler(this.UpdateRowSelected);
             // 
             // contextMenuStrip1
@@ -187,32 +197,48 @@
             // tableLayoutPanelEmployeeHealthData
             // 
             this.tableLayoutPanelEmployeeHealthData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanelEmployeeHealthData.ColumnCount = 1;
+            this.tableLayoutPanelEmployeeHealthData.ColumnCount = 2;
             this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.healthDataGridView, 0, 1);
-            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.employeeHealthDataLabel, 0, 0);
-            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.healthDataFilterFlowLayoutPanel, 0, 2);
+            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1632F));
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeViewLabel, 0, 0);
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.employeeHealthDataLabel, 1, 0);
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.healthDataGridView, 1, 2);
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.flowLayoutPanel1, 1, 1);
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeViewComboBox, 0, 1);
+            this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeView, 0, 2);
             this.tableLayoutPanelEmployeeHealthData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelEmployeeHealthData.Location = new System.Drawing.Point(3, 66);
             this.tableLayoutPanelEmployeeHealthData.Name = "tableLayoutPanelEmployeeHealthData";
             this.tableLayoutPanelEmployeeHealthData.RowCount = 3;
             this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(1661, 1015);
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.120434F));
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.7463F));
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(1997, 1015);
             this.tableLayoutPanelEmployeeHealthData.TabIndex = 19;
             // 
-            // healthDataFilterFlowLayoutPanel
+            // treeViewLabel
             // 
-            this.healthDataFilterFlowLayoutPanel.Controls.Add(this.viewSuspectedCaseCheckBox);
-            this.healthDataFilterFlowLayoutPanel.Controls.Add(this.hasAbnormalSymptomFilterCheckBox);
-            this.healthDataFilterFlowLayoutPanel.Controls.Add(this.visitHubeiFilterCheckBox);
-            this.healthDataFilterFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataFilterFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.healthDataFilterFlowLayoutPanel.Location = new System.Drawing.Point(5, 965);
-            this.healthDataFilterFlowLayoutPanel.Name = "healthDataFilterFlowLayoutPanel";
-            this.healthDataFilterFlowLayoutPanel.Size = new System.Drawing.Size(1651, 45);
-            this.healthDataFilterFlowLayoutPanel.TabIndex = 1;
+            this.treeViewLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeViewLabel.AutoSize = true;
+            this.treeViewLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeViewLabel.Location = new System.Drawing.Point(5, 13);
+            this.treeViewLabel.Name = "treeViewLabel";
+            this.treeViewLabel.Size = new System.Drawing.Size(157, 39);
+            this.treeViewLabel.TabIndex = 28;
+            this.treeViewLabel.Text = "Tree View";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.hasAbnormalSymptomFilterCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.visitHubeiFilterCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.viewSuspectedCaseCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.dateTimePicker);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(366, 57);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1626, 55);
+            this.flowLayoutPanel1.TabIndex = 29;
             // 
             // hasAbnormalSymptomFilterCheckBox
             // 
@@ -221,14 +247,13 @@
             this.hasAbnormalSymptomFilterCheckBox.AutoSize = true;
             this.hasAbnormalSymptomFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.hasAbnormalSymptomFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(637, 3);
+            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(3, 3);
             this.hasAbnormalSymptomFilterCheckBox.Name = "hasAbnormalSymptomFilterCheckBox";
-            this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(634, 43);
-            this.hasAbnormalSymptomFilterCheckBox.TabIndex = 2;
+            this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(484, 46);
+            this.hasAbnormalSymptomFilterCheckBox.TabIndex = 3;
             this.hasAbnormalSymptomFilterCheckBox.TabStop = false;
-            this.hasAbnormalSymptomFilterCheckBox.Text = "View Employee Has Abnormal Symptom";
+            this.hasAbnormalSymptomFilterCheckBox.Text = "View Has Abnormal Symptom";
             this.hasAbnormalSymptomFilterCheckBox.UseVisualStyleBackColor = true;
-            this.hasAbnormalSymptomFilterCheckBox.CheckedChanged += new System.EventHandler(this.HasAbnormalSymptomCheckBox_CheckedChanged);
             // 
             // visitHubeiFilterCheckBox
             // 
@@ -237,14 +262,54 @@
             this.visitHubeiFilterCheckBox.AutoSize = true;
             this.visitHubeiFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.visitHubeiFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(26, 3);
+            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(493, 3);
             this.visitHubeiFilterCheckBox.Name = "visitHubeiFilterCheckBox";
-            this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(605, 43);
+            this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(333, 46);
             this.visitHubeiFilterCheckBox.TabIndex = 3;
             this.visitHubeiFilterCheckBox.TabStop = false;
-            this.visitHubeiFilterCheckBox.Text = "View Employee Visited Hubei Recently";
+            this.visitHubeiFilterCheckBox.Text = "View Visited Hubei ";
             this.visitHubeiFilterCheckBox.UseVisualStyleBackColor = true;
             this.visitHubeiFilterCheckBox.CheckedChanged += new System.EventHandler(this.VisitHubeiFilterCheckBox_CheckedChanged);
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.CustomFormat = "MM/dd/yyyy";
+            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker.Location = new System.Drawing.Point(1209, 3);
+            this.dateTimePicker.MaxDate = new System.DateTime(2020, 4, 19, 0, 0, 0, 0);
+            this.dateTimePicker.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.ShowCheckBox = true;
+            this.dateTimePicker.Size = new System.Drawing.Size(276, 46);
+            this.dateTimePicker.TabIndex = 22;
+            this.dateTimePicker.Value = new System.DateTime(2020, 4, 19, 0, 0, 0, 0);
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
+            // 
+            // treeViewComboBox
+            // 
+            this.treeViewComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewComboBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeViewComboBox.FormattingEnabled = true;
+            this.treeViewComboBox.Items.AddRange(new object[] {
+            "Date TreeView",
+            "Name & Gin Number TreeView"});
+            this.treeViewComboBox.Location = new System.Drawing.Point(5, 57);
+            this.treeViewComboBox.Name = "treeViewComboBox";
+            this.treeViewComboBox.Size = new System.Drawing.Size(353, 43);
+            this.treeViewComboBox.TabIndex = 27;
+            this.treeViewComboBox.Text = "Choose TreeView ";
+            this.treeViewComboBox.SelectedIndexChanged += new System.EventHandler(this.TreeViewComboBox_SelectedIndexChanged);
+            // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.Location = new System.Drawing.Point(5, 120);
+            this.treeView.Name = "treeView";
+            this.treeView.Size = new System.Drawing.Size(353, 890);
+            this.treeView.TabIndex = 3;
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // mainMenuStrip
             // 
@@ -256,7 +321,7 @@
             this.viewToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1667, 49);
+            this.mainMenuStrip.Size = new System.Drawing.Size(2003, 49);
             this.mainMenuStrip.TabIndex = 2;
             this.mainMenuStrip.TabStop = true;
             this.mainMenuStrip.Text = "Add";
@@ -329,6 +394,9 @@
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.Checked = true;
+            this.viewToolStripMenuItem.CheckOnClick = true;
+            this.viewToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewEmployeeHealthDataToolStripMenuItem,
             this.viewCurrentStatusToolStripMenuItem,
@@ -448,14 +516,26 @@
             this.addToolStripButton,
             this.editToolStripButton,
             this.deleteToolStripButton,
-            this.searchToolStripTextBox});
+            this.searchToolStripTextBox,
+            this.clearFilterToolStripButton});
             this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuToolStrip.Name = "mainMenuToolStrip";
             this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(1667, 63);
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(2003, 63);
             this.mainMenuToolStrip.TabIndex = 3;
             this.mainMenuToolStrip.TabStop = true;
             this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
+            // 
+            // clearFilterToolStripButton
+            // 
+            this.clearFilterToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.clearFilterToolStripButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearFilterToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("clearFilterToolStripButton.Image")));
+            this.clearFilterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearFilterToolStripButton.Name = "clearFilterToolStripButton";
+            this.clearFilterToolStripButton.Size = new System.Drawing.Size(162, 56);
+            this.clearFilterToolStripButton.Text = "Clear Filter";
+            this.clearFilterToolStripButton.Click += new System.EventHandler(this.ClearFilterToolStripButton_Click);
             // 
             // tableLayoutPanelBase
             // 
@@ -471,7 +551,8 @@
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.32355F));
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.676443F));
-            this.tableLayoutPanelBase.Size = new System.Drawing.Size(1667, 1146);
+            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelBase.Size = new System.Drawing.Size(2003, 1146);
             this.tableLayoutPanelBase.TabIndex = 24;
             // 
             // panel1
@@ -480,7 +561,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 1087);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1661, 56);
+            this.panel1.Size = new System.Drawing.Size(1997, 56);
             this.panel1.TabIndex = 20;
             // 
             // tableLayoutPanel1
@@ -495,7 +576,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1661, 56);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1997, 56);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // statusStrip1
@@ -512,7 +593,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1161, 53);
+            this.statusStrip1.Size = new System.Drawing.Size(1395, 53);
             this.statusStrip1.TabIndex = 29;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -563,9 +644,9 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sizeToolStripStatusLabel2,
             this.toolStripStatus2LabelAppName});
-            this.statusStrip2.Location = new System.Drawing.Point(1161, 0);
+            this.statusStrip2.Location = new System.Drawing.Point(1395, 0);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(500, 52);
+            this.statusStrip2.Size = new System.Drawing.Size(602, 52);
             this.statusStrip2.TabIndex = 28;
             // 
             // sizeToolStripStatusLabel2
@@ -586,13 +667,24 @@
             this.mainMenuToolStripStatusLabel2.Name = "mainMenuToolStripStatusLabel2";
             this.mainMenuToolStripStatusLabel2.Size = new System.Drawing.Size(0, 39);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // fileSystemWatcher2
+            // 
+            this.fileSystemWatcher2.EnableRaisingEvents = true;
+            this.fileSystemWatcher2.SynchronizingObject = this;
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1667, 1195);
+            this.ClientSize = new System.Drawing.Size(2003, 1195);
             this.Controls.Add(this.tableLayoutPanelBase);
             this.Controls.Add(this.mainMenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MainMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -603,8 +695,8 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanelEmployeeHealthData.ResumeLayout(false);
             this.tableLayoutPanelEmployeeHealthData.PerformLayout();
-            this.healthDataFilterFlowLayoutPanel.ResumeLayout(false);
-            this.healthDataFilterFlowLayoutPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.mainMenuToolStrip.ResumeLayout(false);
@@ -618,6 +710,8 @@
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healthDatabaseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,10 +733,8 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel healthDataFilterFlowLayoutPanel;
         private System.Windows.Forms.CheckBox visitHubeiFilterCheckBox;
         private System.Windows.Forms.ToolStripMenuItem viewEmployeeHealthDataToolStripMenuItem;
-        private System.Windows.Forms.CheckBox hasAbnormalSymptomFilterCheckBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItemEdit;
@@ -671,5 +763,14 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem viewToolBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel hideStatusBar;
+        private System.Windows.Forms.TreeView treeView;
+        private System.Windows.Forms.ComboBox treeViewComboBox;
+        private System.Windows.Forms.Label treeViewLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.ToolStripButton clearFilterToolStripButton;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox hasAbnormalSymptomFilterCheckBox;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.IO.FileSystemWatcher fileSystemWatcher2;
     }
 }

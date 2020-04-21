@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EmployeeInformation
 {
@@ -11,53 +12,33 @@ namespace EmployeeInformation
             get; set;
         }
 
-        public string Name
+        public string FirstName
         {
             get; set;
         }
-
-        public bool VisitHubei
+        public string LastName
         {
             get; set;
         }
-
-        public bool HasAbnormalSymptom
+        public Person(int myGinNumber, string myFirstName, string myLastName)
         {
-            get; set;
+            GinNumber = myGinNumber;
+            FirstName = myFirstName;
+            LastName = myLastName;
         }
-
-        public double Temperature
+        public bool HasSameName(Person person)
         {
-            get; set;
+            return this.FirstName == person.FirstName && this.LastName == person.LastName;
         }
-
-        public Person(int myGin, string myName, bool myVisit, bool myAbnormalSymptom, double myTemperature)
-        {
-            GinNumber = myGin;
-            Name = myName;
-            VisitHubei = myVisit;
-            HasAbnormalSymptom = myAbnormalSymptom;
-            Temperature = myTemperature;
-        }
-
-        public bool IsPersonSuspected()
-        {
-            if (Temperature > 37.3 || HasAbnormalSymptom == true || VisitHubei == true)
-            {
-                return true;
-            }
-            return false;
-        }
-
         public override string ToString()
         {
-            return GinNumber.ToString() + "," + Name.ToString() + "," + VisitHubei.ToString() + "," +
-                HasAbnormalSymptom.ToString() + "," + Temperature.ToString();
+            return GinNumber.ToString() + "," + LastName + "," + FirstName;
         }
 
-        public string[] ToStringArray()
-        {
-            return new string[] { GinNumber.ToString(), Name.ToString(), VisitHubei.ToString(), HasAbnormalSymptom.ToString(), Temperature.ToString() };
+        public string ToString_DefualtNameFormat()
+        { 
+            return GinNumber.ToString() + "," + FirstName + " " + LastName;
         }
+
     }
 }

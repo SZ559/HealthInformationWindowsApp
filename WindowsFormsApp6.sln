@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp.csproj", "{06C820FC-8DCD-4B42-98A5-1BE794165D1D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8AF3B044-C317-49DE-AF31-5B7DFBE4F488}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseOperation\AddPersonHelperMethods.cs = DatabaseOperation\AddPersonHelperMethods.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -52,7 +52,7 @@ namespace WindowsApp
                 filter = filter.Remove(index, subStringToBeRemoved.Length);
             }
         }
-        public string UpdateFilter(CheckBox checkBox, string filterString)
+        public string UpdateFilter_BasedOnCheckBox(CheckBox checkBox, string filterString)
         {
             if (checkBox.Checked)
             {
@@ -62,6 +62,18 @@ namespace WindowsApp
             {
                 RemoveFilter(filterString);
             }
+            return filter;
+        }
+        public string FilterDateTime_MonthAndYearFilter(DateTime myDateTimeMax, DateTime myDateTimeMin)
+        {
+            string filterString = String.Format("Date <= '{0:MM/dd/yyyy}' AND Date >= '{1:MM/dd/yyyy}'", myDateTimeMax, myDateTimeMin);
+            AddFilter(filterString);
+            return filter;
+        }
+        public string FilterDateTimeFilter(DateTime myDateTime)
+        {
+            string filterString = String.Format("Date = '{0:MM/dd/yyyy}'", myDateTime);
+            AddFilter(filterString);
             return filter;
         }
     }

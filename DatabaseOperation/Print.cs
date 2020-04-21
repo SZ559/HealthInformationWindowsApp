@@ -12,7 +12,7 @@ namespace DatabaseOperation
         {
             Console.WriteLine("SLB Health Record");
             Console.WriteLine(@"Gin Number /Name /Visit Hubei Recently /Has Abnormal Symptom /Temperature");
-            foreach (Person myPerson in myHealthRecord.HealthRecord.Values)
+            foreach (Person myPerson in myHealthRecord.OneDayHealthRecord.Values)
             {
                 Console.WriteLine(myPerson.ToString());
             }
@@ -34,7 +34,7 @@ namespace DatabaseOperation
 
         public static void PrintPerson(HealthDatabase myHealthRecord, int myGinNumber)
         {
-            Person myPerson = myHealthRecord.HealthRecord[myGinNumber];
+            Person myPerson = myHealthRecord.OneDayHealthRecord[myGinNumber];
             Console.WriteLine("Gin Number /Name /Visit Hubei Recently /Has Abnormal Symptom /Temperature");
             Console.WriteLine(myPerson.ToString());
         }

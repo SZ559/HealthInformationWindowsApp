@@ -54,15 +54,21 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseOperation\AddPersonHelperMethods.cs" />
-    <Compile Include="DatabaseOperation\ModifyHelperMethod.cs" />
-    <Compile Include="DatabaseOperation\Print.cs" />
-    <Compile Include="EmployeeHealthInformation\HealthDatabase.cs" />
+    <Compile Include="EmployeeHealthInformation\Class1.cs" />
+    <Compile Include="EmployeeHealthInformation\HealthInformation.cs" />
     <Compile Include="EmployeeHealthInformation\Person.cs" />
+    <Compile Include="EmployeeHealthInformation\EmployeeHealthDatabase.cs" />
+    <Compile Include="EmployeeHealthInformation\EmployeeHealthInformation.cs" />
     <Compile Include="FileOperation\DataFileOperation.cs" />
     <Compile Include="DatabaseOperation\FormatValidator.cs" />
     <Compile Include="WindowsApp\DataGridViewSetting.cs" />
     <Compile Include="WindowsApp\Filter.cs" />
+    <Compile Include="WindowsApp\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsApp\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsApp\FormForAddAndEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,12 +83,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConsoleApp\UserInterface.cs" />
+    <EmbeddedResource Include="WindowsApp\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsApp\FormForAddAndEdit.resx">
       <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsApp\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

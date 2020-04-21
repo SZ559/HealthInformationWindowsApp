@@ -12,7 +12,7 @@ namespace DatabaseOperation
     { 
         public static bool ModifyGinNumberInPerson(HealthDatabase myHealthRecord, int myGinNumber, int newGinNumber)
         {
-            Person myPerson = myHealthRecord.HealthRecord[myGinNumber];
+            Person myPerson = myHealthRecord.OneDayHealthRecord[myGinNumber];
             myPerson.GinNumber = newGinNumber;
             if (myHealthRecord.DeletePerson(myGinNumber) == true && myHealthRecord.AddNewPerson(myPerson) == true)
             {
@@ -22,19 +22,19 @@ namespace DatabaseOperation
         }
         public static void  ModifyNameInPerson(HealthDatabase myHealthRecord, int myGinNumber, string myNewName)
         {
-            myHealthRecord.HealthRecord[myGinNumber].Name = myNewName;
+            myHealthRecord.OneDayHealthRecord[myGinNumber].Name = myNewName;
         }
         public static void ModifyVisitHubeiInPerson(HealthDatabase myHealthRecord, int myGinNumber, bool myNewVisit)
         {
-            myHealthRecord.HealthRecord[myGinNumber].VisitHubei = myNewVisit;
+            myHealthRecord.OneDayHealthRecord[myGinNumber].VisitHubei = myNewVisit;
         }
         public static void ModifyHasAbnormalSymptomInPerson(HealthDatabase myHealthRecord, int myGinNumber, bool myNewAbnormalSymptom)
         {
-            myHealthRecord.HealthRecord[myGinNumber].HasAbnormalSymptom = myNewAbnormalSymptom;
+            myHealthRecord.OneDayHealthRecord[myGinNumber].HasAbnormalSymptom = myNewAbnormalSymptom;
         }
         public static void ModifyTemperatureInPerson(HealthDatabase myHealthRecord, int myGinNumber, double myNewTemperature)
         {
-            myHealthRecord.HealthRecord[myGinNumber].Temperature = myNewTemperature;
+            myHealthRecord.OneDayHealthRecord[myGinNumber].Temperature = myNewTemperature;
         }
 
         public static void ModifyGinNumberThroughConsole(HealthDatabase myHealthRecord, int myGinNumber, string newGinNumberString)
