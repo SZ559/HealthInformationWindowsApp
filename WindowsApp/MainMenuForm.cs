@@ -34,8 +34,11 @@ namespace WindowsApp
         }
         private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
         {
-            currentStatusToolStripStatusLabel.Text = "Ready";
-            warningToolStripStatusLabel1.Visible = false;
+            if (Application.OpenForms.Count < 2)
+            {
+                currentStatusToolStripStatusLabel.Text = "Ready";
+                warningToolStripStatusLabel1.Visible = false;
+            }
         }
         private void AddButton_Click(object sender, EventArgs e)
         {

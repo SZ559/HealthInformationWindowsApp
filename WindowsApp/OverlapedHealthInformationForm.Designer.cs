@@ -49,12 +49,16 @@
             this.visitedHubei2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hasAbnormalSymptom2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.temperature2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.replaceButton = new System.Windows.Forms.Button();
-            this.replaceAllButton = new System.Windows.Forms.Button();
+            this.overwriteButton = new System.Windows.Forms.Button();
+            this.overwriteAllButton = new System.Windows.Forms.Button();
             this.skipButton = new System.Windows.Forms.Button();
             this.skipAllButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.originalPersonDataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updatedPersonDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // originalPersonDataGridView2
@@ -65,14 +69,6 @@
             this.originalPersonDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.originalPersonDataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.originalPersonDataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.originalPersonDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.originalPersonDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.originalPersonDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ginNumber,
@@ -82,14 +78,23 @@
             this.visitedHebei,
             this.hasAbnormalSymptom,
             this.temperature});
-            this.originalPersonDataGridView2.Location = new System.Drawing.Point(30, 21);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.originalPersonDataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.originalPersonDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.originalPersonDataGridView2.Location = new System.Drawing.Point(3, 42);
             this.originalPersonDataGridView2.MultiSelect = false;
             this.originalPersonDataGridView2.Name = "originalPersonDataGridView2";
             this.originalPersonDataGridView2.ReadOnly = true;
             this.originalPersonDataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.originalPersonDataGridView2.RowTemplate.Height = 44;
             this.originalPersonDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.originalPersonDataGridView2.Size = new System.Drawing.Size(1456, 404);
+            this.originalPersonDataGridView2.Size = new System.Drawing.Size(1409, 431);
             this.originalPersonDataGridView2.TabIndex = 3;
             this.originalPersonDataGridView2.Scroll += new System.Windows.Forms.ScrollEventHandler(this.originalPersonDataGridView2_Scroll);
             this.originalPersonDataGridView2.SelectionChanged += new System.EventHandler(this.originalPersonDataGridView2_SelectionChanged);
@@ -151,14 +156,6 @@
             this.updatedPersonDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.updatedPersonDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.updatedPersonDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.updatedPersonDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.updatedPersonDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.updatedPersonDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ginNumber2,
@@ -168,15 +165,24 @@
             this.visitedHubei2,
             this.hasAbnormalSymptom2,
             this.temperature2});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.updatedPersonDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.updatedPersonDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updatedPersonDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.updatedPersonDataGridView.Location = new System.Drawing.Point(30, 431);
+            this.updatedPersonDataGridView.Location = new System.Drawing.Point(3, 42);
             this.updatedPersonDataGridView.MultiSelect = false;
             this.updatedPersonDataGridView.Name = "updatedPersonDataGridView";
             this.updatedPersonDataGridView.ReadOnly = true;
             this.updatedPersonDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.updatedPersonDataGridView.RowTemplate.Height = 44;
             this.updatedPersonDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.updatedPersonDataGridView.Size = new System.Drawing.Size(1456, 404);
+            this.updatedPersonDataGridView.Size = new System.Drawing.Size(1409, 431);
             this.updatedPersonDataGridView.TabIndex = 4;
             // 
             // ginNumber2
@@ -228,33 +234,33 @@
             this.temperature2.Name = "temperature2";
             this.temperature2.ReadOnly = true;
             // 
-            // replaceButton
+            // overwriteButton
             // 
-            this.replaceButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.replaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.replaceButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.replaceButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.replaceButton.Location = new System.Drawing.Point(140, 864);
-            this.replaceButton.Name = "replaceButton";
-            this.replaceButton.Size = new System.Drawing.Size(280, 60);
-            this.replaceButton.TabIndex = 8;
-            this.replaceButton.Text = "Replace";
-            this.replaceButton.UseVisualStyleBackColor = false;
-            this.replaceButton.Click += new System.EventHandler(this.ReplaceButton_Click);
+            this.overwriteButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.overwriteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overwriteButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overwriteButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.overwriteButton.Location = new System.Drawing.Point(60, 1032);
+            this.overwriteButton.Name = "overwriteButton";
+            this.overwriteButton.Size = new System.Drawing.Size(280, 60);
+            this.overwriteButton.TabIndex = 8;
+            this.overwriteButton.Text = "Overwrite";
+            this.overwriteButton.UseVisualStyleBackColor = false;
+            this.overwriteButton.Click += new System.EventHandler(this.OverwriteButton_Click);
             // 
-            // replaceAllButton
+            // overwriteAllButton
             // 
-            this.replaceAllButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.replaceAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.replaceAllButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.replaceAllButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.replaceAllButton.Location = new System.Drawing.Point(1094, 864);
-            this.replaceAllButton.Name = "replaceAllButton";
-            this.replaceAllButton.Size = new System.Drawing.Size(280, 60);
-            this.replaceAllButton.TabIndex = 9;
-            this.replaceAllButton.Text = "Replace All";
-            this.replaceAllButton.UseVisualStyleBackColor = false;
-            this.replaceAllButton.Click += new System.EventHandler(this.ReplaceAllButton_Click);
+            this.overwriteAllButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.overwriteAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overwriteAllButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overwriteAllButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.overwriteAllButton.Location = new System.Drawing.Point(812, 1032);
+            this.overwriteAllButton.Name = "overwriteAllButton";
+            this.overwriteAllButton.Size = new System.Drawing.Size(280, 60);
+            this.overwriteAllButton.TabIndex = 9;
+            this.overwriteAllButton.Text = "Overwrite All";
+            this.overwriteAllButton.UseVisualStyleBackColor = false;
+            this.overwriteAllButton.Click += new System.EventHandler(this.OverwriteAllButton_Click);
             // 
             // skipButton
             // 
@@ -262,7 +268,7 @@
             this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skipButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skipButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.skipButton.Location = new System.Drawing.Point(458, 864);
+            this.skipButton.Location = new System.Drawing.Point(436, 1032);
             this.skipButton.Name = "skipButton";
             this.skipButton.Size = new System.Drawing.Size(280, 60);
             this.skipButton.TabIndex = 10;
@@ -276,7 +282,7 @@
             this.skipAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.skipAllButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skipAllButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.skipAllButton.Location = new System.Drawing.Point(776, 864);
+            this.skipAllButton.Location = new System.Drawing.Point(1188, 1032);
             this.skipAllButton.Name = "skipAllButton";
             this.skipAllButton.Size = new System.Drawing.Size(280, 60);
             this.skipAllButton.TabIndex = 11;
@@ -284,23 +290,47 @@
             this.skipAllButton.UseVisualStyleBackColor = false;
             this.skipAllButton.Click += new System.EventHandler(this.skipAllButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.originalPersonDataGridView2);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(57, 42);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1415, 476);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Updated Health Records";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.updatedPersonDataGridView);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox2.Location = new System.Drawing.Point(57, 524);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1415, 476);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Original Health Records";
+            // 
             // OverlapedHealthInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1509, 986);
+            this.ClientSize = new System.Drawing.Size(1501, 1121);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.skipAllButton);
             this.Controls.Add(this.skipButton);
-            this.Controls.Add(this.replaceAllButton);
-            this.Controls.Add(this.replaceButton);
-            this.Controls.Add(this.updatedPersonDataGridView);
-            this.Controls.Add(this.originalPersonDataGridView2);
+            this.Controls.Add(this.overwriteAllButton);
+            this.Controls.Add(this.overwriteButton);
+            this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OverlapedHealthInformationForm";
             this.Text = "Repeated Health Information";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormForAddAndEdit_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.originalPersonDataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updatedPersonDataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -308,8 +338,8 @@
         #endregion
         private System.Windows.Forms.DataGridView originalPersonDataGridView2;
         private System.Windows.Forms.DataGridView updatedPersonDataGridView;
-        private System.Windows.Forms.Button replaceButton;
-        private System.Windows.Forms.Button replaceAllButton;
+        private System.Windows.Forms.Button overwriteButton;
+        private System.Windows.Forms.Button overwriteAllButton;
         private System.Windows.Forms.Button skipButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ginNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
@@ -326,5 +356,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hasAbnormalSymptom2;
         private System.Windows.Forms.DataGridViewTextBoxColumn temperature2;
         private System.Windows.Forms.Button skipAllButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

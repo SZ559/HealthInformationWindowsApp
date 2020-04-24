@@ -76,7 +76,7 @@ namespace WindowsApp
 
         }
 
-        private void ReplaceButton_Click(object sender, EventArgs e)
+        private void OverwriteButton_Click(object sender, EventArgs e)
         {
             replaceHealthInformation(updatedPerson, selectedUpdatedHealthInformaton, originalPerson, selectedOriginalHealthInformaton);
             repeatedHealthInformation.RemoveAt(originalPersonDataGridView2.CurrentRow.Index);
@@ -99,7 +99,7 @@ namespace WindowsApp
             }
         }
 
-        private void ReplaceAllButton_Click(object sender, EventArgs e)
+        private void OverwriteAllButton_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < repeatedHealthInformation.Count; i = i + 1)
             {
