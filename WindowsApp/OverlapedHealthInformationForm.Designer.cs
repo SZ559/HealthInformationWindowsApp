@@ -168,6 +168,7 @@
             this.visitedHubei2,
             this.hasAbnormalSymptom2,
             this.temperature2});
+            this.updatedPersonDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.updatedPersonDataGridView.Location = new System.Drawing.Point(30, 431);
             this.updatedPersonDataGridView.MultiSelect = false;
             this.updatedPersonDataGridView.Name = "updatedPersonDataGridView";
@@ -283,7 +284,7 @@
             this.skipAllButton.UseVisualStyleBackColor = false;
             this.skipAllButton.Click += new System.EventHandler(this.skipAllButton_Click);
             // 
-            // RepeatedHealthInformationForm
+            // OverlapedHealthInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -295,8 +296,9 @@
             this.Controls.Add(this.updatedPersonDataGridView);
             this.Controls.Add(this.originalPersonDataGridView2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RepeatedHealthInformationForm";
+            this.Name = "OverlapedHealthInformationForm";
             this.Text = "Repeated Health Information";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormForAddAndEdit_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.originalPersonDataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updatedPersonDataGridView)).EndInit();
             this.ResumeLayout(false);

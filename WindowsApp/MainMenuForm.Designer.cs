@@ -129,7 +129,7 @@
             this.employeeHealthDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeHealthDataLabel.AutoSize = true;
             this.employeeHealthDataLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.employeeHealthDataLabel.Location = new System.Drawing.Point(366, 13);
+            this.employeeHealthDataLabel.Location = new System.Drawing.Point(354, 13);
             this.employeeHealthDataLabel.Name = "employeeHealthDataLabel";
             this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 39);
             this.employeeHealthDataLabel.TabIndex = 2;
@@ -144,18 +144,17 @@
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataGridView.Location = new System.Drawing.Point(366, 120);
+            this.healthDataGridView.Location = new System.Drawing.Point(354, 120);
             this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1626, 890);
+            this.healthDataGridView.Size = new System.Drawing.Size(1638, 890);
             this.healthDataGridView.StandardTab = true;
             this.healthDataGridView.TabIndex = 0;
-            this.healthDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UpdateRowSelected);
-            this.healthDataGridView.SelectionChanged += new System.EventHandler(this.UpdateRowSelected);
+            this.healthDataGridView.Click += new System.EventHandler(this.HealthDataGridView_Click);
             // 
             // contextMenuStrip1
             // 
@@ -199,7 +198,7 @@
             this.tableLayoutPanelEmployeeHealthData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanelEmployeeHealthData.ColumnCount = 2;
             this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1632F));
+            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1644F));
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeViewLabel, 0, 0);
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.employeeHealthDataLabel, 1, 0);
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.healthDataGridView, 1, 2);
@@ -235,9 +234,9 @@
             this.flowLayoutPanel1.Controls.Add(this.viewSuspectedCaseCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.dateTimePicker);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(366, 57);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(354, 57);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1626, 55);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1638, 55);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
             // hasAbnormalSymptomFilterCheckBox
@@ -254,6 +253,7 @@
             this.hasAbnormalSymptomFilterCheckBox.TabStop = false;
             this.hasAbnormalSymptomFilterCheckBox.Text = "View Has Abnormal Symptom";
             this.hasAbnormalSymptomFilterCheckBox.UseVisualStyleBackColor = true;
+            this.hasAbnormalSymptomFilterCheckBox.CheckedChanged += new System.EventHandler(this.HasAbnormalSymptomCheckBox_CheckedChanged);
             // 
             // visitHubeiFilterCheckBox
             // 
@@ -273,6 +273,7 @@
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.Checked = false;
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -296,7 +297,7 @@
             "Name & Gin Number TreeView"});
             this.treeViewComboBox.Location = new System.Drawing.Point(5, 57);
             this.treeViewComboBox.Name = "treeViewComboBox";
-            this.treeViewComboBox.Size = new System.Drawing.Size(353, 43);
+            this.treeViewComboBox.Size = new System.Drawing.Size(341, 43);
             this.treeViewComboBox.TabIndex = 27;
             this.treeViewComboBox.Text = "Choose TreeView ";
             this.treeViewComboBox.SelectedIndexChanged += new System.EventHandler(this.TreeViewComboBox_SelectedIndexChanged);
@@ -307,9 +308,10 @@
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.Location = new System.Drawing.Point(5, 120);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(353, 890);
-            this.treeView.TabIndex = 3;
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
+            this.treeView.Size = new System.Drawing.Size(341, 890);
+            this.treeView.TabIndex = 10;
+            this.treeView.TabStop = false;
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_Select);
             // 
             // mainMenuStrip
             // 
@@ -687,6 +689,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "MainMenuForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Health Monitor";
             this.SizeChanged += new System.EventHandler(this.MainMenuForm_SizeChanged);

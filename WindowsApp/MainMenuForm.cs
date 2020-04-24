@@ -3,6 +3,7 @@ using EmployeeInformation;
 using FileOperation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsApp
@@ -17,14 +18,18 @@ namespace WindowsApp
         private DateTime filterDate;
         private List<Person> selectedPersons = new List<Person>();
         private List<HealthInformation> selectedHealthRecords = new List<HealthInformation>();
+        private string treeviewFilter = "";
         public MainMenuForm()
         {
             InitializeComponent();
             myHealthRecord = new EmployeeHealthDatabase();
             dateTimePicker.MaxDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
+            string size = "Size: " + this.Width.ToString() + ", " + this.Height.ToString();
+            sizeToolStripStatusLabel2.Text = size;
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordsDataTable;
-            healthDataGridView.DataSource = healthDatabaseBindingSource;
+            healthDataGridView.DataSource = healthDatabaseBindingSource;  
+            this.AutoSize = false;
             DataGridViewSetting.InitializeColumnHeader(healthDataGridView);
         }
         private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
@@ -34,8 +39,9 @@ namespace WindowsApp
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
+            healthDataGridView.Focus();
             if (!IsAnotherFormOpened())
-            {
+            {     
                 FormForAddAndEdit formForAddAndEdit = new FormForAddAndEdit("Add", null, null);
                 formForAddAndEdit.updateHealthRecrod += new UpdateHealthRecord(AddNewRecord);
                 formForAddAndEdit.statusBarUpdate_SubFormClosed += new EventHandler(StatusBarUpdate_SubFormClosed);
@@ -45,26 +51,28 @@ namespace WindowsApp
         }
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (!IsAnotherFormOpened() && selectedHealthRecords.Count == 1)
+            if (!IsAnotherFormOpened())
             {
-                OpenEditForm(selectedPersons[0], selectedHealthRecords[0]);
+                healthDataGridView.Focus();
+                Person selectedPerson = ConvertRowsToPerson(healthDataGridView.CurrentRow);
+                HealthInformation selectedHealthRecord = ConvertRowsToHealthRecord(healthDataGridView.CurrentRow);
+                OpenEditForm(selectedPerson, selectedHealthRecord);
+                
             }
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (!IsAnotherFormOpened() && selectedPersons.Count != 0)
+            if (!IsAnotherFormOpened())
             {
-                if (selectedHealthRecords.Count == 0)
+                if (treeView.SelectedNode == null)
                 {
-                    DeleteChosenPersons(selectedPersons);
-                }
-                else if (selectedHealthRecords.Count == 1)
-                {
-                    DeleteChosenRecord(selectedPersons[0], selectedHealthRecords[0]);
+                    Person personToBeDeleted = ConvertRowsToPerson(healthDataGridView.CurrentRow);
+                    HealthInformation healthRecord = ConvertRowsToHealthRecord(healthDataGridView.CurrentRow);
+                    DeleteChosenRecord(personToBeDeleted, healthRecord);
                 }
                 else
                 {
-                    int countOfFailedDeletion = DeleteAllChosenHealthRecords(selectedPersons, selectedHealthRecords);
+                    int countOfFailedDeletion = DeleteAllChosenHealthRecordsInDataGridView();
                     if (countOfFailedDeletion == 0)
                     {
                         MessageBox.Show("Delete Sucess!");
@@ -73,8 +81,28 @@ namespace WindowsApp
                     {
                         MessageBox.Show($"{countOfFailedDeletion} Deletion Failed!");
                     }
-                }
+                }             
             }
+        }
+        private int DeleteAllChosenHealthRecordsInDataGridView()
+        {
+            var confirmResult = MessageBox.Show($"Are you sure to delete these {healthDataGridView.RowCount} records?", "Confirm Delete", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                int failedTime = 0;
+                foreach (DataGridViewRow row in healthDataGridView.Rows)
+                {
+                    Person personToBeDeleted = ConvertRowsToPerson(row);
+                    HealthInformation healthRecord = ConvertRowsToHealthRecord(row);
+                    if (!myHealthRecord.DeleteHealthRecord(personToBeDeleted, healthRecord))
+                    {
+                        failedTime = failedTime + 1;
+                    }
+                }
+                UpdateDataGridViewDisplay();
+                return failedTime;
+            }
+            return -1;
         }
         private void OpenFileButton_Click(object sender, EventArgs e)
         {
@@ -135,7 +163,14 @@ namespace WindowsApp
         {
             if (myHealthRecord.AddHealthRecord(person, newHealthInformation) == false)
             {
-                MessageBox.Show("Add Failed! The health information of this person at this date already exists.");
+                if (person.HasSameName(myHealthRecord.GetPerson(person.GinNumber)))
+                {
+                    MessageBox.Show($"Add Failed! The health information of Gin Number:{person.GinNumber} and Date:{newHealthInformation.Date.ToShortDateString()} already exists.");
+                }
+                else
+                {
+                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {myHealthRecord.GetPerson(person.GinNumber).ToString_DefualtNameFormat()}.");
+                }
                 return false;
             }
             currentStatusToolStripStatusLabel.Text = "Health Information Added";
@@ -146,16 +181,27 @@ namespace WindowsApp
         {
             if (!myHealthRecord.ModifyOneHealthRecord(personToBeEdited, healthInformationToBeEdited, updatedPerson, updatedHealthInformation))
             {
-                MessageBox.Show("Modify Failed! The record you entered already exists.");
-                return UpdatePerson(personToBeEdited, updatedPerson);
+                if (!updatedPerson.HasSameName(myHealthRecord.GetPerson(updatedPerson.GinNumber)))
+                {
+                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {myHealthRecord.GetPerson(updatedPerson.GinNumber).ToString_DefualtNameFormat()}.");
+                    if (personToBeEdited.GinNumber != updatedPerson.GinNumber)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Add Failed! The health information of Gin Number:{updatedPerson.GinNumber} and Date:{updatedHealthInformation.Date.ToShortDateString()} already exists.");
+                    return false;
+                }
             }
-            UpdatePerson(personToBeEdited, updatedPerson);
+            UpdatePerson(personToBeEdited, updatedPerson);                
             UpdateDataGridViewDisplay();
             return true;
         }
         private bool UpdatePerson(Person personToBeEdited, Person updatedPerson)
         {
-            if (personToBeEdited != updatedPerson && myHealthRecord.ContainsPerson(personToBeEdited))
+            if (!personToBeEdited.HasSameName(updatedPerson) && myHealthRecord.ContainsPerson(personToBeEdited))
             {
                 var confirmResult = MessageBox.Show("Would you like to update the gin number and the name of this person in all records", "Confirm", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
@@ -167,7 +213,6 @@ namespace WindowsApp
                         form.replaceHealthInformation += new ReplaceHealthInformation(ReplaceHealthRecordOfChosenPerson);
                         form.statusBarUpdate_SubFormClosed += new EventHandler(StatusBarUpdate_SubFormClosed);
                         form.Show();
-
                     }
                     else
                     {
@@ -184,7 +229,6 @@ namespace WindowsApp
             myHealthRecord.DeleteHealthRecord(updatedPerson, updatedHealthInformation);
             UpdateDataGridViewDisplay();
         }
-
         private bool DeleteChosenRecord(Person person, HealthInformation healthRecord)
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this person: " + person.ToString() + healthRecord.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
@@ -198,7 +242,7 @@ namespace WindowsApp
         }
         private int DeleteChosenPersons(List<Person> personToBeDeleted)
         {
-            var confirmResult = MessageBox.Show($"Are you sure to delete all records of {personToBeDeleted.Count} persons", "Confirm Delete", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show($"Are you sure to delete these records of {personToBeDeleted.Count} persons", "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 int failedTime = 0;
@@ -214,25 +258,7 @@ namespace WindowsApp
             }
             return -1;
         }
-        private int DeleteAllChosenHealthRecords(List<Person> personToBeDeleted, List<HealthInformation> healthRecord)
-        {
-            var confirmResult = MessageBox.Show($"Are you sure to delete all {personToBeDeleted.Count} records?", "Confirm Delete", MessageBoxButtons.YesNo);
 
-            if (confirmResult == DialogResult.Yes)
-            {
-                int failedTime = 0;
-                for (int i = 0; i < healthRecord.Count; i = i + 1)
-                {
-                    if (!myHealthRecord.DeleteHealthRecord(personToBeDeleted[i], healthRecord[i]))
-                    {
-                        failedTime = failedTime + 1;
-                    }
-                }
-                UpdateDataGridViewDisplay();
-                return failedTime;
-            }
-            return -1;
-        }
         private void SearchToolStripTextBox_KeyDownEnter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -276,7 +302,6 @@ namespace WindowsApp
             hasAbnormalSymptomFilterCheckBox.Checked = false;
             visitHubeiFilterCheckBox.Checked = false;
             viewSuspectedCaseCheckBox.Checked = false;
-            dateTimePicker.Value = DateTime.Today;
             dateTimePicker.Checked = false;
         }
         private void ViewToolBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -309,15 +334,15 @@ namespace WindowsApp
         }
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
+            filter.RemoveFilter(String.Format("Date = '{0:MM/dd/yyyy}'", filterDate));
             if (dateTimePicker.Checked)
-            {
-                filter.RemoveFilter(String.Format("Date = '{0:MM/dd/yyyy}'", filterDate));
+            {   
                 DateTime date = dateTimePicker.Value;
                 string filterString = String.Format("Date = '{0:MM/dd/yyyy}'", date);
                 filterDate = date;
-                filter.AddFilter(filterString);
-                healthDatabaseBindingSource.Filter = filter.Filter;
+                filter.AddFilter(filterString);    
             }
+            healthDatabaseBindingSource.Filter = filter.Filter;
         }
         private void ResetSearchToolStripTextBox()
         {
@@ -325,25 +350,22 @@ namespace WindowsApp
             searchToolStripTextBox.ForeColor = System.Drawing.Color.Black;
         }
 
-        private void UpdateRowSelected(object sender, EventArgs e)
-        {
-            
-        }
-        private void ConvertRowsToPerson(DataGridViewRow currentRow)
+        private Person ConvertRowsToPerson(DataGridViewRow currentRow)
         {
             var selectedGinNumber = (int)currentRow.Cells["GinNumber"].Value;
             var lastName = currentRow.Cells["LastName"].Value.ToString();
             var firstName = currentRow.Cells["FirstName"].Value.ToString();
             selectedPersons.Add(new Person(selectedGinNumber, firstName, lastName));
-
+            return new Person(selectedGinNumber, firstName, lastName);
         }
-        private void ConvertRowsToHealthRecord(DataGridViewRow currentRow)
+        private HealthInformation ConvertRowsToHealthRecord(DataGridViewRow currentRow)
         {
             var selectedDate = (DateTime)currentRow.Cells["Date"].Value;
             bool visitHubei = (bool)currentRow.Cells["VisitHubei"].Value;
             bool hasAbnormalSymptom = (bool)currentRow.Cells["HasAbnormalSymptom"].Value;
             double temperature = (double)currentRow.Cells["Temperature"].Value;
             selectedHealthRecords.Add(new HealthInformation(selectedDate, visitHubei, hasAbnormalSymptom, temperature));
+            return new HealthInformation(selectedDate, visitHubei, hasAbnormalSymptom, temperature);
         }
 
         private void MainMenuForm_KeyDown(object sender, KeyEventArgs e)
@@ -386,40 +408,34 @@ namespace WindowsApp
                     break;
             }
         }
-        private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeView_Select(object sender, TreeViewEventArgs e)
         {
-            ClearFilter();
+            filter.RemoveFilter(treeviewFilter);
             switch ((string)treeViewComboBox.SelectedItem)
             {
                 case "Date TreeView":
-                    TreeViewDate_Filter(e.Node);
+                    treeviewFilter = TreeViewDate_Filter(e.Node);
                     break;
                 case "Name & Gin Number TreeView":
-                    TreeViewName_Filter(e.Node);
+                    treeviewFilter = TreeViewName_Filter(e.Node);
                     break;
             }
-            selectedPersons.Clear();
-            selectedHealthRecords.Clear();
-            foreach (DataGridViewRow row in healthDataGridView.Rows)
-            {
-                ConvertRowsToPerson(row);
-                ConvertRowsToHealthRecord(row);
-            }
-            //can be simplified here for name treeview, instead of reading all the rows, just read all the persons, consider to rivise it later. 
+            healthDatabaseBindingSource.Filter = filter.Filter;
         }
         private void InitializeTreeViewName(SortedDictionary<string, List<Person>> personList)
         {
             treeView.BeginUpdate();
             treeView.Nodes.Clear();
             int indexName = 0;
+            treeView.Nodes.Add("All Health Records");
             foreach (var lastName in personList.Keys)
             {
-                treeView.Nodes.Add(lastName.ToString());
+                treeView.Nodes[0].Nodes.Add(lastName.ToString());
                 List<Person> listOfPersonHasSameLastName = personList[lastName];
                 listOfPersonHasSameLastName.Sort((x, y) => string.Compare(x.FirstName, y.FirstName));
                 foreach (Person person in personList[lastName])
                 {
-                    treeView.Nodes[indexName].Nodes.Add(person.ToString_DefualtNameFormat());
+                    treeView.Nodes[0].Nodes[indexName].Nodes.Add(person.ToString_DefualtNameFormat());
                 }
                 indexName = indexName + 1;
             }
@@ -430,17 +446,18 @@ namespace WindowsApp
         {
             treeView.BeginUpdate();
             treeView.Nodes.Clear();
+            treeView.Nodes.Add("All Health Records");
             int indexYear = 0;
             foreach (var year in dateList.Keys)
             {
-                treeView.Nodes.Add(year.ToString());
+                treeView.Nodes[0].Nodes.Add(year.ToString());
                 int indexMonth = 0;
                 foreach (var month in dateList[year].Keys)
                 {
-                    treeView.Nodes[indexYear].Nodes.Add(month.ToString());
+                    treeView.Nodes[0].Nodes[indexYear].Nodes.Add(month.ToString());
                     foreach (var date in dateList[year][month])
                     {
-                        treeView.Nodes[indexYear].Nodes[indexMonth].Nodes.Add(date.ToShortDateString());
+                        treeView.Nodes[0].Nodes[indexYear].Nodes[indexMonth].Nodes.Add(date.ToShortDateString());
                     }
                     indexMonth = indexMonth + 1;
                 }
@@ -490,22 +507,27 @@ namespace WindowsApp
             return personList;
         }
 
-        private void TreeViewDate_Filter(TreeNode node)
+        private string TreeViewDate_Filter(TreeNode node)
         {
             int countOfSubNodes = node.GetNodeCount(true);
             string nodeText = node.Text;
             if (node.Parent == null)
             {
-                int year = Int32.Parse(node.Text);
-                DateTime myYearMin = new DateTime(year, 01, 01);
-                DateTime myYearMax = myYearMin.AddYears(1);
-                healthDatabaseBindingSource.Filter = filter.FilterDateTime_MonthAndYearFilter(myYearMax, myYearMin);
+                return "";
             }
             else if (countOfSubNodes == 0)
             {
                 string dateFilterString = String.Format("Date = '{0:MM/dd/yyyy}'", DateTime.Parse(nodeText));
                 filter.AddFilter(dateFilterString);
-                healthDatabaseBindingSource.Filter = filter.Filter;
+                return dateFilterString;
+            }
+            else if (node.Text.Length == 4)
+            {
+                int year = Int32.Parse(node.Text);
+                DateTime myYearMin = new DateTime(year, 01, 01);
+                DateTime myYearMax = myYearMin.AddYears(1);
+                string yearFilter = filter.FilterDateTime_MonthAndYearFilter(myYearMax, myYearMin);
+                return yearFilter;
             }
             else
             {
@@ -513,25 +535,30 @@ namespace WindowsApp
                 int month = Int32.Parse(nodeText);
                 DateTime myMonthMin = new DateTime(year, month, 01);
                 DateTime myMonthMax = new DateTime(year, month, 01).AddMonths(1);
-                healthDatabaseBindingSource.Filter = filter.FilterDateTime_MonthAndYearFilter(myMonthMax, myMonthMin);
+                string monthFilter = filter.FilterDateTime_MonthAndYearFilter(myMonthMax, myMonthMin);
+                return monthFilter;
             }
         }
-        private void TreeViewName_Filter(TreeNode node)
+        private string TreeViewName_Filter(TreeNode node)
         {
             string nodeText = node.Text;
-            TreeNode nodePrent = node.Parent;
-            if (nodePrent != null)
+            TreeNode nodeParent = node.Parent;
+            if (nodeParent != null)
             {
-                string filterString = String.Format("GinNumber = '{0}'", nodeText.Split(',')[0]);
-                filter.AddFilter(filterString);
-                healthDatabaseBindingSource.Filter = filter.Filter;
+                if (node.GetNodeCount(true) == 0)
+                {
+                    string filterString = String.Format("GinNumber = '{0}'", nodeText.Split(',')[0]);
+                    filter.AddFilter(filterString);
+                    return filterString;
+                }
+                else
+                {
+                    string filterString = String.Format("LastName = '{0}'", nodeText.ToString());
+                    filter.AddFilter(filterString);
+                    return filterString;
+                }
             }
-            else
-            {
-                string filterString = String.Format("LastName = '{0}'", nodeText.ToString());
-                filter.AddFilter(filterString);
-                healthDatabaseBindingSource.Filter = filter.Filter;
-            }
+            return "";
         }
         private void UpdateDataGridViewDisplay()
         {
@@ -539,17 +566,9 @@ namespace WindowsApp
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordsDataTable;
         }
 
-        private void UpdateRowSelected(object sender, DataGridViewCellEventArgs e)
+        private void HealthDataGridView_Click(object sender, EventArgs e)
         {
-            selectedPersons.Clear();
-            selectedHealthRecords.Clear();
-            if (healthDataGridView.RowCount > 0)
-            {
-                var currentRow = healthDataGridView.CurrentRow;
-                ConvertRowsToPerson(currentRow);
-                ConvertRowsToHealthRecord(currentRow);
-                return;
-            }
+            treeView.SelectedNode = null;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DatabaseOperation
         public bool HasFormatError_GinNumber(string myInput)
         {
             int test;
-            return !int.TryParse(myInput, out test) && test > 0;
+            return !(int.TryParse(myInput, out test) && test > 0);
         }
         public bool HasFormatError_Name(string myInput)
         {
@@ -21,7 +21,6 @@ namespace DatabaseOperation
             }
             return true;
         }
-
         public bool HasFormatError_Date(string myInput)
         {
             DateTime test;
@@ -31,7 +30,6 @@ namespace DatabaseOperation
             }
             return true;
         }
-
         public bool HasFormatError_Temperature(string myInput)
         {
             double test;

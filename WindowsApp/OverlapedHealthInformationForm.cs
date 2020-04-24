@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmployeeInformation;
 
@@ -119,6 +113,10 @@ namespace WindowsApp
         {
             MessageBox.Show("The gin number and name of repeated health record is unchanged.", "Confirm", MessageBoxButtons.OK);
             Close();
+        }
+        private void FormForAddAndEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            statusBarUpdate_SubFormClosed?.Invoke(sender, FormClosedEventArgs.Empty);
         }
     }
 }

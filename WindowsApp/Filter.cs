@@ -21,9 +21,10 @@ namespace WindowsApp
                 filter = value;
             }
         }
+ 
         public void AddFilter(string filterToBeAdded)
         {
-            if (filter != "")
+            if (filter != "" && filterToBeAdded != "")
             {
                 filter = filter + " AND ";
             }
@@ -32,7 +33,7 @@ namespace WindowsApp
         public void RemoveFilter(string filterToBeRemoved)
         {
             string logicOperator = " AND ";
-            if (filter.IndexOf(filterToBeRemoved) < 0)
+            if (filterToBeRemoved == "" || filter.IndexOf(filterToBeRemoved) < 0)
             {
                 return;
             }
@@ -64,17 +65,18 @@ namespace WindowsApp
             }
             return filter;
         }
+
         public string FilterDateTime_MonthAndYearFilter(DateTime myDateTimeMax, DateTime myDateTimeMin)
         {
-            string filterString = String.Format("Date <= '{0:MM/dd/yyyy}' AND Date >= '{1:MM/dd/yyyy}'", myDateTimeMax, myDateTimeMin);
+            string filterString = String.Format("(Date <= '{0:MM/dd/yyyy}' AND Date >= '{1:MM/dd/yyyy}')", myDateTimeMax, myDateTimeMin);
             AddFilter(filterString);
-            return filter;
+            return filterString;
         }
         public string FilterDateTimeFilter(DateTime myDateTime)
         {
-            string filterString = String.Format("Date = '{0:MM/dd/yyyy}'", myDateTime);
+            string filterString = String.Format("(Date = '{0:MM/dd/yyyy}')", myDateTime);
             AddFilter(filterString);
-            return filter;
+            return filterString;
         }
     }
 }

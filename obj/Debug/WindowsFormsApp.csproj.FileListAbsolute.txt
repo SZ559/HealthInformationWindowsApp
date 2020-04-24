@@ -27,5 +27,5 @@ C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.Cop
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.exe
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.pdb
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.FormForAddAndEdit.resources
-C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojAssemblyReference.cache
 C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsApp.OverlapedHealthInformationForm.resources
+C:\Users\zhang\source\repos\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojAssemblyReference.cache

@@ -89,7 +89,6 @@ namespace WindowsApp
                 }
             }   
         }
-
         private bool IsValidInput()
         {
             errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
@@ -101,7 +100,6 @@ namespace WindowsApp
             errorTemperature.Visible = formatValidator.HasFormatError_Temperature(temperatureTextbox.Text);
             return !errorGinNumber.Visible && !errorFirstName.Visible && !errorLastName.Visible && !errorDateLabel.Visible && !errorVisitHubei.Visible && !errorAbnormalSymptom.Visible && !errorTemperature.Visible;
         }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (updateHealthRecrod(originalPerson, originalHealthInformation))
@@ -109,7 +107,6 @@ namespace WindowsApp
                 Close(); 
             }
         }
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ResetAll();
@@ -129,6 +126,8 @@ namespace WindowsApp
 
             errorGinNumber.Visible = false;
             errorFirstName.Visible = false;
+            errorFirstName.Visible = false;
+            errorLastName.Visible = false;
             errorVisitHubei.Visible = false;
             errorAbnormalSymptom.Visible = false;
             errorTemperature.Visible = false;
@@ -139,7 +138,7 @@ namespace WindowsApp
         }
         private void FormForAddAndEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
-            statusBarUpdate_SubFormClosed?.Invoke("Ready", EventArgs.Empty);
+            statusBarUpdate_SubFormClosed?.Invoke(sender, FormClosedEventArgs.Empty);
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EmployeeInformation
 {
@@ -85,7 +87,7 @@ namespace EmployeeInformation
         } 
         public List<HealthInformation>[] UpdatePerson(Person originalPerson, Person updatedPerson)
         {
-            List<HealthInformation> overlapedInformation_Original = new List<HealthInformation>(); 
+            List<HealthInformation> overlapedInformation_Original = new List<HealthInformation>();
             List<HealthInformation> overlapedInformation_Updated = new List<HealthInformation>();
             if (originalPerson.GinNumber == updatedPerson.GinNumber)
             {
@@ -93,8 +95,8 @@ namespace EmployeeInformation
             }
             else if (ContainsPerson(updatedPerson))
             {
-                EmployeeHealthRecord healthRecord = healthRecords[originalPerson.GinNumber];
-                foreach (HealthInformation healthInformation in healthRecord.EmployeeHealthRecords.Values)
+                List<HealthInformation> healthInformationList= healthRecords[originalPerson.GinNumber].EmployeeHealthRecords.Values.ToList();
+                foreach (HealthInformation healthInformation in healthInformationList)
                 {
                     if (!healthRecords[updatedPerson.GinNumber].AddHealthInformation(healthInformation))
                     {
@@ -104,7 +106,7 @@ namespace EmployeeInformation
                     else
                     {
                         healthRecords[originalPerson.GinNumber].DeleteHealthInformation(healthInformation);
-                    }
+                    }                
                 }
                 RemoveEmptyPerson(originalPerson);
             }
@@ -115,9 +117,10 @@ namespace EmployeeInformation
                 AddNewPerson(origianlEmployeeHealthRecord);
                 healthRecords.Remove(originalPerson.GinNumber);
             }
-            List<HealthInformation>[] overlapedInformation = new List<HealthInformation>[] { overlapedInformation_Original, overlapedInformation_Updated };
-            return overlapedInformation;
+           
+            return new List<HealthInformation>[] { overlapedInformation_Original, overlapedInformation_Updated };
         }
+
         public bool ModifyOneHealthRecord(Person personToBeModified, HealthInformation healthInformationToBeModified, Person updatedPerson, HealthInformation updatedHealthInformation)
         {
             if (personToBeModified.GinNumber == updatedPerson.GinNumber)

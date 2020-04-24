@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace EmployeeInformation
 {
-    public class Person
+    public class Person 
     {
         public int GinNumber
         {
@@ -38,6 +38,14 @@ namespace EmployeeInformation
         public string ToString_DefualtNameFormat()
         { 
             return GinNumber.ToString() + "," + FirstName + " " + LastName;
+        }
+        public bool IsSamePerson(Person other)
+        {
+            if (other == null || this == null)
+            {
+                return false;
+            }
+            return GinNumber == other.GinNumber && FirstName == other.FirstName && LastName == other.LastName;
         }
 
     }
