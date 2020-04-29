@@ -17,10 +17,8 @@ namespace WindowsFormsApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainMenuForm mainMenu = new MainMenuForm();
-            //Application.Run(mainMenu);
-            Person person = new Person(123,"shishi","zhang");
-            Person person2 = new Person(123, "shishi", "zhang");
-            MessageBox.Show(person.Equals(person).ToString());
+            Application.Run(mainMenu);
+          
 
         }
     }
