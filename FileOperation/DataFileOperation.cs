@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using EmployeeInformation;
+using EmployeeHealthRecord;
 using DatabaseOperation;
 namespace FileOperation
 {
     public class DataFileOperation
     {
-        public static string InputFromCSVFile(ref EmployeeHealthDatabase myHealthRecord, string filePath)
+        public static string InputFromCSVFile(ref HealthRecordsOfAllEmployees myHealthRecord, string filePath)
         {
             FormatValidator formatValidator = new FormatValidator();
             try
             {
-                EmployeeHealthDatabase newHealthRecord = new EmployeeHealthDatabase();
+                HealthRecordsOfAllEmployees newHealthRecord = new HealthRecordsOfAllEmployees();
                 using (StreamReader myStreamReader = new StreamReader(filePath))
                 {
                     string newRecord;
@@ -23,8 +23,8 @@ namespace FileOperation
                         {
                             string[] newPersonArray = newRecord.Split(',');
                             int ginNumber = int.Parse(newPersonArray[0]);
-                            string lastName = newPersonArray[1];
-                            string firstName = newPersonArray[2];
+                            string firstName = newPersonArray[1];
+                            string lastName = newPersonArray[2];
                             DateTime date = DateTime.Parse(newPersonArray[3]);
                             bool visitedHubei = bool.Parse(newPersonArray[4]);
                             bool hasAbnormalSymptom = bool.Parse(newPersonArray[5]);
@@ -48,7 +48,7 @@ namespace FileOperation
             }
         }
 
-        public static string SaveAsCSV(ref EmployeeHealthDatabase myHealthRecords, string filePath)
+        public static string SaveAsCSV(ref HealthRecordsOfAllEmployees myHealthRecords, string filePath)
         {
             try
             {

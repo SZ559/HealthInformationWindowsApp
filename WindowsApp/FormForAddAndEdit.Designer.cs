@@ -59,8 +59,10 @@ namespace WindowsApp
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.errorLastName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ginNumberLabel
@@ -68,7 +70,7 @@ namespace WindowsApp
             this.ginNumberLabel.AutoSize = true;
             this.ginNumberLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ginNumberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ginNumberLabel.Location = new System.Drawing.Point(186, 81);
+            this.ginNumberLabel.Location = new System.Drawing.Point(184, 65);
             this.ginNumberLabel.Name = "ginNumberLabel";
             this.ginNumberLabel.Size = new System.Drawing.Size(198, 39);
             this.ginNumberLabel.TabIndex = 3;
@@ -77,7 +79,7 @@ namespace WindowsApp
             // ginNumberTextbox
             // 
             this.ginNumberTextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ginNumberTextbox.Location = new System.Drawing.Point(396, 78);
+            this.ginNumberTextbox.Location = new System.Drawing.Point(394, 62);
             this.ginNumberTextbox.Name = "ginNumberTextbox";
             this.ginNumberTextbox.Size = new System.Drawing.Size(462, 46);
             this.ginNumberTextbox.TabIndex = 0;
@@ -85,7 +87,7 @@ namespace WindowsApp
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(396, 181);
+            this.firstNameTextBox.Location = new System.Drawing.Point(394, 165);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(462, 46);
             this.firstNameTextBox.TabIndex = 1;
@@ -95,7 +97,7 @@ namespace WindowsApp
             this.visitHubeiLabel.AutoSize = true;
             this.visitHubeiLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitHubeiLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.visitHubeiLabel.Location = new System.Drawing.Point(38, 495);
+            this.visitHubeiLabel.Location = new System.Drawing.Point(36, 479);
             this.visitHubeiLabel.Name = "visitHubeiLabel";
             this.visitHubeiLabel.Size = new System.Drawing.Size(346, 39);
             this.visitHubeiLabel.TabIndex = 6;
@@ -106,7 +108,7 @@ namespace WindowsApp
             this.hasAbnormalSymptomLabel.AutoSize = true;
             this.hasAbnormalSymptomLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hasAbnormalSymptomLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.hasAbnormalSymptomLabel.Location = new System.Drawing.Point(9, 601);
+            this.hasAbnormalSymptomLabel.Location = new System.Drawing.Point(7, 585);
             this.hasAbnormalSymptomLabel.Name = "hasAbnormalSymptomLabel";
             this.hasAbnormalSymptomLabel.Size = new System.Drawing.Size(375, 39);
             this.hasAbnormalSymptomLabel.TabIndex = 9;
@@ -117,7 +119,7 @@ namespace WindowsApp
             this.temepratureLabel.AutoSize = true;
             this.temepratureLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temepratureLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.temepratureLabel.Location = new System.Drawing.Point(95, 705);
+            this.temepratureLabel.Location = new System.Drawing.Point(93, 689);
             this.temepratureLabel.Name = "temepratureLabel";
             this.temepratureLabel.Size = new System.Drawing.Size(289, 39);
             this.temepratureLabel.TabIndex = 12;
@@ -126,7 +128,7 @@ namespace WindowsApp
             // temperatureTextbox
             // 
             this.temperatureTextbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.temperatureTextbox.Location = new System.Drawing.Point(396, 702);
+            this.temperatureTextbox.Location = new System.Drawing.Point(394, 686);
             this.temperatureTextbox.Name = "temperatureTextbox";
             this.temperatureTextbox.Size = new System.Drawing.Size(462, 46);
             this.temperatureTextbox.TabIndex = 6;
@@ -136,7 +138,7 @@ namespace WindowsApp
             this.errorGinNumber.AutoSize = true;
             this.errorGinNumber.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorGinNumber.ForeColor = System.Drawing.Color.Red;
-            this.errorGinNumber.Location = new System.Drawing.Point(392, 130);
+            this.errorGinNumber.Location = new System.Drawing.Point(390, 114);
             this.errorGinNumber.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorGinNumber.Name = "errorGinNumber";
             this.errorGinNumber.Size = new System.Drawing.Size(470, 39);
@@ -149,7 +151,7 @@ namespace WindowsApp
             this.errorFirstName.AutoSize = true;
             this.errorFirstName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorFirstName.ForeColor = System.Drawing.Color.Red;
-            this.errorFirstName.Location = new System.Drawing.Point(392, 233);
+            this.errorFirstName.Location = new System.Drawing.Point(390, 217);
             this.errorFirstName.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorFirstName.Name = "errorFirstName";
             this.errorFirstName.Size = new System.Drawing.Size(424, 39);
@@ -163,7 +165,8 @@ namespace WindowsApp
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.closeButton.Location = new System.Drawing.Point(707, 805);
+            this.closeButton.Location = new System.Drawing.Point(705, 789);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(150, 60);
             this.closeButton.TabIndex = 9;
@@ -176,7 +179,7 @@ namespace WindowsApp
             this.errorVisitHubei.AutoSize = true;
             this.errorVisitHubei.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorVisitHubei.ForeColor = System.Drawing.Color.Red;
-            this.errorVisitHubei.Location = new System.Drawing.Point(392, 545);
+            this.errorVisitHubei.Location = new System.Drawing.Point(390, 529);
             this.errorVisitHubei.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorVisitHubei.Name = "errorVisitHubei";
             this.errorVisitHubei.Size = new System.Drawing.Size(397, 39);
@@ -189,7 +192,7 @@ namespace WindowsApp
             this.errorAbnormalSymptom.AutoSize = true;
             this.errorAbnormalSymptom.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorAbnormalSymptom.ForeColor = System.Drawing.Color.Red;
-            this.errorAbnormalSymptom.Location = new System.Drawing.Point(392, 651);
+            this.errorAbnormalSymptom.Location = new System.Drawing.Point(390, 635);
             this.errorAbnormalSymptom.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorAbnormalSymptom.Name = "errorAbnormalSymptom";
             this.errorAbnormalSymptom.Size = new System.Drawing.Size(397, 39);
@@ -202,7 +205,7 @@ namespace WindowsApp
             this.errorTemperature.AutoSize = true;
             this.errorTemperature.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorTemperature.ForeColor = System.Drawing.Color.Red;
-            this.errorTemperature.Location = new System.Drawing.Point(392, 757);
+            this.errorTemperature.Location = new System.Drawing.Point(390, 741);
             this.errorTemperature.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorTemperature.Name = "errorTemperature";
             this.errorTemperature.Size = new System.Drawing.Size(380, 39);
@@ -216,7 +219,8 @@ namespace WindowsApp
             this.addConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addConfirmButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addConfirmButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addConfirmButton.Location = new System.Drawing.Point(399, 805);
+            this.addConfirmButton.Location = new System.Drawing.Point(397, 789);
+            this.addConfirmButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.addConfirmButton.Name = "addConfirmButton";
             this.addConfirmButton.Size = new System.Drawing.Size(150, 60);
             this.addConfirmButton.TabIndex = 7;
@@ -230,7 +234,8 @@ namespace WindowsApp
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.clearButton.Location = new System.Drawing.Point(553, 805);
+            this.clearButton.Location = new System.Drawing.Point(551, 789);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(150, 60);
             this.clearButton.TabIndex = 8;
@@ -300,7 +305,7 @@ namespace WindowsApp
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.deleteButton.Location = new System.Drawing.Point(553, 805);
+            this.deleteButton.Location = new System.Drawing.Point(551, 789);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(150, 60);
             this.deleteButton.TabIndex = 8;
@@ -312,9 +317,9 @@ namespace WindowsApp
             // 
             this.flowLayoutPanel1.Controls.Add(this.visitHubeiYesRadioButton);
             this.flowLayoutPanel1.Controls.Add(this.visitHubeiNoRadioButton);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(396, 490);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(394, 474);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(3);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(462, 49);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
@@ -322,9 +327,9 @@ namespace WindowsApp
             // 
             this.flowLayoutPanel2.Controls.Add(this.hasAbnormalSymptomYesRadioButton);
             this.flowLayoutPanel2.Controls.Add(this.hasAbnormalSymptomNoRadioButton);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(396, 596);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(394, 580);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(3);
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.flowLayoutPanel2.Size = new System.Drawing.Size(462, 49);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
@@ -334,7 +339,7 @@ namespace WindowsApp
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(396, 387);
+            this.dateTimePicker.Location = new System.Drawing.Point(394, 371);
             this.dateTimePicker.MaxDate = new System.DateTime(2020, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
@@ -347,7 +352,7 @@ namespace WindowsApp
             this.errorDateLabel.AutoSize = true;
             this.errorDateLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorDateLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorDateLabel.Location = new System.Drawing.Point(392, 439);
+            this.errorDateLabel.Location = new System.Drawing.Point(390, 423);
             this.errorDateLabel.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorDateLabel.Name = "errorDateLabel";
             this.errorDateLabel.Size = new System.Drawing.Size(397, 39);
@@ -360,7 +365,7 @@ namespace WindowsApp
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dateLabel.Location = new System.Drawing.Point(292, 393);
+            this.dateLabel.Location = new System.Drawing.Point(290, 377);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(92, 39);
             this.dateLabel.TabIndex = 23;
@@ -371,7 +376,7 @@ namespace WindowsApp
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstNameLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.firstNameLabel.Location = new System.Drawing.Point(205, 184);
+            this.firstNameLabel.Location = new System.Drawing.Point(203, 168);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(179, 39);
             this.firstNameLabel.TabIndex = 1;
@@ -382,7 +387,7 @@ namespace WindowsApp
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lastNameLabel.Location = new System.Drawing.Point(208, 287);
+            this.lastNameLabel.Location = new System.Drawing.Point(206, 271);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(176, 39);
             this.lastNameLabel.TabIndex = 24;
@@ -391,7 +396,7 @@ namespace WindowsApp
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(396, 284);
+            this.lastNameTextBox.Location = new System.Drawing.Point(394, 268);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(462, 46);
             this.lastNameTextBox.TabIndex = 25;
@@ -401,7 +406,7 @@ namespace WindowsApp
             this.errorLastName.AutoSize = true;
             this.errorLastName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLastName.ForeColor = System.Drawing.Color.Red;
-            this.errorLastName.Location = new System.Drawing.Point(392, 336);
+            this.errorLastName.Location = new System.Drawing.Point(390, 320);
             this.errorLastName.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.errorLastName.Name = "errorLastName";
             this.errorLastName.Size = new System.Drawing.Size(421, 39);
@@ -409,37 +414,48 @@ namespace WindowsApp
             this.errorLastName.Text = "Last Name cannot be empty";
             this.errorLastName.Visible = false;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.errorLastName);
+            this.panel1.Controls.Add(this.lastNameTextBox);
+            this.panel1.Controls.Add(this.lastNameLabel);
+            this.panel1.Controls.Add(this.dateLabel);
+            this.panel1.Controls.Add(this.errorDateLabel);
+            this.panel1.Controls.Add(this.dateTimePicker);
+            this.panel1.Controls.Add(this.ginNumberTextbox);
+            this.panel1.Controls.Add(this.errorGinNumber);
+            this.panel1.Controls.Add(this.firstNameTextBox);
+            this.panel1.Controls.Add(this.errorFirstName);
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.addConfirmButton);
+            this.panel1.Controls.Add(this.flowLayoutPanel2);
+            this.panel1.Controls.Add(this.errorVisitHubei);
+            this.panel1.Controls.Add(this.clearButton);
+            this.panel1.Controls.Add(this.closeButton);
+            this.panel1.Controls.Add(this.temepratureLabel);
+            this.panel1.Controls.Add(this.hasAbnormalSymptomLabel);
+            this.panel1.Controls.Add(this.visitHubeiLabel);
+            this.panel1.Controls.Add(this.errorAbnormalSymptom);
+            this.panel1.Controls.Add(this.ginNumberLabel);
+            this.panel1.Controls.Add(this.temperatureTextbox);
+            this.panel1.Controls.Add(this.errorTemperature);
+            this.panel1.Controls.Add(this.firstNameLabel);
+            this.panel1.Controls.Add(this.deleteButton);
+            this.panel1.Location = new System.Drawing.Point(12, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(896, 895);
+            this.panel1.TabIndex = 27;
+            // 
             // FormForAddAndEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 888);
-            this.Controls.Add(this.errorLastName);
-            this.Controls.Add(this.lastNameTextBox);
-            this.Controls.Add(this.lastNameLabel);
-            this.Controls.Add(this.dateLabel);
-            this.Controls.Add(this.errorDateLabel);
-            this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.ginNumberTextbox);
-            this.Controls.Add(this.errorGinNumber);
-            this.Controls.Add(this.firstNameTextBox);
-            this.Controls.Add(this.errorFirstName);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.addConfirmButton);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.errorVisitHubei);
-            this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.temepratureLabel);
-            this.Controls.Add(this.hasAbnormalSymptomLabel);
-            this.Controls.Add(this.visitHubeiLabel);
-            this.Controls.Add(this.errorAbnormalSymptom);
-            this.Controls.Add(this.ginNumberLabel);
-            this.Controls.Add(this.temperatureTextbox);
-            this.Controls.Add(this.errorTemperature);
-            this.Controls.Add(this.firstNameLabel);
-            this.Controls.Add(this.deleteButton);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(917, 907);
+            this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "FormForAddAndEdit";
             this.Text = "Add";
             this.TopMost = true;
@@ -448,8 +464,9 @@ namespace WindowsApp
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -483,6 +500,7 @@ namespace WindowsApp
         private System.Windows.Forms.Label lastNameLabel;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.Label errorLastName;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

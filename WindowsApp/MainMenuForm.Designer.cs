@@ -116,9 +116,10 @@
             this.viewSuspectedCaseCheckBox.AutoSize = true;
             this.viewSuspectedCaseCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.viewSuspectedCaseCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(832, 3);
+            this.viewSuspectedCaseCheckBox.Location = new System.Drawing.Point(345, 55);
+            this.viewSuspectedCaseCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.viewSuspectedCaseCheckBox.Name = "viewSuspectedCaseCheckBox";
-            this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 46);
+            this.viewSuspectedCaseCheckBox.Size = new System.Drawing.Size(371, 43);
             this.viewSuspectedCaseCheckBox.TabIndex = 1;
             this.viewSuspectedCaseCheckBox.Text = "View Suspected Cases";
             this.viewSuspectedCaseCheckBox.UseVisualStyleBackColor = true;
@@ -129,9 +130,10 @@
             this.employeeHealthDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeHealthDataLabel.AutoSize = true;
             this.employeeHealthDataLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.employeeHealthDataLabel.Location = new System.Drawing.Point(354, 13);
+            this.employeeHealthDataLabel.Location = new System.Drawing.Point(204, 2);
+            this.employeeHealthDataLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.employeeHealthDataLabel.Name = "employeeHealthDataLabel";
-            this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 39);
+            this.employeeHealthDataLabel.Size = new System.Drawing.Size(338, 17);
             this.employeeHealthDataLabel.TabIndex = 2;
             this.employeeHealthDataLabel.Text = "Employee Health Data";
             // 
@@ -144,14 +146,15 @@
             this.healthDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.healthDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.healthDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthDataGridView.Location = new System.Drawing.Point(354, 120);
+            this.healthDataGridView.Location = new System.Drawing.Point(204, 57);
+            this.healthDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.healthDataGridView.MultiSelect = false;
             this.healthDataGridView.Name = "healthDataGridView";
             this.healthDataGridView.ReadOnly = true;
             this.healthDataGridView.RowHeadersWidth = 10;
             this.healthDataGridView.RowTemplate.Height = 44;
             this.healthDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.healthDataGridView.Size = new System.Drawing.Size(1638, 890);
+            this.healthDataGridView.Size = new System.Drawing.Size(780, 378);
             this.healthDataGridView.StandardTab = true;
             this.healthDataGridView.TabIndex = 0;
             this.healthDataGridView.Click += new System.EventHandler(this.HealthDataGridView_Click);
@@ -197,8 +200,8 @@
             // 
             this.tableLayoutPanelEmployeeHealthData.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanelEmployeeHealthData.ColumnCount = 2;
-            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1644F));
+            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelEmployeeHealthData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeViewLabel, 0, 0);
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.employeeHealthDataLabel, 1, 0);
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.healthDataGridView, 1, 2);
@@ -206,14 +209,14 @@
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeViewComboBox, 0, 1);
             this.tableLayoutPanelEmployeeHealthData.Controls.Add(this.treeView, 0, 2);
             this.tableLayoutPanelEmployeeHealthData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelEmployeeHealthData.Location = new System.Drawing.Point(3, 66);
+            this.tableLayoutPanelEmployeeHealthData.Location = new System.Drawing.Point(4, 56);
+            this.tableLayoutPanelEmployeeHealthData.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelEmployeeHealthData.Name = "tableLayoutPanelEmployeeHealthData";
             this.tableLayoutPanelEmployeeHealthData.RowCount = 3;
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.120434F));
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.7463F));
-            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(1997, 1015);
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4F));
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanelEmployeeHealthData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89F));
+            this.tableLayoutPanelEmployeeHealthData.Size = new System.Drawing.Size(990, 441);
             this.tableLayoutPanelEmployeeHealthData.TabIndex = 19;
             // 
             // treeViewLabel
@@ -221,9 +224,10 @@
             this.treeViewLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.treeViewLabel.AutoSize = true;
             this.treeViewLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.treeViewLabel.Location = new System.Drawing.Point(5, 13);
+            this.treeViewLabel.Location = new System.Drawing.Point(6, 2);
+            this.treeViewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.treeViewLabel.Name = "treeViewLabel";
-            this.treeViewLabel.Size = new System.Drawing.Size(157, 39);
+            this.treeViewLabel.Size = new System.Drawing.Size(157, 17);
             this.treeViewLabel.TabIndex = 28;
             this.treeViewLabel.Text = "Tree View";
             // 
@@ -233,10 +237,11 @@
             this.flowLayoutPanel1.Controls.Add(this.visitHubeiFilterCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.viewSuspectedCaseCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.dateTimePicker);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(354, 57);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(204, 25);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1638, 55);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(780, 22);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
             // hasAbnormalSymptomFilterCheckBox
@@ -246,9 +251,10 @@
             this.hasAbnormalSymptomFilterCheckBox.AutoSize = true;
             this.hasAbnormalSymptomFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.hasAbnormalSymptomFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(3, 3);
+            this.hasAbnormalSymptomFilterCheckBox.Location = new System.Drawing.Point(4, 4);
+            this.hasAbnormalSymptomFilterCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.hasAbnormalSymptomFilterCheckBox.Name = "hasAbnormalSymptomFilterCheckBox";
-            this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(484, 46);
+            this.hasAbnormalSymptomFilterCheckBox.Size = new System.Drawing.Size(484, 43);
             this.hasAbnormalSymptomFilterCheckBox.TabIndex = 3;
             this.hasAbnormalSymptomFilterCheckBox.TabStop = false;
             this.hasAbnormalSymptomFilterCheckBox.Text = "View Has Abnormal Symptom";
@@ -262,9 +268,10 @@
             this.visitHubeiFilterCheckBox.AutoSize = true;
             this.visitHubeiFilterCheckBox.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.visitHubeiFilterCheckBox.ForeColor = System.Drawing.Color.Black;
-            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(493, 3);
+            this.visitHubeiFilterCheckBox.Location = new System.Drawing.Point(4, 55);
+            this.visitHubeiFilterCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.visitHubeiFilterCheckBox.Name = "visitHubeiFilterCheckBox";
-            this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(333, 46);
+            this.visitHubeiFilterCheckBox.Size = new System.Drawing.Size(333, 43);
             this.visitHubeiFilterCheckBox.TabIndex = 3;
             this.visitHubeiFilterCheckBox.TabStop = false;
             this.visitHubeiFilterCheckBox.Text = "View Visited Hubei ";
@@ -277,12 +284,13 @@
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(1209, 3);
+            this.dateTimePicker.Location = new System.Drawing.Point(4, 106);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker.MaxDate = new System.DateTime(2020, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.ShowCheckBox = true;
-            this.dateTimePicker.Size = new System.Drawing.Size(276, 46);
+            this.dateTimePicker.Size = new System.Drawing.Size(150, 46);
             this.dateTimePicker.TabIndex = 22;
             this.dateTimePicker.Value = new System.DateTime(2020, 4, 19, 0, 0, 0, 0);
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
@@ -295,9 +303,10 @@
             this.treeViewComboBox.Items.AddRange(new object[] {
             "Date TreeView",
             "Name & Gin Number TreeView"});
-            this.treeViewComboBox.Location = new System.Drawing.Point(5, 57);
+            this.treeViewComboBox.Location = new System.Drawing.Point(6, 25);
+            this.treeViewComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewComboBox.Name = "treeViewComboBox";
-            this.treeViewComboBox.Size = new System.Drawing.Size(341, 43);
+            this.treeViewComboBox.Size = new System.Drawing.Size(188, 43);
             this.treeViewComboBox.TabIndex = 27;
             this.treeViewComboBox.Text = "Choose TreeView ";
             this.treeViewComboBox.SelectedIndexChanged += new System.EventHandler(this.TreeViewComboBox_SelectedIndexChanged);
@@ -306,9 +315,10 @@
             // 
             this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.Location = new System.Drawing.Point(5, 120);
+            this.treeView.Location = new System.Drawing.Point(6, 57);
+            this.treeView.Margin = new System.Windows.Forms.Padding(4);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(341, 890);
+            this.treeView.Size = new System.Drawing.Size(188, 378);
             this.treeView.TabIndex = 10;
             this.treeView.TabStop = false;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_Select);
@@ -323,7 +333,8 @@
             this.viewToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(2003, 49);
+            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(18, 6, 0, 6);
+            this.mainMenuStrip.Size = new System.Drawing.Size(998, 57);
             this.mainMenuStrip.TabIndex = 2;
             this.mainMenuStrip.TabStop = true;
             this.mainMenuStrip.Text = "Add";
@@ -445,7 +456,7 @@
             this.openFileToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openFileToolStripButton.Name = "openFileToolStripButton";
             this.openFileToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.openFileToolStripButton.Size = new System.Drawing.Size(189, 56);
+            this.openFileToolStripButton.Size = new System.Drawing.Size(189, 45);
             this.openFileToolStripButton.Text = "Open File";
             this.openFileToolStripButton.ToolTipText = "Open File (Ctrl+O)";
             this.openFileToolStripButton.Click += new System.EventHandler(this.OpenFileButton_Click);
@@ -456,8 +467,8 @@
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.saveToolStripButton.Size = new System.Drawing.Size(215, 56);
-            this.saveToolStripButton.Text = "Save To File";
+            this.saveToolStripButton.Size = new System.Drawing.Size(176, 45);
+            this.saveToolStripButton.Text = "Save File";
             this.saveToolStripButton.ToolTipText = "Save To File (Ctrl+S)";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
             // 
@@ -468,7 +479,7 @@
             this.searchToolStripTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.searchToolStripTextBox.Name = "searchToolStripTextBox";
             this.searchToolStripTextBox.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.searchToolStripTextBox.Size = new System.Drawing.Size(470, 63);
+            this.searchToolStripTextBox.Size = new System.Drawing.Size(200, 46);
             this.searchToolStripTextBox.Text = "Search By Gin Number (Ctrl+Q)";
             this.searchToolStripTextBox.Enter += new System.EventHandler(this.SearchToolStripTextBox_Enter);
             this.searchToolStripTextBox.Leave += new System.EventHandler(this.SearchToolStripTextBox_Leave);
@@ -480,7 +491,7 @@
             this.addToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addToolStripButton.Name = "addToolStripButton";
             this.addToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.addToolStripButton.Size = new System.Drawing.Size(117, 56);
+            this.addToolStripButton.Size = new System.Drawing.Size(117, 45);
             this.addToolStripButton.Text = "Add";
             this.addToolStripButton.ToolTipText = "Add (Ctrl+Shift+A)";
             this.addToolStripButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -491,7 +502,7 @@
             this.editToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editToolStripButton.Name = "editToolStripButton";
             this.editToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.editToolStripButton.Size = new System.Drawing.Size(112, 56);
+            this.editToolStripButton.Size = new System.Drawing.Size(112, 45);
             this.editToolStripButton.Text = "Edit";
             this.editToolStripButton.ToolTipText = "Edit (Ctrl+E)";
             this.editToolStripButton.Click += new System.EventHandler(this.EditButton_Click);
@@ -502,15 +513,15 @@
             this.deleteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteToolStripButton.Name = "deleteToolStripButton";
             this.deleteToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.deleteToolStripButton.Size = new System.Drawing.Size(148, 56);
+            this.deleteToolStripButton.Size = new System.Drawing.Size(148, 45);
             this.deleteToolStripButton.Text = "Delete";
             this.deleteToolStripButton.ToolTipText = "Delete (Del)";
             this.deleteToolStripButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // mainMenuToolStrip
             // 
-            this.mainMenuToolStrip.AutoSize = false;
-            this.mainMenuToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainMenuToolStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.mainMenuToolStrip.CanOverflow = false;
             this.mainMenuToolStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.mainMenuToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripButton,
@@ -522,10 +533,8 @@
             this.clearFilterToolStripButton});
             this.mainMenuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuToolStrip.Name = "mainMenuToolStrip";
-            this.mainMenuToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.mainMenuToolStrip.Size = new System.Drawing.Size(2003, 63);
+            this.mainMenuToolStrip.Size = new System.Drawing.Size(998, 52);
             this.mainMenuToolStrip.TabIndex = 3;
-            this.mainMenuToolStrip.TabStop = true;
             this.mainMenuToolStrip.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchToolStripTextBox_KeyDownEnter);
             // 
             // clearFilterToolStripButton
@@ -535,7 +544,7 @@
             this.clearFilterToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("clearFilterToolStripButton.Image")));
             this.clearFilterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.clearFilterToolStripButton.Name = "clearFilterToolStripButton";
-            this.clearFilterToolStripButton.Size = new System.Drawing.Size(162, 56);
+            this.clearFilterToolStripButton.Size = new System.Drawing.Size(162, 45);
             this.clearFilterToolStripButton.Text = "Clear Filter";
             this.clearFilterToolStripButton.Click += new System.EventHandler(this.ClearFilterToolStripButton_Click);
             // 
@@ -547,23 +556,24 @@
             this.tableLayoutPanelBase.Controls.Add(this.tableLayoutPanelEmployeeHealthData, 0, 1);
             this.tableLayoutPanelBase.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelBase.Location = new System.Drawing.Point(0, 49);
+            this.tableLayoutPanelBase.Location = new System.Drawing.Point(0, 57);
+            this.tableLayoutPanelBase.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelBase.Name = "tableLayoutPanelBase";
             this.tableLayoutPanelBase.RowCount = 3;
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.32355F));
-            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.676443F));
-            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelBase.Size = new System.Drawing.Size(2003, 1146);
+            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelBase.Size = new System.Drawing.Size(998, 525);
             this.tableLayoutPanelBase.TabIndex = 24;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 1087);
+            this.panel1.Location = new System.Drawing.Point(4, 505);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1997, 56);
+            this.panel1.Size = new System.Drawing.Size(990, 16);
             this.panel1.TabIndex = 20;
             // 
             // tableLayoutPanel1
@@ -575,10 +585,11 @@
             this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1997, 56);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(990, 16);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // statusStrip1
@@ -595,20 +606,21 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1395, 53);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(692, 16);
             this.statusStrip1.TabIndex = 29;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabelHide
             // 
             this.toolStripStatusLabelHide.Name = "toolStripStatusLabelHide";
-            this.toolStripStatusLabelHide.Size = new System.Drawing.Size(0, 40);
+            this.toolStripStatusLabelHide.Size = new System.Drawing.Size(0, 3);
             // 
             // hideStatusBar
             // 
             this.hideStatusBar.Image = ((System.Drawing.Image)(resources.GetObject("hideStatusBar.Image")));
             this.hideStatusBar.Name = "hideStatusBar";
-            this.hideStatusBar.Size = new System.Drawing.Size(66, 40);
+            this.hideStatusBar.Size = new System.Drawing.Size(66, 3);
             this.hideStatusBar.Text = " ";
             this.hideStatusBar.ToolTipText = "Hide Status Bar";
             this.hideStatusBar.Click += new System.EventHandler(this.HideStatusBar_Click);
@@ -616,7 +628,7 @@
             // currentStatusToolStripStatusLabel
             // 
             this.currentStatusToolStripStatusLabel.Name = "currentStatusToolStripStatusLabel";
-            this.currentStatusToolStripStatusLabel.Size = new System.Drawing.Size(106, 40);
+            this.currentStatusToolStripStatusLabel.Size = new System.Drawing.Size(106, 3);
             this.currentStatusToolStripStatusLabel.Text = "Ready";
             this.currentStatusToolStripStatusLabel.ToolTipText = "Status";
             // 
@@ -624,19 +636,19 @@
             // 
             this.warningToolStripStatusLabel1.Image = ((System.Drawing.Image)(resources.GetObject("warningToolStripStatusLabel1.Image")));
             this.warningToolStripStatusLabel1.Name = "warningToolStripStatusLabel1";
-            this.warningToolStripStatusLabel1.Size = new System.Drawing.Size(172, 40);
+            this.warningToolStripStatusLabel1.Size = new System.Drawing.Size(172, 3);
             this.warningToolStripStatusLabel1.Text = "warning";
             this.warningToolStripStatusLabel1.Visible = false;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 40);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 3);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 40);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 3);
             // 
             // statusStrip2
             // 
@@ -646,21 +658,22 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sizeToolStripStatusLabel2,
             this.toolStripStatus2LabelAppName});
-            this.statusStrip2.Location = new System.Drawing.Point(1395, 0);
+            this.statusStrip2.Location = new System.Drawing.Point(692, 0);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(602, 52);
+            this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
+            this.statusStrip2.Size = new System.Drawing.Size(298, 16);
             this.statusStrip2.TabIndex = 28;
             // 
             // sizeToolStripStatusLabel2
             // 
             this.sizeToolStripStatusLabel2.Name = "sizeToolStripStatusLabel2";
-            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(250, 39);
+            this.sizeToolStripStatusLabel2.Size = new System.Drawing.Size(250, 3);
             this.sizeToolStripStatusLabel2.Text = "Size: 1699, 1283";
             // 
             // toolStripStatus2LabelAppName
             // 
             this.toolStripStatus2LabelAppName.Name = "toolStripStatus2LabelAppName";
-            this.toolStripStatus2LabelAppName.Size = new System.Drawing.Size(235, 39);
+            this.toolStripStatus2LabelAppName.Size = new System.Drawing.Size(235, 3);
             this.toolStripStatus2LabelAppName.Text = "Health Monitor";
             // 
             // mainMenuToolStripStatusLabel2
@@ -681,17 +694,20 @@
             // 
             // MainMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 39F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2003, 1195);
+            this.ClientSize = new System.Drawing.Size(998, 582);
             this.Controls.Add(this.tableLayoutPanelBase);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.mainMenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1030, 670);
             this.Name = "MainMenuForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Health Monitor";
+            this.Load += new System.EventHandler(this.mainMenuForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainMenuForm_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainMenuForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.healthDataGridView)).EndInit();
@@ -705,6 +721,7 @@
             this.mainMenuToolStrip.ResumeLayout(false);
             this.mainMenuToolStrip.PerformLayout();
             this.tableLayoutPanelBase.ResumeLayout(false);
+            this.tableLayoutPanelBase.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

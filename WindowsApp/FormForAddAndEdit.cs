@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using EmployeeInformation;
+using EmployeeHealthRecord;
 using DatabaseOperation;
 
 namespace WindowsApp
@@ -20,6 +20,7 @@ namespace WindowsApp
             this.option = option;
             this.originalPerson = person;
             this.originalHealthInformation = healthRecord;
+            
             dateTimePicker.MaxDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
             switch (option)

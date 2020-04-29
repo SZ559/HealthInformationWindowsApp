@@ -1,5 +1,5 @@
 ﻿using DatabaseOperation;
-using EmployeeInformation;
+using EmployeeHealthRecord;
 using FileOperation;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace WindowsApp
     public delegate void ReplaceHealthInformation(Person person, HealthInformation healthInformation, Person updatedPerson, HealthInformation updatedHealthInformation);
     public partial class MainMenuForm : Form
     {
-        private EmployeeHealthDatabase myHealthRecord;
+        private HealthRecordsOfAllEmployees myHealthRecord;
         private FilterOperation filter = new FilterOperation();
         private DateTime filterDate;
         private List<Person> selectedPersons = new List<Person>();
@@ -22,14 +22,14 @@ namespace WindowsApp
         public MainMenuForm()
         {
             InitializeComponent();
-            myHealthRecord = new EmployeeHealthDatabase();
+            myHealthRecord = new HealthRecordsOfAllEmployees();
             dateTimePicker.MaxDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
             string size = "Size: " + this.Width.ToString() + ", " + this.Height.ToString();
             sizeToolStripStatusLabel2.Text = size;
             healthDatabaseBindingSource.DataSource = myHealthRecord.HealthRecordsDataTable;
             healthDataGridView.DataSource = healthDatabaseBindingSource;  
-            this.AutoSize = false;
+            //this.AutoSize = false;
             DataGridViewSetting.InitializeColumnHeader(healthDataGridView);
         }
         private void StatusBarUpdate_SubFormClosed(object sender, EventArgs e)
@@ -162,17 +162,20 @@ namespace WindowsApp
             MessageBox.Show("Cannot find the Gin Number!");
             return -1;
         }
+        //remove get person
         private bool AddNewRecord(Person person, HealthInformation newHealthInformation)
         {
             if (myHealthRecord.AddHealthRecord(person, newHealthInformation) == false)
             {
-                if (person.HasSameName(myHealthRecord.GetPerson(person.GinNumber)))
+                //myHealthRecord.GetPerson(person.GinNumber).Person
+                Person personInMyHealthRecords = myHealthRecord.HealthRecords[person.GinNumber].Person;
+                if (!person.HasSameName(personInMyHealthRecords))
                 {
-                    MessageBox.Show($"Add Failed! The health information of Gin Number:{person.GinNumber} and Date:{newHealthInformation.Date.ToShortDateString()} already exists.");
+                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {personInMyHealthRecords.ToString_InDefaultNameFormat()}.");
                 }
                 else
                 {
-                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {myHealthRecord.GetPerson(person.GinNumber).ToString_DefualtNameFormat()}.");
+                    MessageBox.Show($"Add Failed! The health information of Gin Number:{person.GinNumber} and Date:{newHealthInformation.Date.ToShortDateString()} already exists.");
                 }
                 return false;
             }
@@ -180,13 +183,16 @@ namespace WindowsApp
             UpdateDataGridViewDisplay();
             return true;
         }
+        //remove get person
         private bool EditChosenRecord(Person personToBeEdited, HealthInformation healthInformationToBeEdited, Person updatedPerson, HealthInformation updatedHealthInformation)
         {
+            //myHealthRecord.GetPerson(person.GinNumber).Person
+            Person personInMyHealthRecords = myHealthRecord.HealthRecords[updatedPerson.GinNumber].Person;
             if (!myHealthRecord.ModifyOneHealthRecord(personToBeEdited, healthInformationToBeEdited, updatedPerson, updatedHealthInformation))
             {
-                if (!updatedPerson.HasSameName(myHealthRecord.GetPerson(updatedPerson.GinNumber)))
+                if (!updatedPerson.HasSameName(personInMyHealthRecords))
                 {
-                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {myHealthRecord.GetPerson(updatedPerson.GinNumber).ToString_DefualtNameFormat()}.");
+                    MessageBox.Show($"Add Failed! The gin number and name do not match the record in database. The record in database: {personInMyHealthRecords.ToString_InDefaultNameFormat()}.");
                     if (personToBeEdited.GinNumber != updatedPerson.GinNumber)
                     {
                         return false;
@@ -438,7 +444,7 @@ namespace WindowsApp
                 listOfPersonHasSameLastName.Sort((x, y) => string.Compare(x.FirstName, y.FirstName));
                 foreach (Person person in personList[lastName])
                 {
-                    treeView.Nodes[0].Nodes[indexName].Nodes.Add(person.ToString_DefualtNameFormat());
+                    treeView.Nodes[0].Nodes[indexName].Nodes.Add(person.ToString_InDefaultNameFormat());
                 }
                 indexName = indexName + 1;
             }
@@ -472,7 +478,7 @@ namespace WindowsApp
         private SortedDictionary<int, SortedDictionary<int, SortedSet<DateTime>>> GenerateDateList()
         {
             SortedDictionary<int, SortedDictionary<int, SortedSet<DateTime>>> dateList = new SortedDictionary<int, SortedDictionary<int, SortedSet<DateTime>>>();
-            foreach (EmployeeHealthRecord healthRecord in myHealthRecord.HealthRecords.Values)
+            foreach (HealthRecordOfOneEmployee healthRecord in myHealthRecord.HealthRecords.Values)
             {
                 foreach (HealthInformation healthInformation in healthRecord.EmployeeHealthRecords.Values)
                 {
@@ -496,7 +502,7 @@ namespace WindowsApp
         private SortedDictionary<string, List<Person>> GenerateNameList()
         {
             SortedDictionary<string, List<Person>> personList = new SortedDictionary<string, List<Person>>();
-            foreach (EmployeeHealthRecord healthRecord in myHealthRecord.HealthRecords.Values)
+            foreach (HealthRecordOfOneEmployee healthRecord in myHealthRecord.HealthRecords.Values)
             {
                 Person person = healthRecord.Person;
                 string lastName = person.LastName;
@@ -572,6 +578,11 @@ namespace WindowsApp
         private void HealthDataGridView_Click(object sender, EventArgs e)
         {
             treeView.SelectedNode = null;
+        }
+
+        private void mainMenuForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

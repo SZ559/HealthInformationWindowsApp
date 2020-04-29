@@ -1,0 +1,223 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+
+namespace EmployeeHealthRecord
+{
+    public class HealthRecordsOfAllEmployees
+    {
+        private SortedDictionary<int, HealthRecordOfOneEmployee> healthRecords;
+        public SortedDictionary<int, HealthRecordOfOneEmployee> HealthRecords
+        {
+            get
+            {
+                return healthRecords;
+            }
+        }
+
+        public DataTable HealthRecordsDataTable
+        {
+            get
+            {
+                DataTable healthRecordDataTable = new DataTable();
+                healthRecordDataTable.Columns.Add("GinNumber", typeof(int));
+                healthRecordDataTable.Columns.Add("LastName", typeof(string));
+                healthRecordDataTable.Columns.Add("FirstName", typeof(string));
+                healthRecordDataTable.Columns.Add("Date", typeof(DateTime));
+                healthRecordDataTable.Columns.Add("VisitHubei", typeof(bool));
+                healthRecordDataTable.Columns.Add("HasAbnormalSymptom", typeof(bool));
+                healthRecordDataTable.Columns.Add("Temperature", typeof(double));
+                foreach (var employeeHealthRecord in healthRecords.Values)
+                {
+                    Person person = employeeHealthRecord.Person;
+                    foreach (var healthInformation in employeeHealthRecord.EmployeeHealthRecords.Values)
+                    {
+                        healthRecordDataTable.Rows.Add(new object[] { person.GinNumber, person.LastName, person.FirstName, healthInformation.Date, healthInformation.VisitHubei, healthInformation.HasAbnormalSymptom, healthInformation.Temperature });
+                    }
+                }
+                return healthRecordDataTable;
+            }
+        }
+
+        public HealthRecordsOfAllEmployees()
+        {
+            healthRecords = new SortedDictionary<int, HealthRecordOfOneEmployee>();
+        }
+
+        public bool ContainsPerson(Person person)
+        {
+            return healthRecords.ContainsKey(person.GinNumber) && person.HasSameName(healthRecords[person.GinNumber].Person);
+        }
+
+        public bool ContainsRecord(Person person, DateTime date)
+        {
+            return ContainsPerson(person) && healthRecords[person.GinNumber].ContainsHealthInformation(date);
+        }
+        
+        public void RemoveEmptyPerson(Person person)
+        {
+            if (healthRecords[person.GinNumber].IsEmpty())
+            {
+                healthRecords.Remove(person.GinNumber);
+            }
+        }
+
+        public bool AddHealthRecord(Person person, HealthInformation newHealthInformation)
+        {
+            if (!healthRecords.ContainsKey(person.GinNumber))
+            {
+                healthRecords.Add(person.GinNumber, new HealthRecordOfOneEmployee(person));
+            }
+            else if (!healthRecords[person.GinNumber].Person.HasSameName(person))
+            {
+                return false;
+            }
+            return healthRecords[person.GinNumber].AddHealthInformation(newHealthInformation);
+        }
+
+        public bool DeletePerson(Person personToBeDeleted)
+        {
+            if (ContainsPerson(personToBeDeleted))
+            {
+                healthRecords.Remove(personToBeDeleted.GinNumber);
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteHealthRecord(Person person, HealthInformation healthInformationToBeDeleted)
+        {
+            if (ContainsPerson(person))
+            {
+                bool deleteResult = healthRecords[person.GinNumber].DeleteHealthInformation(healthInformationToBeDeleted);
+                RemoveEmptyPerson(person);
+                return deleteResult;
+            }
+            return false;
+        } 
+
+        public List<HealthInformation>[] UpdatePerson(Person originalPerson, Person updatedPerson)
+        {
+            List<HealthInformation> overlapedInformation_Original = new List<HealthInformation>();
+            List<HealthInformation> overlapedInformation_Updated = new List<HealthInformation>();
+            if (originalPerson.GinNumber == updatedPerson.GinNumber)
+            {
+                healthRecords[originalPerson.GinNumber].Person = updatedPerson;
+            }
+            else if (ContainsPerson(updatedPerson))
+            {
+                List<HealthInformation> healthInformationList= healthRecords[originalPerson.GinNumber].EmployeeHealthRecords.Values.ToList();
+                foreach (HealthInformation healthInformation in healthInformationList)
+                {
+                    if (!healthRecords[updatedPerson.GinNumber].AddHealthInformation(healthInformation))
+                    {
+                        overlapedInformation_Original.Add(healthInformation);
+                        overlapedInformation_Updated.Add(healthRecords[updatedPerson.GinNumber].EmployeeHealthRecords[healthInformation.Date]);
+                    }
+                    else
+                    {
+                        healthRecords[originalPerson.GinNumber].DeleteHealthInformation(healthInformation);
+                    }                
+                }
+                RemoveEmptyPerson(originalPerson);
+            }
+            else if (!healthRecords.ContainsKey(updatedPerson.GinNumber))
+            {
+                HealthRecordOfOneEmployee origianlEmployeeHealthRecord = healthRecords[originalPerson.GinNumber];
+                origianlEmployeeHealthRecord.Person = updatedPerson;
+                //AddNewPerson(origianlEmployeeHealthRecord);
+                healthRecords.Add(origianlEmployeeHealthRecord.Person.GinNumber, origianlEmployeeHealthRecord);
+                healthRecords.Remove(originalPerson.GinNumber);
+            }
+           
+            return new List<HealthInformation>[] { overlapedInformation_Original, overlapedInformation_Updated };
+        }
+
+        public bool ModifyOneHealthRecord(Person personToBeModified, HealthInformation healthInformationToBeModified, Person updatedPerson, HealthInformation updatedHealthInformation)
+        {
+            if (personToBeModified.GinNumber == updatedPerson.GinNumber)
+            {
+                if (personToBeModified.HasSameName(updatedPerson))
+                {
+                    return healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, updatedHealthInformation);
+                }
+                else if (healthRecords[personToBeModified.GinNumber].EmployeeHealthRecords.Count == 1)
+                {
+                    healthRecords[personToBeModified.GinNumber].Person = updatedPerson;
+                    healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, updatedHealthInformation);
+                    return true;
+                }    
+            }
+            else if (AddHealthRecord(updatedPerson, updatedHealthInformation))
+            {
+                DeleteHealthRecord(personToBeModified, healthInformationToBeModified);
+                return true;
+            }
+            return false;
+        }
+        public bool ModifyHealthRecordOfChosenPerson(Person personToBeModified, HealthInformation healthInformationToBeModified, HealthInformation updatedHealthInformation)
+        {
+            if (ContainsPerson(personToBeModified))
+            {
+                return healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, updatedHealthInformation);
+            }
+            return false;
+        }
+
+    }
+}
+
+// public HealthInformation GetHealthInformation(int ginNumber, DateTime date)
+// {
+//     if (GetHealthRecord(ginNumber) == null)
+//     {
+//         return null;
+//     }
+//     return healthRecords[ginNumber].EmployeeHealthRecords[date];
+// }
+
+//public HealthRecordOfOneEmployee GetHealthRecord(int ginNumber)
+//{
+//    if (!healthRecords.ContainsKey(ginNumber))
+//    {
+//        return null;
+//    }
+//    return healthRecords[ginNumber];
+//}
+//public Person GetPerson(int ginNumber)
+//{
+//    if (!healthRecords.ContainsKey(ginNumber))
+//    {
+//        return null;
+//    }
+//    return healthRecords[ginNumber].Person;
+//}
+//public void AddNewPerson(HealthRecordOfOneEmployee healthRecordOfOneEmployee)
+//{
+//    if (!this.healthRecords.ContainsKey(healthRecordOfOneEmployee.Person.GinNumber))
+//    {
+//        this.healthRecords.Add(healthRecordOfOneEmployee.Person.GinNumber, healthRecordOfOneEmployee);
+//    }
+//}
+//public bool ModifyOneHealthRecord(Person personToBeModified, HealthInformation healthInformationToBeModified, Person updatedPerson, HealthInformation updatedHealthInformation)
+//{
+//    if (personToBeModified.GinNumber == updatedPerson.GinNumber)
+//    {
+//        if (personToBeModified.HasSameName(updatedPerson))
+//        {
+//            return healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, updatedHealthInformation);
+//        }
+        //else if (healthRecords[personToBeModified.GinNumber].EmployeeHealthRecords.Count == 1)
+        //{
+        //    healthRecords[personToBeModified.GinNumber].Person = updatedPerson;
+        //    return healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, updatedHealthInformation);
+        //}    
+//    }
+//    else if (AddHealthRecord(updatedPerson, updatedHealthInformation))
+//    {
+//        DeleteHealthRecord(personToBeModified, healthInformationToBeModified);
+//        return true;
+//    }
+//    return false;
+//}
