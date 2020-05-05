@@ -34,5 +34,5 @@ The person is considered a suspected case if he/she visited Hubei recently or ha
 
 **Test Cases Design:** Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
 
-**Unit Test Report for Data Model:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
+**Unit Test Reports for Data Model:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
 
