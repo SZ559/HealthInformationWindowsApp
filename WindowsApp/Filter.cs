@@ -1,82 +1,136 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsApp
 {
     public class FilterOperation
     {
-        private string filter = "";
+        private string visitedHubeiFilter;
+        private string hasAbnormalSymptomFilter;
+        private string suspectedCaseFilter;
+        private string dateFilter;
+        private string ginNumberFilter;
+        private string treeviewDateFilter;
+        private string treeviewNameFilter;
+        private string filter;
+
         public string Filter
         {
             get
             {
+                filter = "";
+                AddFilter(visitedHubeiFilter);
+                AddFilter(hasAbnormalSymptomFilter);
+                AddFilter(suspectedCaseFilter);
+                AddFilter(dateFilter);
+                AddFilter(ginNumberFilter);
+                AddFilter(treeviewDateFilter);
+                AddFilter(treeviewNameFilter);
                 return filter;
             }
+        }
+
+        public string GinNumberFilter
+        {
             set
             {
-                filter = value;
+                ginNumberFilter = value;
+            }
+        }
+
+        public string TreeviewDateFilter
+        {
+            set
+            {
+                treeviewDateFilter = value;
+            }
+        }
+
+        public string TreeviewNameFilter
+        {
+            set
+            {
+                treeviewNameFilter = value;
+            }
+        }
+
+        public void AddFilter(string filterString)
+        {
+            if (filterString != "")
+            {
+                if (filter != "")
+                {
+                    filter = filter + " AND ";
+                }
+                filter = filter + filterString;
             }
         }
  
-        public void AddFilter(string filterToBeAdded)
+        public void ClearFilter()
         {
-            if (filter != "" && filterToBeAdded != "")
-            {
-                filter = filter + " AND ";
-            }
-            filter = filter + filterToBeAdded;
+            visitedHubeiFilter = "";
+            hasAbnormalSymptomFilter = "";
+            suspectedCaseFilter = "";
+            dateFilter = "";
+            ginNumberFilter = "";
+            treeviewDateFilter = "";
+            treeviewNameFilter = "";
         }
-        public void RemoveFilter(string filterToBeRemoved)
-        {
-            string logicOperator = " AND ";
-            if (filterToBeRemoved == "" || filter.IndexOf(filterToBeRemoved) < 0)
-            {
-                return;
-            }
-            else if (filter == filterToBeRemoved)
-            {
-                filter = "";
-            }
-            else
-            {
-                string subStringToBeRemoved = logicOperator + filterToBeRemoved;
-                int index = filter.IndexOf(subStringToBeRemoved);
-                if (index < 0)
-                {
-                    subStringToBeRemoved = filterToBeRemoved + logicOperator;
-                    index = filter.IndexOf(subStringToBeRemoved);
-                }
-                filter = filter.Remove(index, subStringToBeRemoved.Length);
-            }
-        }
-        public string UpdateFilter_BasedOnCheckBox(CheckBox checkBox, string filterString)
+
+        public void UpdateFilter_BasedOnCheckBox(CheckBox checkBox, string filterOption)
         {
             if (checkBox.Checked)
             {
-                AddFilter(filterString);
+                switch (filterOption)
+                {
+                    case "VisitedHubeiFilter":
+                        visitedHubeiFilter = "VisitHubei = 'True'";
+                        break;
+                    case "HasAbnormalSymptomFilter":
+                        hasAbnormalSymptomFilter = "HasAbnormalSymptom = 'True'";
+                        break;
+                    case "SuspectedCaseFilter":
+                        suspectedCaseFilter = "(VisitHubei = 'True' OR HasAbnormalSymptom = 'True' OR Temperature > 37.3)";
+                        break;
+                }
             }
             else
             {
-                RemoveFilter(filterString);
+                switch (filterOption)
+                {
+                    case "VisitedHubeiFilter":
+                        visitedHubeiFilter = "";
+                        break;
+                    case "HasAbnormalSymptomFilter":
+                        hasAbnormalSymptomFilter = "";
+                        break;
+                    case "SuspectedCaseFilter":
+                        suspectedCaseFilter = "";
+                        break;
+                }
             }
-            return filter;
         }
 
-        public string FilterDateTime_MonthAndYearFilter(DateTime myDateTimeMax, DateTime myDateTimeMin)
+        public void UpdateFilter_Date(DateTime myDateTime, bool applyFilter)
         {
-            string filterString = String.Format("(Date <= '{0:MM/dd/yyyy}' AND Date >= '{1:MM/dd/yyyy}')", myDateTimeMax, myDateTimeMin);
-            AddFilter(filterString);
-            return filterString;
+            if (applyFilter)
+            {
+                dateFilter = String.Format("(Date = '{0:MM/dd/yyyy}')", myDateTime);
+            }
+            else
+            {
+                dateFilter = "";
+            }    
         }
-        public string FilterDateTimeFilter(DateTime myDateTime)
+
+        public void UpdateFilter_TreeViewDateFilter_FilterYearOrMonth(DateTime myDateTimeMin, DateTime myDateTimeMax)
         {
-            string filterString = String.Format("(Date = '{0:MM/dd/yyyy}')", myDateTime);
-            AddFilter(filterString);
-            return filterString;
+            treeviewDateFilter = String.Format("(Date <= '{0:MM/dd/yyyy}' AND Date >= '{1:MM/dd/yyyy}')", myDateTimeMax, myDateTimeMin);
+        }
+
+        public void UpdateFilter_TreeViewDateFilter_FilterDate(DateTime myDateTime)
+        {
+            treeviewDateFilter = String.Format("(Date = '{0:MM/dd/yyyy}')", myDateTime);
         }
     }
 }

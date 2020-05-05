@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\xunit.core.2.4.1\build\xunit.core.props" Condition="Exists('packages\xunit.core.2.4.1\build\xunit.core.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -58,21 +59,30 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>packages\xunit.abstractions.2.0.3\lib\net35\xunit.abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>packages\xunit.assert.2.4.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>packages\xunit.extensibility.core.2.4.1\lib\net452\xunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>packages\xunit.extensibility.execution.2.4.1\lib\net452\xunit.execution.desktop.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeHealthRecord\HealthRecordOfOneEmployee.cs" />
-    <Compile Include="EmployeeHealthRecord\HealthInformation.cs" />
-    <Compile Include="EmployeeHealthRecord\Person.cs" />
-    <Compile Include="EmployeeHealthRecord\HealthRecordsOfAllEmployees.cs" />
     <Compile Include="FileOperation\DataFileOperation.cs" />
-    <Compile Include="DatabaseOperation\FormatValidator.cs" />
+    <Compile Include="FormatValidator\FormatCheck.cs" />
     <Compile Include="WindowsApp\DataGridViewSetting.cs" />
     <Compile Include="WindowsApp\Filter.cs" />
-    <Compile Include="WindowsApp\OverlapedHealthInformationForm.cs">
+    <Compile Include="WindowsApp\FilterUseless.cs" />
+    <Compile Include="WindowsApp\OverlappedHealthInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsApp\OverlapedHealthInformationForm.Designer.cs">
-      <DependentUpon>OverlapedHealthInformationForm.cs</DependentUpon>
+    <Compile Include="WindowsApp\OverlappedHealthInformationForm.Designer.cs">
+      <DependentUpon>OverlappedHealthInformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsApp\FormForAddAndEdit.cs">
       <SubType>Form</SubType>
@@ -88,8 +98,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="WindowsApp\OverlapedHealthInformationForm.resx">
-      <DependentUpon>OverlapedHealthInformationForm.cs</DependentUpon>
+    <EmbeddedResource Include="WindowsApp\OverlappedHealthInformationForm.resx">
+      <DependentUpon>OverlappedHealthInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsApp\FormForAddAndEdit.resx">
       <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
@@ -126,12 +136,24 @@
     <Content Include="Console.ico" />
     <Content Include="WindowsApp\Test Cases MindMap.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="EmployeeHealthRecord\EmployeeHealthRecord.csproj">
+      <Project>{549796a5-a9ef-4342-95b7-677b95f9d5e7}</Project>
+      <Name>EmployeeHealthRecord</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.core.2.4.1\build\xunit.core.props'))" />
+    <Error Condition="!Exists('packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
   </Target>
+  <Import Project="packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('packages\xunit.core.2.4.1\build\xunit.core.targets')" />
 </Project>

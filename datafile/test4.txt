@@ -1,3 +1,0 @@
-125,ss,False,True,35
-203,shishi,True,True,35.6
-2222,sss,False,True,37

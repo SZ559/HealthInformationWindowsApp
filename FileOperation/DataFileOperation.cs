@@ -1,15 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using EmployeeHealthRecord;
-using DatabaseOperation;
+using FormatValidator;
 namespace FileOperation
 {
     public class DataFileOperation
     {
         public static string InputFromCSVFile(ref HealthRecordsOfAllEmployees myHealthRecord, string filePath)
         {
-            FormatValidator formatValidator = new FormatValidator();
+            FormatCheck formatValidator = new FormatCheck();
             try
             {
                 HealthRecordsOfAllEmployees newHealthRecord = new HealthRecordsOfAllEmployees();
@@ -19,7 +18,8 @@ namespace FileOperation
                     while (!myStreamReader.EndOfStream)
                     {
                         newRecord = myStreamReader.ReadLine();
-                        if (formatValidator.CheckFormatError_InputString(newRecord) == "")
+                        string formatErrorMessage = formatValidator.CheckFormatError_InputString(newRecord);
+                        if (formatErrorMessage == "")
                         {
                             string[] newPersonArray = newRecord.Split(',');
                             int ginNumber = int.Parse(newPersonArray[0]);
@@ -28,14 +28,17 @@ namespace FileOperation
                             DateTime date = DateTime.Parse(newPersonArray[3]);
                             bool visitedHubei = bool.Parse(newPersonArray[4]);
                             bool hasAbnormalSymptom = bool.Parse(newPersonArray[5]);
-                            double temperature = double.Parse(newPersonArray[6]);
+                            double bodyTemperature = double.Parse(newPersonArray[6]);
                             Person person = new Person(ginNumber, firstName, lastName);
-                            HealthInformation healthInformation = new HealthInformation(date, visitedHubei, hasAbnormalSymptom, temperature);
-                            newHealthRecord.AddHealthRecord(person, healthInformation);
+                            HealthInformation healthInformation = new HealthInformation(date, visitedHubei, hasAbnormalSymptom, bodyTemperature);
+                            if (!newHealthRecord.AddHealthRecord(person, healthInformation))
+                            {
+                                return $"Import Failed! Unable to load record: {newRecord}. Please check if the Gin Number and the Name match employee records or a duplicate health record with same Gin Number and Date already exists.";
+                            }
                         }
                         else
                         {
-                            return "Import Failed! Format error occrus!";
+                            return $"Import Failed! Unable to load record: {newRecord}. {formatErrorMessage}";
                         }
                     }
                 }
@@ -57,7 +60,7 @@ namespace FileOperation
                     foreach (var employeeHealthRecord in myHealthRecords.HealthRecords.Values)
                     {
                         Person person = employeeHealthRecord.Person;
-                        foreach (var healthInformation in employeeHealthRecord.EmployeeHealthRecords.Values)
+                        foreach (var healthInformation in employeeHealthRecord.Records.Values)
                         {
                             myStreamSaver.WriteLine(person.ToString() + healthInformation.ToString());
                         }
@@ -65,9 +68,9 @@ namespace FileOperation
                 }
                 return "Save Success!";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return "Save Failed!";
+                return $"Save Failed! {e.Message}";
             }
         }
     }

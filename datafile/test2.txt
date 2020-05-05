@@ -1,2 +1,0 @@
-204,shishi,False,False,35.6
-203,shishi,True,True,35.6

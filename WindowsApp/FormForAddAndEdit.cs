@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using EmployeeHealthRecord;
-using DatabaseOperation;
+using FormatValidator;
 
 namespace WindowsApp
 {
@@ -10,10 +10,11 @@ namespace WindowsApp
         private string option;
         private Person originalPerson;
         private HealthInformation originalHealthInformation;
-        private FormatValidator formatValidator = new FormatValidator();
-        internal event EditHealthInformation editHealthInformation;
-        internal event UpdateHealthRecord updateHealthRecrod;
+        private FormatCheck formatValidator = new FormatCheck();
+        internal event EditHealthRecord editHealthRecord;
+        internal event UpdateHealthRecord updateHealthRecord;
         internal event EventHandler statusBarUpdate_SubFormClosed;
+
         public FormForAddAndEdit(string option, Person person, HealthInformation healthRecord)
         {
             InitializeComponent();
@@ -27,36 +28,38 @@ namespace WindowsApp
             {
                 case "Add":
                     this.Text = "Add";
+                    addOrSaveButton.Text = "Add";
                     clearButton.Visible = true;
                     deleteButton.Visible = false;
                     dateTimePicker.Checked = false;
-                    dateTimePicker.ShowCheckBox = true;
-                    addConfirmButton.Text = "Add";
+                    dateTimePicker.ShowCheckBox = true;                  
                     break;
                 case "Edit":
                     this.Text = "Edit";
-                    addConfirmButton.Text = "Save";
+                    addOrSaveButton.Text = "Save";
                     clearButton.Visible = false;
                     deleteButton.Visible = true;
                     dateTimePicker.Checked = true;
                     dateTimePicker.ShowCheckBox = false;
-                    DisplayHealthInformationOfPerson(originalPerson, originalHealthInformation);
+                    DisplayHealthRecord(originalPerson, originalHealthInformation);
                     break;
             }
         }
-        private void DisplayHealthInformationOfPerson(Person originalPerson, HealthInformation healthInformation)
+
+        private void DisplayHealthRecord(Person person, HealthInformation healthInformation)
         {
-            ginNumberTextbox.Text = originalPerson.GinNumber.ToString();
-            firstNameTextBox.Text = originalPerson.FirstName;
-            lastNameTextBox.Text = originalPerson.LastName;
+            ginNumberTextbox.Text = person.GinNumber.ToString();
+            firstNameTextBox.Text = person.FirstName;
+            lastNameTextBox.Text = person.LastName;
             dateTimePicker.Value = healthInformation.Date;
-            temperatureTextbox.Text = healthInformation.Temperature.ToString();
+            bodyTemperatureTextbox.Text = healthInformation.BodyTemperature.ToString();
             visitHubeiYesRadioButton.Checked = healthInformation.VisitHubei;
             visitHubeiNoRadioButton.Checked = !healthInformation.VisitHubei;
             hasAbnormalSymptomYesRadioButton.Checked = healthInformation.HasAbnormalSymptom;
             hasAbnormalSymptomNoRadioButton.Checked = !healthInformation.HasAbnormalSymptom;
         }
-        private void AddSaveButton_Click(object sender, EventArgs e)
+
+        private void AddOrSaveButton_Click(object sender, EventArgs e)
         {
             if (!IsValidInput())
             {
@@ -68,7 +71,7 @@ namespace WindowsApp
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 DateTime date = dateTimePicker.Value;
-                double temperature = Double.Parse(temperatureTextbox.Text);
+                double temperature = Double.Parse(bodyTemperatureTextbox.Text);
                 bool visitHubei = visitHubeiYesRadioButton.Checked;
                 bool hasAbnormalSymptom = hasAbnormalSymptomYesRadioButton.Checked;
                 Person updatedPerson = new Person(ginNumber, firstName, lastName);
@@ -76,13 +79,13 @@ namespace WindowsApp
                 switch (option)
                 {
                     case "Add":
-                        if (updateHealthRecrod(updatedPerson, updatedHealthInformation) == true)
+                        if (updateHealthRecord(updatedPerson, updatedHealthInformation))
                         {
                             ResetAll();
                         }
                         break;
                     case "Edit":
-                        if (editHealthInformation(originalPerson, originalHealthInformation, updatedPerson, updatedHealthInformation) == true)
+                        if (editHealthRecord(originalPerson, originalHealthInformation, updatedPerson, updatedHealthInformation))
                         {
                             Close();
                         }
@@ -90,6 +93,7 @@ namespace WindowsApp
                 }
             }   
         }
+
         private bool IsValidInput()
         {
             errorGinNumber.Visible = formatValidator.HasFormatError_GinNumber(ginNumberTextbox.Text);
@@ -98,20 +102,24 @@ namespace WindowsApp
             errorDateLabel.Visible = !dateTimePicker.Checked;
             errorVisitHubei.Visible = (!visitHubeiYesRadioButton.Checked) && (!visitHubeiNoRadioButton.Checked);
             errorAbnormalSymptom.Visible = (!hasAbnormalSymptomYesRadioButton.Checked) && (!hasAbnormalSymptomNoRadioButton.Checked);
-            errorTemperature.Visible = formatValidator.HasFormatError_Temperature(temperatureTextbox.Text);
-            return !errorGinNumber.Visible && !errorFirstName.Visible && !errorLastName.Visible && !errorDateLabel.Visible && !errorVisitHubei.Visible && !errorAbnormalSymptom.Visible && !errorTemperature.Visible;
+            errorBodyTemperature.Visible = formatValidator.HasFormatError_BodyTemperature(bodyTemperatureTextbox.Text);
+            
+            return !(errorGinNumber.Visible || errorFirstName.Visible || errorLastName.Visible || errorDateLabel.Visible || errorVisitHubei.Visible || errorAbnormalSymptom.Visible || errorBodyTemperature.Visible);
         }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (updateHealthRecrod(originalPerson, originalHealthInformation))
+            if (updateHealthRecord(originalPerson, originalHealthInformation))
             {
                 Close(); 
             }
         }
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ResetAll();
         }
+
         private void ResetAll()
         {
             ginNumberTextbox.Text = String.Empty;
@@ -119,24 +127,27 @@ namespace WindowsApp
             lastNameTextBox.Text = string.Empty;
             dateTimePicker.Value = DateTime.Today;
             dateTimePicker.Checked = false;
-            temperatureTextbox.Text = String.Empty;
+            bodyTemperatureTextbox.Text = String.Empty;
             hasAbnormalSymptomNoRadioButton.Checked = false;
             hasAbnormalSymptomYesRadioButton.Checked = false;
             visitHubeiNoRadioButton.Checked = false;
             visitHubeiYesRadioButton.Checked = false;
 
             errorGinNumber.Visible = false;
+            errorDateLabel.Visible = false;
             errorFirstName.Visible = false;
             errorFirstName.Visible = false;
             errorLastName.Visible = false;
             errorVisitHubei.Visible = false;
             errorAbnormalSymptom.Visible = false;
-            errorTemperature.Visible = false;
+            errorBodyTemperature.Visible = false;
         }
+
         private void Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void FormForAddAndEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
             statusBarUpdate_SubFormClosed?.Invoke(sender, FormClosedEventArgs.Empty);
