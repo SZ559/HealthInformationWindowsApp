@@ -1,6 +1,6 @@
 The Daily Health Monitor App is designed to allow user to view, edit and search employee health records. 
 
-One health record includes information of Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
+One health record includes information of Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, and body temperature. 
 Gin Number, which is a positive integer, represents employee's identity. One Gin Number can be only associated with one name. 
 One employee has up to one health record at each day. Body Temperature should not exceed the reasonable range (between 35 and 42 degrees). 
 The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
