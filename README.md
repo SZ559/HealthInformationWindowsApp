@@ -1,4 +1,3 @@
-# READ ME
 The Daily Health Monitor App is designed to allow user to view, edit and search employee health records. 
 One health record includes information of Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
 Gin Number, which is a positive integer, represents employee's identity. One Gin Number can be only associated with one name. 
