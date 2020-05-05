@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace EmployeeHealthRecord
 {
     public class Person

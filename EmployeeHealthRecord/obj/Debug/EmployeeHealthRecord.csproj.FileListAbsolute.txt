@@ -6,7 +6,6 @@ C:\Users\zhang\source\repos\EmployeeHealthRecord2\obj\Debug\EmployeeHealthRecord
 C:\Users\zhang\source\repos\EmployeeHealthRecord2\obj\Debug\EmployeeHealthRecord2.pdb
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\bin\Debug\EmployeeHealthRecord2.dll
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\bin\Debug\EmployeeHealthRecord2.pdb
-C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord.csprojAssemblyReference.cache
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord.csproj.CoreCompileInputs.cache
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.dll
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.pdb

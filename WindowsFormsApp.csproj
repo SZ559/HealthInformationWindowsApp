@@ -75,36 +75,36 @@
   <ItemGroup>
     <Compile Include="FileOperation\DataFileOperation.cs" />
     <Compile Include="FormatValidator\FormatCheck.cs" />
-    <Compile Include="WindowsApp\DataGridViewSetting.cs" />
-    <Compile Include="WindowsApp\Filter.cs" />
-    <Compile Include="WindowsApp\FilterUseless.cs" />
-    <Compile Include="WindowsApp\OverlappedHealthInformationForm.cs">
+    <Compile Include="WindowsAppGUI\DataGridViewSetting.cs" />
+    <Compile Include="WindowsAppGUI\Filter.cs" />
+    <Compile Include="WindowsAppGUI\FilterUseless.cs" />
+    <Compile Include="WindowsAppGUI\OverlappedHealthInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsApp\OverlappedHealthInformationForm.Designer.cs">
+    <Compile Include="WindowsAppGUI\OverlappedHealthInformationForm.Designer.cs">
       <DependentUpon>OverlappedHealthInformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsApp\FormForAddAndEdit.cs">
+    <Compile Include="WindowsAppGUI\FormForAddAndEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsApp\FormForAddAndEdit.Designer.cs">
+    <Compile Include="WindowsAppGUI\FormForAddAndEdit.Designer.cs">
       <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsApp\MainMenuForm.cs">
+    <Compile Include="WindowsAppGUI\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsApp\MainMenuForm.Designer.cs">
+    <Compile Include="WindowsAppGUI\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="WindowsApp\OverlappedHealthInformationForm.resx">
+    <EmbeddedResource Include="WindowsAppGUI\OverlappedHealthInformationForm.resx">
       <DependentUpon>OverlappedHealthInformationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsApp\FormForAddAndEdit.resx">
+    <EmbeddedResource Include="WindowsAppGUI\FormForAddAndEdit.resx">
       <DependentUpon>FormForAddAndEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsApp\MainMenuForm.resx">
+    <EmbeddedResource Include="WindowsAppGUI\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -134,7 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Console.ico" />
-    <Content Include="WindowsApp\Test Cases MindMap.jpg" />
+    <Content Include="WindowsAppGUI\Test Cases MindMap.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
