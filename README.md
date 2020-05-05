@@ -4,7 +4,7 @@ Gin Number, which is a positive integer, represents employee's identity. One Gin
 One employee has up to one health record at each day. Body Temperature must be within a valid range (between 35 and 42 degrees). 
 The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
 
-Function added:
+Functions added:
 1. Display health records in data grid view and sort health record by selected field.
 2. Open CSV file
 3. Save health records to CSV file
