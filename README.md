@@ -1,5 +1,5 @@
 ## **Overview**
-The Daily Health Monitor is a Windows Forms application. It is designed to allow user to view, edit and search employee health records. 
+The Daily Health Monitor is a Windows Forms application. It is designed to view, edit and search employee health records. 
 
 **Special Requirements:**
 1. One health record includes following information: Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
@@ -24,9 +24,9 @@ One employee has up to one health record at each day.
 13. Filter health record by visited Hubei or not
 14. Filter health record by has abnormal symptom or not
 15. Filter health record by suspected case
-15. Remind user the current status
+15. Remind user current status
 
-## **File structure**
+## **File Structure**
 
 #### **Data Model:** 
 
