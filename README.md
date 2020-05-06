@@ -1,10 +1,13 @@
-The Daily Health Monitor App is designed to allow user to view, edit and search employee health records. 
-One health record includes information of Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
+The Daily Health Monitor is a Windows Forms application. It is designed to allow user to view, edit and search employee health records. 
+
+One health record includes following information: Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
+
 Gin Number, which is a positive integer, represents employee's identity. One Gin Number can be only associated with one name. 
-One employee has up to one health record at each day. Body Temperature must be within a valid range (between 35 and 42 degrees). 
+One employee has up to one health record at each day. Body Temperature should not exceed the reasonable range (between 35 and 42 degrees). 
 The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
-Function added: 
-1. Display health records in data grid view and sort health record by selected field.
+
+**Functions added up to now:**
+1. Display health records in data grid view and sort health record by selected field
 2. Open CSV file
 3. Save health records to CSV file
 4. Add new health record 
@@ -20,3 +23,16 @@ Function added:
 14. Filter health record by has abnormal symptom or not
 15. Filter health record by suspected case
 15. Remind user the current status
+
+**Data Model:** EmployeeHealthRecord https://github.com/SZ559/HealthInformationWindowsApp/tree/master/EmployeeHealthRecord
+
+**GUI:** WindowsAppGUI https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI
+
+**Helper Methods:** FileOperation, FormatValidator
+
+**Test Data:** datafile https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafile
+
+**Test Cases Design:** Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
+
+**Unit Test Reports for Data Model:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
+
