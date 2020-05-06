@@ -1,4 +1,4 @@
-The Daily Health Monitor App is designed to allow user to view, edit and search employee health records. 
+The Daily Health Monitor is a Windows Forms application. It is designed to allow user to view, edit and search employee health records. 
 
 One health record includes following information: Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
 
@@ -7,7 +7,7 @@ One employee has up to one health record at each day. Body Temperature should no
 The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
 
 **Functions added up to now:**
-1. Display health records in data grid view and sort health record by selected field.
+1. Display health records in data grid view and sort health record by selected field
 2. Open CSV file
 3. Save health records to CSV file
 4. Add new health record 
