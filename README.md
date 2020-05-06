@@ -30,7 +30,7 @@ One employee has up to one health record at each day.
 
 #### **Data Model:** 
 
-EmployeeHealthRecord https://github.com/SZ559/HealthInformationWindowsApp/tree/master/EmployeeHealthRecord/EmployeeHealthRecord
+EmployeeHealthRecord [GitHub](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/EmployeeHealthRecord/EmployeeHealthRecord)
 
 #### **GUI:** 
 
