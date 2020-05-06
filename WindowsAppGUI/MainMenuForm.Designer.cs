@@ -344,7 +344,6 @@
             // 
             // mainMenuStrip
             // 
-            this.mainMenuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
@@ -384,8 +383,8 @@
             this.saveToFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.saveToFileToolStripMenuItem.Name = "saveToFileToolStripMenuItem";
             this.saveToFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(438, 54);
-            this.saveToFileToolStripMenuItem.Text = "Save To File";
+            this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.saveToFileToolStripMenuItem.Text = "Save File";
             this.saveToFileToolStripMenuItem.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // editToolStripMenuItem
@@ -395,7 +394,7 @@
             this.editToolStripMenuItem2,
             this.deleteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(92, 45);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(92, 48);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
             // addToolStripMenuItem1
@@ -439,7 +438,7 @@
             this.viewToolBarToolStripMenuItem});
             this.viewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(106, 45);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(106, 48);
             this.viewToolStripMenuItem.Text = "&View";
             // 
             // viewCurrentStatusToolStripMenuItem
@@ -466,7 +465,7 @@
             this.viewToolBarToolStripMenuItem.Name = "viewToolBarToolStripMenuItem";
             this.viewToolBarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.viewToolBarToolStripMenuItem.Size = new System.Drawing.Size(492, 54);
-            this.viewToolBarToolStripMenuItem.Text = "View Tool Bar";
+            this.viewToolBarToolStripMenuItem.Text = "View Toolbar";
             this.viewToolBarToolStripMenuItem.Click += new System.EventHandler(this.ViewToolBarToolStripMenuItem_Click);
             // 
             // openFileToolStripButton
@@ -491,7 +490,7 @@
             this.saveToolStripButton.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.saveToolStripButton.Size = new System.Drawing.Size(152, 19);
             this.saveToolStripButton.Text = "Save File";
-            this.saveToolStripButton.ToolTipText = "Save To File (Ctrl+S)";
+            this.saveToolStripButton.ToolTipText = "Save File (Ctrl+S)";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // searchToolStripTextBox
@@ -657,7 +656,7 @@
             this.hideStatusBar.Image = ((System.Drawing.Image)(resources.GetObject("hideStatusBar.Image")));
             this.hideStatusBar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.hideStatusBar.Name = "hideStatusBar";
-            this.hideStatusBar.Size = new System.Drawing.Size(43, 6);
+            this.hideStatusBar.Size = new System.Drawing.Size(43, 21);
             this.hideStatusBar.Text = " ";
             this.hideStatusBar.ToolTipText = "Hide Status Bar";
             this.hideStatusBar.Click += new System.EventHandler(this.HideStatusBar_Click);
@@ -665,9 +664,9 @@
             // currentStatusToolStripStatusLabel
             // 
             this.currentStatusToolStripStatusLabel.Name = "currentStatusToolStripStatusLabel";
-            this.currentStatusToolStripStatusLabel.Size = new System.Drawing.Size(106, 6);
+            this.currentStatusToolStripStatusLabel.Size = new System.Drawing.Size(106, 21);
             this.currentStatusToolStripStatusLabel.Text = "Ready";
-            this.currentStatusToolStripStatusLabel.ToolTipText = "Status";
+            this.currentStatusToolStripStatusLabel.ToolTipText = "Current Status";
             // 
             // warningToolStripStatusLabel1
             // 
