@@ -53,12 +53,11 @@ datafile https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafi
 Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
 
 #### **Unit Test Reports for Data Model:** 
-
+UnitTestReport
 https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
 
 #### **User Guide:** 
-
-UnitTestReport
+User Guide.pptx
 https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide
 
 ## **Environment**
