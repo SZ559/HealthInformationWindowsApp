@@ -36,7 +36,7 @@ EmployeeHealthRecord https://github.com/SZ559/HealthInformationWindowsApp/tree/m
 
 WindowsAppGUI https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI
 + Main Menu Form: MainMenuForm.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/MainMenuForm.cs
-+ Form for add new health record and edit existed health record: FormForAddAndEdit.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/FormForAddAndEdit.cs
++ Form for adding new health record and editing existed health record: FormForAddAndEdit.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/FormForAddAndEdit.cs
 + Form for displaying health records with conflict date when updating Gin Number and name of a employee in health records : OverlappedHealthInformationForm.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/OverlappedHealthInformationForm.cs
 + Helper Methods: Filter.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/Filter.cs
 DataGridViewSetting.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/DataGridViewSetting.cs
