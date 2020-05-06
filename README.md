@@ -1,20 +1,22 @@
+## **Overview**
 The Daily Health Monitor is a Windows Forms application. It is designed to allow user to view, edit and search employee health records. 
 
-One health record includes following information: Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
+**Special Requirements:**
+1. One health record includes following information: Gin Number, first name, last name, date, visited Hubei recently or not, has abnormal symptom or not, body temperature. 
+2. Gin Number, which is a positive integer, represents employee's identity. One Gin Number can be only associated with one name. 
+One employee has up to one health record at each day. 
+3. Body Temperature should not exceed the reasonable range (between 35 and 42 degrees). 
+4. The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
 
-Gin Number, which is a positive integer, represents employee's identity. One Gin Number can be only associated with one name. 
-One employee has up to one health record at each day. Body Temperature should not exceed the reasonable range (between 35 and 42 degrees). 
-The person is considered a suspected case if he/she visited Hubei recently or has abnormal symptom, or his/her body temperature is more than 37.3 degrees.
-
-**Functions added up to now:**
-1. Display health records in data grid view and sort health record by selected field
-2. Open CSV file
-3. Save health records to CSV file
+**Functions added up to May 5th, 2020:**
+1. Display health records in data grid view and sort health record by Gin Number, first name, last name or date
+2. Open health records from CSV file
+3. Save health records as CSV file
 4. Add new health record 
 5. Edit existed health record 
-6. Update Gin Number and name of a employee in all health records associate with the employee
-7. Delete existed health record 
-8. Delete all records displayed in data grid view
+6. Update Gin Number and name of a employee in health records
+7. Delete existed health record
+8. Delete all health records displayed in data grid view
 9. Group health records by year, month, date in Treeview
 10. Group health records by last name, gin number and name in Treeview
 11. Filter health record by Gin Number
@@ -24,15 +26,24 @@ The person is considered a suspected case if he/she visited Hubei recently or ha
 15. Filter health record by suspected case
 15. Remind user the current status
 
-**Data Model:** EmployeeHealthRecord https://github.com/SZ559/HealthInformationWindowsApp/tree/master/EmployeeHealthRecord
+## **File structure**
 
-**GUI:** WindowsAppGUI https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI
++ **Data Model:** EmployeeHealthRecord https://github.com/SZ559/HealthInformationWindowsApp/tree/master/EmployeeHealthRecord
 
-**Helper Methods:** FileOperation, FormatValidator
++ **GUI:** WindowsAppGUI https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI
 
-**Test Data:** datafile https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafile
++ **Helper Methods:** FileOperation https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FileOperation, FormatValidator https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FormatValidator
 
-**Test Cases Design:** Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
++ **Test Data:** datafile https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafile
 
-**Unit Test Reports for Data Model:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
++ **Test Cases Design:** Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
+
++ **Unit Test Reports for Data Model:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
+
++ **User Guide:** https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide
+
+
+
+
+
 
