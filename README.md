@@ -34,31 +34,31 @@ One employee has up to one health record at each day.
 
 #### **GUI:** 
 
-WindowsAppGUI https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI
-+ Main Menu Form: MainMenuForm.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/MainMenuForm.cs
-+ Form for adding new health record and editing existed health record: FormForAddAndEdit.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/FormForAddAndEdit.cs
-+ Form for displaying health records with conflict date when updating Gin Number and name of a employee in health records : OverlappedHealthInformationForm.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/OverlappedHealthInformationForm.cs
-+ Helper Methods: Filter.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/Filter.cs
-DataGridViewSetting.cs https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/DataGridViewSetting.cs
+[WindowsAppGUI](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI)
++ Main Menu Form: [MainMenuForm.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/MainMenuForm.cs)
++ Form for adding new health record and editing existed health record: [FormForAddAndEdit.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/FormForAddAndEdit.cs)
++ Form for displaying health records with conflict date when updating Gin Number and name of a employee in health records: [OverlappedHealthInformationForm.cs]( https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/OverlappedHealthInformationForm.cs)
++ Helper Methods: [Filter.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/Filter.cs)
+[DataGridViewSetting.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/DataGridViewSetting.cs)
 #### **Helper Methods:** 
-+ FileOperation https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FileOperation
-+ FormatValidator https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FormatValidator
++ [FileOperation](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FileOperation)
++ [FormatValidator](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/FormatValidator)
 
 #### **Test Data:** 
 
-datafile https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafile
++ [datafile](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/datafile)
 
 #### **Test Cases Design:** 
 
-Daily Health Monitor Test Cases Design https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg
++ [Daily Health Monitor Test Cases Design] (https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg)
 
 #### **Unit Test Reports for Data Model:** 
-UnitTestReport
-https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport
++ [UnitTestReport]
+(https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport)
 
 #### **User Guide:** 
-User Guide.pptx
-https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide
++ [User Guide.pptx]
+(https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide)
 
 ## **Environment**
 + OS: Windows 10 Pro, 64-bit Operating System
