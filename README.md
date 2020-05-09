@@ -50,13 +50,14 @@ One employee has up to one health record at each day.
 
 #### **Test Cases Design:** 
 
-+ [Daily Health Monitor Test Cases Design](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design.jpg)
++ [Daily Health Monitor Test Cases Design](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/Daily%20Health%20Monitor%20Test%20Cases%20Design%20.jpg)
 
-#### **Unit Test Reports for Data Model:** 
-+ [UnitTestReport](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport)
+#### **Unit Test:** 
++ [Unit Test Report](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/TestOfEmployeeHealthRecord/report)
++ [Unit Test](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/TestOfEmployeeHealthRecord)
 
 #### **User Guide:** 
-+ [User Guide](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide), [User Guide.pptx](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/User%20Guide/User%20Guide.pptx)
++ [User Guide](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide)
 
 ## **Environment**
 + OS: Windows 10 Pro, 64-bit Operating System
