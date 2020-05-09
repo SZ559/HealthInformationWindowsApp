@@ -9,3 +9,9 @@ C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\bin\Debug\Emplo
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord.csproj.CoreCompileInputs.cache
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.dll
 C:\Users\zhang\source\repos\WindowsFormsApp\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.pdb
+G:\DailyHealthMonitor\EmployeeHealthRecord\bin\Debug\EmployeeHealthRecord2.dll
+G:\DailyHealthMonitor\EmployeeHealthRecord\bin\Debug\EmployeeHealthRecord2.pdb
+G:\DailyHealthMonitor\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord.csproj.CoreCompileInputs.cache
+G:\DailyHealthMonitor\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.dll
+G:\DailyHealthMonitor\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord2.pdb
+G:\DailyHealthMonitor\EmployeeHealthRecord\obj\Debug\EmployeeHealthRecord.csprojAssemblyReference.cache

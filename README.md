@@ -35,7 +35,7 @@ One employee has up to one health record at each day.
 #### **GUI:** 
 
 [WindowsAppGUI](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/WindowsAppGUI)
-+ [MainMenuForm.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/MainMenuForm.cs): Main Menu Form
++ [MainMenuForm.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/MainMenuForm.cs): Main menu form
 + [FormForAddAndEdit.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/FormForAddAndEdit.cs): Form for adding new health record and editing existed health record
 + [OverlappedHealthInformationForm.cs]( https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/OverlappedHealthInformationForm.cs): Form for displaying health records with conflict date when updating Gin Number and name of a employee
 + Helper Methods: [Filter.cs](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/WindowsAppGUI/Filter.cs), 
@@ -56,7 +56,7 @@ One employee has up to one health record at each day.
 + [UnitTestReport](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/UnitTestReport)
 
 #### **User Guide:** 
-+ [User Guide.pptx](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide)
++ [User Guide](https://github.com/SZ559/HealthInformationWindowsApp/tree/master/User%20Guide), [User Guide.pptx](https://github.com/SZ559/HealthInformationWindowsApp/blob/master/User%20Guide/User%20Guide.pptx)
 
 ## **Environment**
 + OS: Windows 10 Pro, 64-bit Operating System

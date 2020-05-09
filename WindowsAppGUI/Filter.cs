@@ -5,14 +5,14 @@ namespace WindowsApp
 {
     public class FilterOperation
     {
-        private string visitedHubeiFilter;
-        private string hasAbnormalSymptomFilter;
-        private string suspectedCaseFilter;
-        private string dateFilter;
-        private string ginNumberFilter;
-        private string treeviewDateFilter;
-        private string treeviewNameFilter;
-        private string filter;
+        private string visitedHubeiFilter = "";
+        private string hasAbnormalSymptomFilter = "";
+        private string suspectedCaseFilter = "";
+        private string dateFilter = "";
+        private string ginNumberFilter = "";
+        private string treeviewDateFilter = "";
+        private string treeviewNameFilter = "";
+        private string filter = "";
 
         public string Filter
         {

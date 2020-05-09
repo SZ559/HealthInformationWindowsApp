@@ -1,0 +1,12 @@
+123,shishi,zhang8/16/2019,True,False,35.816
+123,shishi,zhang3/15/2020,False,False,35.315
+123,shishi,zhang3/16/2020,True,False,35.316
+123,shishi,zhang4/15/2020,False,False,35.415
+123,shishi,zhang4/16/2020,True,False,35.416
+124,tony,trump8/15/2019,False,False,38
+124,tony,trump8/16/2019,True,False,38
+124,tony,trump3/15/2020,False,False,38
+124,tony,trump4/15/2020,False,False,38
+223,shishi,zhang8/15/2019,False,False,35
+224,tony,trump3/16/2020,True,False,38
+224,tony,trump4/16/2020,True,False,38

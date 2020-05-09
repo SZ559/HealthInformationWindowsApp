@@ -87,45 +87,60 @@ namespace EmployeeHealthRecord
             return false;
         }
 
-        public bool DeleteHealthRecord(Person person, HealthInformation healthInformationToBeDeleted)
+        public bool DeleteHealthRecord(Person person, DateTime date)
         {
             if (ContainsPerson(person))
             {
-                bool deleteResult = healthRecords[person.GinNumber].DeleteHealthInformation(healthInformationToBeDeleted);
+                bool deleteResult = healthRecords[person.GinNumber].DeleteHealthInformation(date);
                 RemoveEmptyPerson(person);
                 return deleteResult;
             }
             return false;
         }
 
+        public bool EditHealthRecord(Person personToBeEdited, DateTime dateToBeEdited, Person personAfterEdit, HealthInformation healthInformationAfterEdit)
+        {
+            if (ContainsPerson(personToBeEdited))
+            {
+                if (personToBeEdited.GinNumber == personAfterEdit.GinNumber)
+                {
+                    if (personToBeEdited.HasSameName(personAfterEdit))
+                    {
+                        return healthRecords[personToBeEdited.GinNumber].ModifyHealthInformation(dateToBeEdited, healthInformationAfterEdit);
+                    }
+                }
+                else if (AddHealthRecord(personAfterEdit, healthInformationAfterEdit))
+                {
+                    healthRecords[personToBeEdited.GinNumber].DeleteHealthInformation(dateToBeEdited);
+                    RemoveEmptyPerson(personToBeEdited);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool EditHealthRecordOfChosenPerson(Person personToBeEdited, DateTime dateToBeEdited, HealthInformation newHealthInformation)
+        {
+            if (ContainsPerson(personToBeEdited))
+            {
+                return healthRecords[personToBeEdited.GinNumber].ModifyHealthInformation(dateToBeEdited, newHealthInformation);
+            }
+            return false;
+        }
+
         public List<HealthInformation>[] UpdatePerson(Person personToBeEdited, Person personAfterEdit)
         {
-            List<HealthInformation> overlappedRecords_PersonToBeEdited = new List<HealthInformation>();
-            List<HealthInformation> overlappedRecords_PersonAfterEdit = new List<HealthInformation>();
+            if (!ContainsPerson(personToBeEdited))
+            {
+                return null;
+            }
             if (personToBeEdited.GinNumber == personAfterEdit.GinNumber)
             {
                 healthRecords[personToBeEdited.GinNumber].Person = personAfterEdit;
             }
             else if (healthRecords.ContainsKey(personAfterEdit.GinNumber))
             {
-                if (!healthRecords[personAfterEdit.GinNumber].Person.HasSameName(personAfterEdit))
-                {
-                    return null;
-                }
-                List<HealthInformation> healthInformationList = healthRecords[personToBeEdited.GinNumber].Records.Values.ToList();
-                foreach (HealthInformation healthInformation in healthInformationList)
-                {
-                    if (!healthRecords[personAfterEdit.GinNumber].AddHealthInformation(healthInformation))
-                    {
-                        overlappedRecords_PersonToBeEdited.Add(healthInformation);
-                        overlappedRecords_PersonAfterEdit.Add(healthRecords[personAfterEdit.GinNumber].Records[healthInformation.Date]);
-                    }
-                    else
-                    {
-                        healthRecords[personToBeEdited.GinNumber].DeleteHealthInformation(healthInformation);
-                    }
-                }
-                RemoveEmptyPerson(personToBeEdited);
+                return GetOverlappedHealthInformation(personToBeEdited, personAfterEdit);
             }
             else
             {
@@ -134,34 +149,35 @@ namespace EmployeeHealthRecord
                 healthRecords.Add(records.Person.GinNumber, records);
                 healthRecords.Remove(personToBeEdited.GinNumber);
             }
-            return new List<HealthInformation>[] { overlappedRecords_PersonToBeEdited, overlappedRecords_PersonAfterEdit };
+            return new List<HealthInformation>[] { new List<HealthInformation>(), new List<HealthInformation>() };
         }
 
-        public bool EditHealthRecord(Person personToBeEdited, HealthInformation healthInformationToBeEdited, Person personAfterEdit, HealthInformation healthInformationAfterEdit)
+        public List<HealthInformation>[] GetOverlappedHealthInformation(Person personToBeEdited, Person personAfterEdit)
         {
-            if (personToBeEdited.GinNumber == personAfterEdit.GinNumber)
+            List<HealthInformation> overlappedRecords_PersonToBeEdited = new List<HealthInformation>();
+            List<HealthInformation> overlappedRecords_PersonAfterEdit = new List<HealthInformation>();
+
+            if (!healthRecords[personAfterEdit.GinNumber].Person.HasSameName(personAfterEdit))
             {
-                if (personToBeEdited.HasSameName(personAfterEdit))
+                return null;
+            }
+
+            List<HealthInformation> healthInformationList = healthRecords[personToBeEdited.GinNumber].Records.Values.ToList();
+            foreach (HealthInformation healthInformation in healthInformationList)
+            {
+                if (!healthRecords[personAfterEdit.GinNumber].AddHealthInformation(healthInformation))
                 {
-                    return healthRecords[personToBeEdited.GinNumber].ModifyHealthInformation(healthInformationToBeEdited, healthInformationAfterEdit);
+                    overlappedRecords_PersonToBeEdited.Add(healthInformation);
+                    overlappedRecords_PersonAfterEdit.Add(healthRecords[personAfterEdit.GinNumber].Records[healthInformation.Date]);
+                }
+                else
+                {
+                    healthRecords[personToBeEdited.GinNumber].DeleteHealthInformation(healthInformation.Date);
                 }
             }
-            else if (AddHealthRecord(personAfterEdit, healthInformationAfterEdit))
-            {
-                healthRecords[personToBeEdited.GinNumber].DeleteHealthInformation(healthInformationToBeEdited);
-                RemoveEmptyPerson(personToBeEdited);
-                return true;
-            }
-            return false;
-        }
 
-        public bool EditHealthRecordOfChosenPerson(Person personToBeModified, HealthInformation healthInformationToBeModified, HealthInformation newHealthInformation)
-        {
-            if (ContainsPerson(personToBeModified))
-            {
-                return healthRecords[personToBeModified.GinNumber].ModifyHealthInformation(healthInformationToBeModified, newHealthInformation);
-            }
-            return false;
+            RemoveEmptyPerson(personToBeEdited);
+            return new List<HealthInformation>[] { overlappedRecords_PersonToBeEdited, overlappedRecords_PersonAfterEdit };
         }
     }
 }

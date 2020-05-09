@@ -154,7 +154,7 @@ namespace WindowsApp
 
         private bool EditSelectedRecord(Person personToBeEdited, HealthInformation healthInformationToBeEdited, Person personAfterUpdate, HealthInformation healthInformationAfterUpdate)
         {
-            if (myHealthRecord.EditHealthRecord(personToBeEdited, healthInformationToBeEdited, personAfterUpdate, healthInformationAfterUpdate))
+            if (myHealthRecord.EditHealthRecord(personToBeEdited, healthInformationToBeEdited.Date, personAfterUpdate, healthInformationAfterUpdate))
             {
                 UpdateExistedPerson(personToBeEdited, personAfterUpdate);
                 UpdateDataGridViewDisplay();
@@ -209,8 +209,8 @@ namespace WindowsApp
 
         private void OverwriteSelectedHealthRecord(Person personToBeReplaced, HealthInformation healthInformationToBeReplaced, Person person, HealthInformation healthInformation)
         {
-            myHealthRecord.EditHealthRecordOfChosenPerson(personToBeReplaced, healthInformationToBeReplaced, healthInformation);
-            myHealthRecord.DeleteHealthRecord(person, healthInformation);
+            myHealthRecord.EditHealthRecordOfChosenPerson(personToBeReplaced, healthInformationToBeReplaced.Date, healthInformation);
+            myHealthRecord.DeleteHealthRecord(person, healthInformation.Date);
             UpdateDataGridViewDisplay();
         }
 
@@ -219,7 +219,7 @@ namespace WindowsApp
             var confirmResult = MessageBox.Show("Are you sure to delete this person: " + person.ToString() + "," + healthRecord.ToString(), "Confirm Delete", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                myHealthRecord.DeleteHealthRecord(person, healthRecord);
+                myHealthRecord.DeleteHealthRecord(person, healthRecord.Date);
                 MessageBox.Show("Delete Sucess!");
                 UpdateDataGridViewDisplay();
                 return true;
@@ -238,7 +238,7 @@ namespace WindowsApp
                     {
                         Person personToBeDeleted = ConvertRowToPerson(row);
                         HealthInformation healthRecord = ConvertRowToHealthInformation(row);
-                        myHealthRecord.DeleteHealthRecord(personToBeDeleted, healthRecord);
+                        myHealthRecord.DeleteHealthRecord(personToBeDeleted, healthRecord.Date);
                     }
                     MessageBox.Show("Delete Sucess!");
                     UpdateDataGridViewDisplay();

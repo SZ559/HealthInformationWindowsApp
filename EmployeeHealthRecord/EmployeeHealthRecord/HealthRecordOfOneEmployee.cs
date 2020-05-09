@@ -35,32 +35,35 @@ namespace EmployeeHealthRecord
             return false;
         }
 
-        public bool DeleteHealthInformation(HealthInformation healthInformation)
+        public bool DeleteHealthInformation(DateTime date)
         {
-            if (ContainsHealthInformation(healthInformation.Date))
+            if (ContainsHealthInformation(date))
             {
-                Records.Remove(healthInformation.Date);
+                Records.Remove(date);
                 return true;
             }
             return false;
         }
 
-        public bool ModifyHealthInformation(HealthInformation healthInformation, HealthInformation updatedHealthInformation)
+        public bool ModifyHealthInformation(DateTime date, HealthInformation updatedHealthInformation)
         {
-            if (healthInformation.Date == updatedHealthInformation.Date)
+            if (ContainsHealthInformation(date))
             {
-                Records[healthInformation.Date] = updatedHealthInformation;
-                return true;
-            }
-            else
-            {
-                if (AddHealthInformation(updatedHealthInformation))
+                if (date == updatedHealthInformation.Date)
                 {
-                    Records.Remove(healthInformation.Date);
+                    Records[date] = updatedHealthInformation;
                     return true;
                 }
-                return false;
-            }  
+                else
+                {
+                    if (AddHealthInformation(updatedHealthInformation))
+                    {
+                        Records.Remove(date);
+                        return true;
+                    }                    
+                }
+            }
+            return false;
         }
     }
 }
