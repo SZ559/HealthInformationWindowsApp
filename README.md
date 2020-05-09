@@ -72,6 +72,13 @@ One employee has up to one health record at each day.
 + System.Windows.Forms
 + Xunit
 
+## **To Do**
++ Shorten the time for loading and updating the data grid view
++ Practice writing user story and acceptance criteria
++ Refine Unit Test and Test Cases
++ Refine User Guide
+
+
 
 
 
